@@ -1,0 +1,14 @@
+Embeddings generated from: /groups/clairemcwhite/ahmad_workspace/esm_c/neg_data/neg_10000.fasta
+Using model: /groups/clairemcwhite/models/ESMplusplus_large
+Model type: ESMplusplus
+Effective precision: half
+Layers used: [-11]
+Strategies used: ['mean']
+Padding: 0
+Truncation length: 2048
+--------------------
+Output objects and dimensions:
+  sequence_embeddings: (10000, 1152)
+--------------------
+Contains 10000 sequences:
+Full list of sequence IDs written to: reference_population/neg_10000.pkl.seqnames

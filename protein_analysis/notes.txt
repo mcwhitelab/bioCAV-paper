@@ -1,0 +1,24 @@
+negatives_loc=/groups/clairemcwhite/ahmad_workspace/esm_c/neg_data/neg_10000.fasta
+
+notes on the MYC MAC1 
+
+
+MYC cav recovers MAC1 (immediately after MYC homologs)
+
+MAC1 cav first recovers other repressors, then MYC. 
+
+What is MYC-like after removing generic bHLH-ness?
+
+
+
+
+
+00_get_negatives
+01_embed_input
+02_pool_spans
+03_make_cav.
+04_search
+
+
+
+

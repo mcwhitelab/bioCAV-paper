@@ -1,0 +1,50 @@
+
+======================================================================
+GO term GO:0070403 — prediction inspection
+======================================================================
+
+[test_neg]  n=27
+  CAV score   : mean=0.543  min=-3.883  max=4.089
+  Tool scored : 1/27 (3.7%)
+  Tool score  : mean=0.131  min=0.131  max=0.131
+
+[val_pos]  n=5
+  CAV score   : mean=2.667  min=1.438  max=3.472
+  Tool scored : 0/5 (0.0%)
+
+----------------------------------------------------------------------
+Full table:
+
+protein_id    split cav_score    llr tool_score
+    Q9WYI1 test_neg     4.089             0.131
+    O54879 test_neg     2.310                 —
+    Q5RAF3 test_neg     2.173                 —
+    A7YT82 test_neg     2.162                 —
+    O43010 test_neg     2.016                 —
+    O61613 test_neg     1.946                 —
+    P46280 test_neg     1.324                 —
+    P13773 test_neg     1.223                 —
+    Q689Z5 test_neg     1.152                 —
+    O15266 test_neg     1.067                 —
+    P07281 test_neg     0.851                 —
+    P45952 test_neg     0.815                 —
+    P35352 test_neg     0.797                 —
+    Q6T8E9 test_neg     0.734                 —
+    Q9Y5N5 test_neg     0.607                 —
+    Q6SKR2 test_neg     0.600                 —
+    Q5LLW7 test_neg     0.431                 —
+    O75116 test_neg     0.371                 —
+    P64032 test_neg     0.338                 —
+    Q9FC99 test_neg     0.149                 —
+    Q99081 test_neg    -0.006                 —
+    O16277 test_neg    -0.021                 —
+    Q86UQ8 test_neg    -0.606                 —
+    D3Z6H8 test_neg    -0.622                 —
+    Q28DX1 test_neg    -2.617                 —
+    Q9P4X3 test_neg    -2.732                 —
+    P19253 test_neg    -3.883                 —
+    Q8NBZ7  val_pos     3.472  2.373          —
+    P47895  val_pos     3.254  2.066          —
+    P00352  val_pos     3.172  1.933          —
+    Q8NLE6  val_pos     2.001 -0.923          —
+    P31116  val_pos     1.438 -2.937          —

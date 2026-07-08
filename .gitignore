@@ -1,0 +1,25 @@
+*.pkl
+*.npy
+*.out
+*.err
+cavs/
+*.h5ad
+
+protein_analysis/slurm_logs/
+protein_analysis/results/
+singlecell_analysis/cav_library/
+*.swp
+__pycache__/
+*.pyc
+protein_analysis/notes/
+
+# Bulk/regeneratable data — not project structure
+protein_analysis/all_train_prots.txt
+protein_analysis/fastas/
+protein_analysis/static/
+protein_analysis/outside_tools/
+singlecell_analysis/static/
+
+# Machine-generated SLURM command lists — regenerate via make_cav_commands.sh
+protein_analysis/COMMANDS_files/*
+!protein_analysis/COMMANDS_files/make_cav_commands.sh

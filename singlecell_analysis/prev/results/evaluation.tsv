@@ -1,0 +1,15 @@
+concept_name	n_pos_train	n_neg_train	n_pos_val	n_neg_val	train_auroc	val_auroc
+cell_type__endothelial_cell_of_lymphatic_vessel	500	1000	286	1000	0.9998	0.9992
+cell_type__adipocyte	500	1000	3833	1000	0.9979	0.9984
+cell_type__macrophage	500	1000	1388	1000	0.9983	0.9971
+cell_type__mast_cell	160	1000	39	1000	0.9998	0.9971
+cell_type__mesothelial_cell	500	1000	817	1000	0.9994	0.9961
+cell_type__myeloid_cell	500	1000	200	1000	0.997	0.9959
+cell_type__neuron_associated_cell	500	1000	345	1000	0.9958	0.994
+cell_type__fibro_adipogenic_progenitor_cell	500	1000	3204	1000	0.9962	0.9936
+cell_type__smooth_muscle_cell	500	1000	577	1000	0.9921	0.9913
+cell_type__lymphocyte	500	1000	379	1000	0.9884	0.9879
+cell_type__Schwann_cell	144	1000	36	1000	0.9915	0.9877
+cell_type__endothelial_cell	500	1000	1708	1000	0.9945	0.9858
+cell_type__unknown	500	1000	620	1000	0.9922	0.9832
+cell_type__pericyte	500	1000	1024	1000	0.9595	0.9454
