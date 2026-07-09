@@ -19,11 +19,11 @@ source ~/.bashrc
 # $0 is unreliable under sbatch (script runs from a spool copy); SLURM sets
 # SLURM_SUBMIT_DIR to the directory sbatch was invoked from instead.
 SCRIPT_DIR="${SLURM_SUBMIT_DIR:-$(dirname "$0")}"
-source "$SCRIPT_DIR/../config/paths.sh"
+source "$SCRIPT_DIR/../../config/paths.sh"
 
 conda activate /groups/clairemcwhite/envs/$CONDA_ENV
 
-for f in fastas/PF00010/*fasta;
+for f in fastas/pairs/myc_mad/*fasta;
 do
 
 #  select layer 26, as in arxiv paper

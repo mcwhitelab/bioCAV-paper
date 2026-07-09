@@ -20,8 +20,8 @@
 # INPUT_FASTA : fasta containing the sequences referenced in SPAN_FILE
 # SEARCH_FASTA: fasta of sequences to rank against the trained CAV
 
-SPAN_FILE=fastas/pairs/myc_mad/MYC_HUMAN.fasta.spans
-INPUT_FASTA=fastas/pairs/myc_mad/MYC_HUMAN.fasta
+SPAN_FILE=fastas/pairs/myc_mad/MAD1_HUMAN.fasta.spans
+INPUT_FASTA=fastas/pairs/myc_mad/MAD1_HUMAN.fasta
 SEARCH_FASTA=/xdisk/clairemcwhite/clairemcwhite/uniprot_human_all.fasta
 
 # -------------
@@ -31,7 +31,7 @@ source ~/.bashrc
 # $0 is unreliable under sbatch (script runs from a spool copy); SLURM sets
 # SLURM_SUBMIT_DIR to the directory sbatch was invoked from instead.
 SCRIPT_DIR="${SLURM_SUBMIT_DIR:-$(dirname "$0")}"
-source "$SCRIPT_DIR/../../config/paths.sh"
+source "$SCRIPT_DIR/../config/paths.sh"
 conda activate /groups/clairemcwhite/envs/$CONDA_ENV
 export LD_LIBRARY_PATH=$CONDA_PREFIX/lib:$LD_LIBRARY_PATH
 

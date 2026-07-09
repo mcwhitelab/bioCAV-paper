@@ -1,4 +1,4 @@
-source "$(dirname "$0")/../config/paths.sh"
+source "$(dirname "$0")/../../../config/paths.sh"
 data_dir=$BIOCAV_PAPER_ROOT/protein_analysis/fastas/PF00010/
 
 

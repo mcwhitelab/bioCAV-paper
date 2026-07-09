@@ -19,8 +19,8 @@ shared_protein/ops_notes/
 # Bulk/regeneratable data — not project structure
 shared_protein/all_train_prots.txt
 shared_protein/fastas/
-motif_clustering/fastas/
-motif_clustering/case_study_myc_mad1/fastas/
+shared_protein/archive/pf00010_domain_cav/fastas/
+interface_search/fastas/
 ec_eval/static/
 go_eval/static/
 go_eval/outside_tools/

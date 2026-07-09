@@ -1,4 +1,8 @@
-source "$(dirname "$0")/../config/paths.sh"
+# Archived: exploratory whole-PF00010-domain CAV, superseded by the direct
+# MYC/MAD1 concept training in interface_search/. Not used to produce the
+# motif_clustering CAVs (those come from a separate, grad-student-owned
+# pipeline) and not part of the interface_search case study.
+source "$(dirname "$0")/../../../config/paths.sh"
 data_dir=$BIOCAV_PAPER_ROOT/protein_analysis/fastas/PF00010/
 
 

@@ -23,7 +23,7 @@ source "$SCRIPT_DIR/../../../config/paths.sh"
 
 conda activate /groups/clairemcwhite/envs/$CONDA_ENV
 
-for f in fastas/pairs/myc_mad/*fasta;
+for f in fastas/PF00010/*fasta;
 do
 
 #  select layer 26, as in arxiv paper

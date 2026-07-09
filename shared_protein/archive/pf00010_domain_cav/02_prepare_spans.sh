@@ -17,7 +17,7 @@
 export LD_LIBRARY_PATH=$CONDA_PREFIX/lib:$LD_LIBRARY_PATH
 source "$(dirname "$0")/../../../config/paths.sh"
 workdir=$BIOCAV_PAPER_ROOT/protein_analysis
-for f in $workdir/fastas/pairs/myc_mad/*fasta
+for f in $workdir/fastas/PF00010/*fasta
 do
 echo $f
 python $BIOCAV_REPO/scripts/prepare_embeddings.py \

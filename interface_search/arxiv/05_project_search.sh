@@ -1,4 +1,4 @@
-source "$(dirname "$0")/../../../config/paths.sh"
+source "$(dirname "$0")/../../config/paths.sh"
 data_dir=$BIOCAV_PAPER_ROOT/protein_analysis/fastas/pairs/myc_mad/
 
 # Step 1: project HLH out of MYC
