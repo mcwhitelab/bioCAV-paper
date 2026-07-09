@@ -8,7 +8,7 @@
 #SBATCH --partition=gpu_standard
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
-#SBATCH --time=2:00:00
+#SBATCH --time=3:00:00
 #SBATCH --gres=gpu:1
 #SBATCH --mail-type=ALL
 
@@ -22,21 +22,20 @@
 
 SPAN_FILE=fastas/pairs/myc_mad/MYC_HUMAN.fasta.spans
 INPUT_FASTA=fastas/pairs/myc_mad/MYC_HUMAN.fasta
-SEARCH_FASTA=/xdisk/clairemcwhite/clairemcwhite/uniprot_human_all.fasta
+SEARCH_FASTA=fastas/uniprot_human_all.fasta
 
 # -------------
 ### Paths
 # -------------
 source ~/.bashrc
-# $0 is unreliable under sbatch (script runs from a spool copy); SLURM sets
-# SLURM_SUBMIT_DIR to the directory sbatch was invoked from instead.
+
 SCRIPT_DIR="${SLURM_SUBMIT_DIR:-$(dirname "$0")}"
 source "$SCRIPT_DIR/../config/paths.sh"
-conda activate /groups/clairemcwhite/envs/$CONDA_ENV
+conda activate $CONDA_ENV_DIR
 export LD_LIBRARY_PATH=$CONDA_PREFIX/lib:$LD_LIBRARY_PATH
 
 ref_neg=reference_population/neg_10000.pkl
-ref_pca=reference_population/global_pca_v1.pkl
+ref_scaler=reference_population/scaler_v1.pkl
 
 # Derive output names from inputs
 concept_dir=${SPAN_FILE%.spans}_concept
@@ -77,7 +76,7 @@ python $BIOCAV_REPO/scripts/train_cav_from_embeddings.py \
     --neg    $ref_neg \
     --out    $concept_dir \
     --cv-folds 0 \
-    --pca-pkl  $ref_pca
+    --scaler-pkl $ref_scaler
 
 # -------------
 ### Step 4: Embed search fasta

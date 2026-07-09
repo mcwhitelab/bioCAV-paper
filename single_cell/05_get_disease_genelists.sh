@@ -1,7 +1,6 @@
 export LD_LIBRARY_PATH=$CONDA_PREFIX/lib:$LD_LIBRARY_PATH
 source "$(dirname "$0")/../config/paths.sh"
 LIB=cav_library/b617ee1b-f8c8-4de9-b82b-e803ab93550d
-PCA=reference_population/global_pca_v1.pkl
 
 python $BIOCAV_REPO/specific_scripts/cav_gene_correlation.py \
     --coords   $LIB/results/hierarchy/cell_coordinates.tsv \

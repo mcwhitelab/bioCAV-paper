@@ -16,7 +16,8 @@ export BIOCAV_PAPER_ROOT BIOCAV_REPO
 ESM_MODEL_DIR=/groups/clairemcwhite/models/ESMplusplus_large
 HF_EMBED_SCRIPT=/groups/clairemcwhite/claire_workspace/github/mcwlab_utils/hf_embed_new.py
 CONDA_ENV=core_pkgs4
-export ESM_MODEL_DIR HF_EMBED_SCRIPT CONDA_ENV
+CONDA_ENV_DIR=/groups/clairemcwhite/envs/${CONDA_ENV}
+export ESM_MODEL_DIR HF_EMBED_SCRIPT CONDA_ENV CONDA_ENV_DIR
 
 # --- Other-lab-member / shared scratch resources ---
 # These are genuinely external (owned by other lab members or shared cluster
@@ -24,6 +25,10 @@ export ESM_MODEL_DIR HF_EMBED_SCRIPT CONDA_ENV
 # editing one place instead of a dozen scripts.
 REFERENCE_NEG_FASTA=/groups/clairemcwhite/ahmad_workspace/esm_c/neg_data/neg_10000.fasta
 AHMAD_CAV_OUTPUTS_DIR=/groups/clairemcwhite/ahmad_workspace/esm_c/tcav_outputs_esmplusplus_all
+
+#AHMAD_CAV_OUTPUTS_DIR=/xdisk/clairemcwhite/shamail/tcav_outputs_esmplusplus_all
+
+
 AHMAD_GO_RESULTS_DIR=/groups/clairemcwhite/ahmad_workspace/go_results
 GENEFORMER_MODEL_DIR=/groups/clairemcwhite/rshaw_workspace/stiffness_prediction/geneformer_model
 PROFAB_GO_SETS=/xdisk/clairemcwhite/proFAB/GO_sets

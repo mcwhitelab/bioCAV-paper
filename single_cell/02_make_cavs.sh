@@ -22,7 +22,7 @@ source ~/.bashrc
 SCRIPT_DIR="${SLURM_SUBMIT_DIR:-$(dirname "$0")}"
 source "$SCRIPT_DIR/../config/paths.sh"
 
-conda activate /groups/clairemcwhite/envs/$CONDA_ENV
+conda activate $CONDA_ENV_DIR
 
 
 
@@ -36,7 +36,7 @@ python $BIOCAV_REPO/specific_scripts/run_cav_pipeline.py \
     --model      $GENEFORMER_MODEL_DIR/Geneformer-V2-104M \
     --token-dict $GENEFORMER_MODEL_DIR/geneformer/token_dictionary_gc104M.pkl \
     --reference-pkl reference_population/embeddings/cells.pkl \
-    --pca-pkl       reference_population/global_pca_v1.pkl \
+    --scaler-pkl    reference_population/global_scaler_v1.pkl \
     --reference-n 10000 \
     --pos-n 500 \
     --from-step embed

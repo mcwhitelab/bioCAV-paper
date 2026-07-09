@@ -28,18 +28,17 @@ Usage
 # Direction map (only needs the library — no cell embeddings required):
 python specific_scripts/cav_viz.py \\
     --lib-dir  cav_library/3f7c572c/ \\
-    --pca-pkl  reference_population/global_pca_v1.pkl \\
     --plot     direction-map \\
     --out      results/figures/direction_map.png
 
 # Condition scatter (needs cell embeddings + obs metadata):
 python specific_scripts/cav_viz.py \\
-    --lib-dir  cav_library/3f7c572c/ \\
-    --pca-pkl  reference_population/global_pca_v1.pkl \\
-    --pkl      cav_library/3f7c572c/embeddings/cells.pkl \\
-    --obs      cav_library/3f7c572c/data/cells.h5ad \\
-    --plot     condition-scatter \\
-    --out      results/figures/condition_scatter/
+    --lib-dir     cav_library/3f7c572c/ \\
+    --scaler-pkl  reference_population/global_scaler_v1.pkl \\
+    --pkl         cav_library/3f7c572c/embeddings/cells.pkl \\
+    --obs         cav_library/3f7c572c/data/cells.h5ad \\
+    --plot        condition-scatter \\
+    --out         results/figures/condition_scatter/
 
 # CAV-space UMAP (needs cell_coordinates.tsv from cav_hierarchy.py):
 python specific_scripts/cav_viz.py \\
@@ -140,10 +139,10 @@ def load_directions(lib_dir: Path, version: str = "v1") -> Dict[str, np.ndarray]
     return result
 
 
-def load_pca_artifacts(pca_pkl: Path):
+def load_scaler_artifacts(scaler_pkl: Path):
     import joblib
-    artifacts = joblib.load(pca_pkl)
-    return artifacts["scaler"], artifacts["pca"]
+    artifacts = joblib.load(scaler_pkl)
+    return artifacts["scaler"]
 
 
 def load_obs(h5ad_path: str, columns: List[str]) -> pd.DataFrame:
@@ -162,7 +161,6 @@ def load_obs(h5ad_path: str, columns: List[str]) -> pd.DataFrame:
 def plot_direction_map(
     lib_dir: Path,
     out_path: str,
-    pca_pkl: Optional[Path] = None,
     version: str = "v1",
     figsize: Tuple[int, int] = (10, 9),
 ):
@@ -288,7 +286,7 @@ def plot_direction_map(
 def plot_disease_scatter(
     lib_dir: Path,
     pkl_path: str,
-    pca_pkl: Path,
+    scaler_pkl: Path,
     out_dir: str,
     obs_path: Optional[str] = None,
     disease_col: str = "disease",
@@ -305,11 +303,11 @@ def plot_disease_scatter(
     from cav_hierarchy import (build_hierarchy, discover_cavs,
                                 load_all_directions, orthogonalize)
 
-    scaler, pca = load_pca_artifacts(pca_pkl)
+    scaler = load_scaler_artifacts(scaler_pkl)
 
     logger.info(f"Loading embeddings: {pkl_path}")
     embs_raw, cell_ids = load_sequence_embeddings(pkl_path)
-    X = preprocess_embeddings(embs_raw, scaler, pca)
+    X = preprocess_embeddings(embs_raw, scaler)
 
     cav_names = discover_cavs(lib_dir, version)
     cav_dirs  = load_all_directions(lib_dir, cav_names, version)
@@ -666,8 +664,8 @@ def main():
                         help="Which figure to produce.")
     parser.add_argument("--lib-dir",
                         help="CAV library directory (cavs/ subdirectory).")
-    parser.add_argument("--pca-pkl",
-                        help="Global PCA pkl (scaler + PCA).")
+    parser.add_argument("--scaler-pkl",
+                        help="Global scaler pkl.")
     parser.add_argument("--pkl",
                         help="Cell embedding pkl for condition-scatter.")
     parser.add_argument("--obs",
@@ -705,18 +703,17 @@ def main():
         plot_direction_map(
             lib_dir=Path(args.lib_dir),
             out_path=args.out,
-            pca_pkl=Path(args.pca_pkl) if args.pca_pkl else None,
             version=args.version,
         )
 
     elif args.plot == "condition-scatter":
-        for req in ["lib_dir", "pkl", "pca_pkl"]:
+        for req in ["lib_dir", "pkl", "scaler_pkl"]:
             if not getattr(args, req):
                 parser.error(f"--{req.replace('_','-')} required for condition-scatter")
         plot_disease_scatter(
             lib_dir=Path(args.lib_dir),
             pkl_path=args.pkl,
-            pca_pkl=Path(args.pca_pkl),
+            scaler_pkl=Path(args.scaler_pkl),
             out_dir=args.out,
             obs_path=args.obs,
             version=args.version,

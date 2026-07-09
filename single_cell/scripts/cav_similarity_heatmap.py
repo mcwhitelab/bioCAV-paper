@@ -88,7 +88,6 @@ def build_cross_score_matrix(library_dir, pkl_path):
                 pos_embs,
                 artifacts["concept_cav"],
                 artifacts["scaler"],
-                artifacts["pca"],
             )
             scores[cav_name] = s.mean()
 
@@ -195,7 +194,7 @@ def plot_cav_direction_similarity(library_dir, out_path, figsize=10):
         annot=len(df) <= 20,
         fmt=".2f",
     )
-    g.fig.suptitle("CAV direction cosine similarity\n(directly comparable only with global PCA)",
+    g.fig.suptitle("CAV direction cosine similarity\n(directly comparable only with a global scaler)",
                    y=1.01)
     plt.savefig(out_path, dpi=150, bbox_inches="tight")
     print(f"Saved {out_path}")
