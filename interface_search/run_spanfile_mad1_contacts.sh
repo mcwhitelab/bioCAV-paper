@@ -35,8 +35,8 @@ source "$SCRIPT_DIR/../config/paths.sh"
 conda activate $CONDA_ENV_DIR
 export LD_LIBRARY_PATH=$CONDA_PREFIX/lib:$LD_LIBRARY_PATH
 
-ref_neg=reference_population/neg_10000.pkl
-ref_scaler=reference_population/scaler_v1.pkl
+ref_neg="$BIOCAV_PAPER_ROOT/shared_protein/reference_population/neg_10000.pkl"
+ref_scaler="$BIOCAV_PAPER_ROOT/shared_protein/reference_population/scaler_v1.pkl"
 
 # Derive output names from inputs
 concept_dir=${SPAN_FILE%.spans}_concept
@@ -92,6 +92,7 @@ else
     python $HF_EMBED_SCRIPT \
         -f $SEARCH_FASTA \
         -o $search_pkl \
+        --get_aa_embeddings \
         --get_sequence_embedding \
         --strat mean \
         -l -11 \

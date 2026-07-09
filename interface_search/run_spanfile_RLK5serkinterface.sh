@@ -20,28 +20,27 @@
 # INPUT_FASTA : fasta containing the sequences referenced in SPAN_FILE
 # SEARCH_FASTA: fasta of sequences to rank against the trained CAV
 
-SPAN_FILE=fastas/pairs/myc_mad/MAD1_HUMAN.fasta.spans
-INPUT_FASTA=fastas/pairs/myc_mad/MAD1_HUMAN.fasta
-SEARCH_FASTA=fastas/uniprot_human_all.fasta
+SPAN_FILE=fastas/pairs/lrr/RLK5_ARATH.fasta.span
+INPUT_FASTA=fastas/pairs/lrr/RLK5_ARATH.fasta
+SEARCH_FASTA=fastas/ORYSJ_LRR.fasta
 
 # -------------
 ### Paths
 # -------------
 source ~/.bashrc
-# $0 is unreliable under sbatch (script runs from a spool copy); SLURM sets
-# SLURM_SUBMIT_DIR to the directory sbatch was invoked from instead.
+
 SCRIPT_DIR="${SLURM_SUBMIT_DIR:-$(dirname "$0")}"
 source "$SCRIPT_DIR/../config/paths.sh"
 conda activate $CONDA_ENV_DIR
 export LD_LIBRARY_PATH=$CONDA_PREFIX/lib:$LD_LIBRARY_PATH
 
-ref_neg=reference_population/neg_10000.pkl
-ref_scaler=reference_population/scaler_v1.pkl
+ref_neg="$BIOCAV_PAPER_ROOT/shared_protein/reference_population/neg_10000.pkl"
+ref_scaler="$BIOCAV_PAPER_ROOT/shared_protein/reference_population/scaler_v1.pkl"
 
 # Derive output names from inputs
-concept_dir=${SPAN_FILE%.spans}_concept
+concept_dir=${SPAN_FILE%.span}_concept
 search_pkl=${SEARCH_FASTA}.pkl
-out_tsv=${SPAN_FILE%.spans}_query_results.tsv
+out_tsv=${SPAN_FILE%.span}_query_results.tsv
 
 # -------------
 ### Step 1: Embed input fasta
@@ -67,21 +66,17 @@ python $BIOCAV_REPO/scripts/prepare_embeddings.py \
     --pkl  ${INPUT_FASTA}.pkl \
     --info ${INPUT_FASTA}.pkl.seqnames \
     --spans $SPAN_FILE \
-    --out  ${SPAN_FILE%.spans}_pos.npy
+    --out  ${SPAN_FILE%.span}_pos.npy
 
 # -------------
 ### Step 3: Train CAV
 # -------------
 python $BIOCAV_REPO/scripts/train_cav_from_embeddings.py \
-    --pos    ${SPAN_FILE%.spans}_pos.npy \
+    --pos    ${SPAN_FILE%.span}_pos.npy \
     --neg    $ref_neg \
     --out    $concept_dir \
     --cv-folds 0 \
     --scaler-pkl $ref_scaler
-
-# -------------
-### Step 4: Embed search fasta
-# -------------
 
 # -------------
 ### Step 4: Embed search fasta (skipped if pkl already exists)
@@ -92,6 +87,7 @@ else
     python $HF_EMBED_SCRIPT \
         -f $SEARCH_FASTA \
         -o $search_pkl \
+        --get_aa_embeddings \
         --get_sequence_embedding \
         --strat mean \
         -l -11 \
@@ -103,14 +99,6 @@ fi
 # -------------
 ### Step 5: Query search fasta against CAV
 # -------------
-#echo $old
-#python $BIOCAV_REPO/specific_scripts/query_proteins_by_cav.py \
-#    --cav  $concept_dir \
-#    --pkl  $search_pkl \
-#    --out  $out_tsv \
-#    --k -1
-
-
 python $BIOCAV_REPO/specific_scripts/query_proteins_by_cav.py \
     --cav   $concept_dir \
     --pkl   $search_pkl \
@@ -119,15 +107,3 @@ python $BIOCAV_REPO/specific_scripts/query_proteins_by_cav.py \
     --sliding-window \
     --spans $SPAN_FILE \
     --fasta $SEARCH_FASTA
-
-
-#echo $new
-#python $BIOCAV_REPO/specific_scripts/query_proteins_by_cav.py \
-#    --cav  $concept_dir \
-#    --pkl  $search_pkl \
-#    --out  $out_tsv \
-#    --k -1 \
-#    --length-correct \
-#    --span-length 54 \
-#    --fasta $SEARCH_FASTA \
-#    --ref-pkl $ref_neg
