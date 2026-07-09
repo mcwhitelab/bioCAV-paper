@@ -15,7 +15,7 @@
 #--------
 # Motif positives (window spans):
 export LD_LIBRARY_PATH=$CONDA_PREFIX/lib:$LD_LIBRARY_PATH
-source "$(dirname "$0")/../../config/paths.sh"
+source "$(dirname "$0")/../config/paths.sh"
 workdir=$BIOCAV_PAPER_ROOT/protein_analysis
 for f in $workdir/fastas/PF00010/*fasta
 do

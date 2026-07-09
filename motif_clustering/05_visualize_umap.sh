@@ -1,4 +1,4 @@
-source "$(dirname "$0")/../../config/paths.sh"
+source "$(dirname "$0")/../config/paths.sh"
 
 
 python "$(dirname "$0")/cav_viz_pattern.py" \

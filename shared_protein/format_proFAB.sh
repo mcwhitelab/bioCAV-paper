@@ -1,10 +1,10 @@
 
 
-source "$(dirname "$0")/../../config/paths.sh"
+source "$(dirname "$0")/../config/paths.sh"
 conda activate /groups/clairemcwhite/envs/$CONDA_ENV/
 
 
-for dir in static/EC_sets/ec_dataset_part*/ec*;
+for dir in $PROFAB_EC_SETS/ec_dataset_part*/ec*;
 do
 
         echo $dir
@@ -12,7 +12,7 @@ do
 
 done
 
-for dir in static/GO_sets/go_dataset_part*/G*;
+for dir in $PROFAB_GO_SETS/go_dataset_part*/G*;
 do
 
 

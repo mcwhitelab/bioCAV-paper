@@ -5,10 +5,11 @@
 # -------------
 #SBATCH --job-name=embed_fasta
 #SBATCH --account=mcwhite
-#SBATCH --partition=standard
+#SBATCH --partition=gpu_standard
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
-#SBATCH --time=0:02:00
+#SBATCH --time=2:00:00
+#SBATCH --gres=gpu:1
 #SBATCH --mail-type=ALL
 
 # -------------
@@ -22,9 +23,11 @@ source "$SCRIPT_DIR/../config/paths.sh"
 
 conda activate /groups/clairemcwhite/envs/$CONDA_ENV
 
+for f in fastas/PF00010/*fasta;
+do
+
+#  select layer 26, as in arxiv paper
+python $HF_EMBED_SCRIPT -f $f -o ${f}.pkl --get_aa_embeddings --get_sequence_embedding --strat mean -l  -11    -m $ESM_MODEL_DIR -b 1 --max_length 2048
+done
 
 
-f=static/GO_sets/GO_0005887/temporal_negative_train_ids.list
-
-s=1000
-python scripts/download_fasta.py $f -o ${f}.${s}.fasta --subsample $s --random --seed 42

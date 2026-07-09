@@ -5,21 +5,27 @@
 cavs/
 *.h5ad
 
-protein_analysis/slurm_logs/
-protein_analysis/results/
-singlecell_analysis/cav_library/
+ec_eval/slurm_logs/
+go_eval/slurm_logs/
+ec_eval/results/
+go_eval/results/
+motif_clustering/results/
+single_cell/cav_library/
 *.swp
 __pycache__/
 *.pyc
-protein_analysis/notes/
+shared_protein/ops_notes/
 
 # Bulk/regeneratable data — not project structure
-protein_analysis/all_train_prots.txt
-protein_analysis/fastas/
-protein_analysis/static/
-protein_analysis/outside_tools/
-singlecell_analysis/static/
+shared_protein/all_train_prots.txt
+shared_protein/fastas/
+motif_clustering/fastas/
+motif_clustering/case_study_myc_mad1/fastas/
+ec_eval/static/
+go_eval/static/
+go_eval/outside_tools/
+single_cell/static/
 
-# Machine-generated SLURM command lists — regenerate via make_cav_commands.sh
-protein_analysis/COMMANDS_files/*
-!protein_analysis/COMMANDS_files/make_cav_commands.sh
+# Machine-generated SLURM command lists — regenerate via shared_protein/02_make_cav_commands.sh
+ec_eval/COMMANDS_files/
+go_eval/COMMANDS_files/

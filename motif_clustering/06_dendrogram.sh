@@ -1,4 +1,4 @@
-source "$(dirname "$0")/../../config/paths.sh"
+source "$(dirname "$0")/../config/paths.sh"
 
 python "$(dirname "$0")/cav_cluster.py" \
     --cav-pattern      "$AHMAD_CAV_OUTPUTS_DIR/cavs/*/L25_concept_v1.npy" \
