@@ -1,0 +1,78 @@
+{
+  "model": "ESMplusplus_large",
+  "layers": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35
+  ],
+  "total_motifs": 4,
+  "successful": 4,
+  "failed": 0,
+  "results": [
+    {
+      "motif_id": "PF00017",
+      "status": "success",
+      "embed_dir": "/groups/clairemcwhite/cav_workspace/bioCAV-paper/figures/figure_data/vav_motif_repro/tcav_outputs_all_layers/embeddings/ESMplusplus_large/PF00017",
+      "cav_dir": "/groups/clairemcwhite/cav_workspace/bioCAV-paper/figures/figure_data/vav_motif_repro/tcav_outputs_all_layers/cavs/PF00017",
+      "n_positives": 1000,
+      "shared_neg_jsonl": "/groups/clairemcwhite/ahmad_workspace/esm_c/neg_data/neg_10000.jsonl"
+    },
+    {
+      "motif_id": "PF00018",
+      "status": "success",
+      "embed_dir": "/groups/clairemcwhite/cav_workspace/bioCAV-paper/figures/figure_data/vav_motif_repro/tcav_outputs_all_layers/embeddings/ESMplusplus_large/PF00018",
+      "cav_dir": "/groups/clairemcwhite/cav_workspace/bioCAV-paper/figures/figure_data/vav_motif_repro/tcav_outputs_all_layers/cavs/PF00018",
+      "n_positives": 1000,
+      "shared_neg_jsonl": "/groups/clairemcwhite/ahmad_workspace/esm_c/neg_data/neg_10000.jsonl"
+    },
+    {
+      "motif_id": "PF00130",
+      "status": "success",
+      "embed_dir": "/groups/clairemcwhite/cav_workspace/bioCAV-paper/figures/figure_data/vav_motif_repro/tcav_outputs_all_layers/embeddings/ESMplusplus_large/PF00130",
+      "cav_dir": "/groups/clairemcwhite/cav_workspace/bioCAV-paper/figures/figure_data/vav_motif_repro/tcav_outputs_all_layers/cavs/PF00130",
+      "n_positives": 1000,
+      "shared_neg_jsonl": "/groups/clairemcwhite/ahmad_workspace/esm_c/neg_data/neg_10000.jsonl"
+    },
+    {
+      "motif_id": "PF00621",
+      "status": "success",
+      "embed_dir": "/groups/clairemcwhite/cav_workspace/bioCAV-paper/figures/figure_data/vav_motif_repro/tcav_outputs_all_layers/embeddings/ESMplusplus_large/PF00621",
+      "cav_dir": "/groups/clairemcwhite/cav_workspace/bioCAV-paper/figures/figure_data/vav_motif_repro/tcav_outputs_all_layers/cavs/PF00621",
+      "n_positives": 1000,
+      "shared_neg_jsonl": "/groups/clairemcwhite/ahmad_workspace/esm_c/neg_data/neg_10000.jsonl"
+    }
+  ]
+}
