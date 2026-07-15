@@ -1,0 +1,4 @@
+pair,group,context,baseline,condition,n_normal,n_cancer
+neutrophil__breast__normal_vs_breast_cancer,neutrophil,breast,normal,breast_cancer,66,231
+epithelial_cell__lung10x__normal_vs_lung_cancer,epithelial_cell,lung10x,normal,lung_cancer,160,498
+fibroblast__colorectum__normal_vs_colorectal_cancer,fibroblast,colorectum,normal,colorectal_cancer,514,486

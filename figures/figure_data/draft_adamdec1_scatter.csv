@@ -1,0 +1,5 @@
+pair,gene,gene_name,log2fc,cav_r
+fibroblast__colorectum__normal_vs_colorectal_cancer,ENSG00000145824,CXCL14,-0.0214461741509952,0.1924295651193172
+fibroblast__colorectum__normal_vs_colorectal_cancer,ENSG00000101000,PROCR,0.0207478633714247,-0.1066090795427861
+fibroblast__colorectum__normal_vs_colorectal_cancer,ENSG00000134028,ADAMDEC1,0.0159726150278619,0.2074103438427746
+fibroblast__colorectum__normal_vs_colorectal_cancer,ENSG00000136160,EDNRB,-0.0103899881728835,0.0492015997663241
