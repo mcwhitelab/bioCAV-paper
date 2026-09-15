@@ -1,9 +1,13 @@
 #!/usr/bin/env Rscript
-# DRAFT / exploratory -- reproduction of arxiv 2511.21614v1 Figure 2
-# (Q9NHV9/VAV_DROME layerwise CAV score profiles across PF00621/PF00130/
-# PF00017/PF00018), using freshly-trained 36-layer CAVs (see
-# figure_data/vav_motif_repro/train_all_layers.log and
-# score_vav_all_layers.py) plus the already-existing layer-25 CAVs.
+# DRAFT / exploratory -- Figure 4: (A) reproduction of arxiv 2511.21614v1
+# Figure 2 (Q9NHV9/VAV_DROME layerwise CAV score profiles across
+# PF00621/PF00130/PF00017/PF00018, all 36 layers), using freshly-trained
+# 36-layer CAVs (see figure_data/vav_motif_repro/train_all_layers.log and
+# score_vav_all_layers.py); (B/C) second worked example -- Plexin A1 (8
+# domain types) and FAK1 (5 domains), layer 26 only; (D/E) SET1_SCHPO /
+# PLDZ_DICDI repeated-domain showcase, layer 26 only. The VAV_DROME
+# single-layer detail panel from the original draft was dropped as
+# redundant with panel A's bold layer-26 curve.
 # Slated to become Figure 4 (fills the fig2/fig3/[gap]/fig5 numbering gap
 # in figures.R) once validated -- kept standalone for now, same
 # draft-then-promote pattern used for the Fig 5 split-strip panels (see
@@ -101,30 +105,15 @@ p_a <- ggplot() +
 panel_a <- plot_grid(p_a, build_domain_track(), ncol = 1, align = "v", axis = "lr",
                      rel_heights = c(1, 0.16))
 
-# --- Panel B: layer 26 only, with dashed lines from each domain's peak
-# position down to its ground-truth interval ---
-curves_hl <- curves %>% filter(layer == HIGHLIGHT_LAYER)
-peak_df <- curves_hl %>% group_by(domain) %>% slice_max(score, n = 1, with_ties = FALSE) %>% ungroup()
-
-p_b <- ggplot() +
-  geom_hline(yintercept = 0, color = "grey85", linewidth = 0.3) +
-  geom_segment(data = peak_df, aes(x = position, xend = position, y = score, yend = -16),
-               color = "grey50", linewidth = 0.3, linetype = "dashed") +
-  geom_line(data = curves_hl, aes(position, score, color = domain), linewidth = 0.9) +
-  scale_color_manual(values = DOMAIN_COLORS, labels = DOMAIN_LABELS, name = NULL) +
-  scale_x_continuous(limits = c(0, seq_len), expand = c(0, 0)) +
-  coord_cartesian(ylim = c(min(curves_hl$score, na.rm = TRUE) - 1,
-                           max(curves_hl$score, na.rm = TRUE) + 1), clip = "off") +
-  base_theme() +
-  labs(x = NULL, y = sprintf("CAV Score (Layer %d)", HIGHLIGHT_LAYER),
-       title = "Q9NHV9 - VAV_DROME") +
-  theme(legend.position = "right", legend.text = element_text(size = 6.5),
-        legend.key.size = unit(9, "pt"), axis.text.x = element_blank(),
-        axis.ticks.x = element_blank(),
-        plot.title = element_text(size = 8, face = "bold"))
-
-panel_b <- plot_grid(p_b, build_domain_track(), ncol = 1, align = "v", axis = "lr",
-                     rel_heights = c(1, 0.16))
+# --- Panel B: second worked example -- Plexin A1 (8 domain types), layer
+# 26 only, from the 20k-library L25 CAVs (see score_bigreceptors.py).
+# FAK1 moved to the Appendix-A supplemental grid (draft_fig_supp_appendixA.R)
+# -- Plexin A1 alone already makes the "many distinct domains" point. The
+# VAV_DROME single-layer detail panel (redundant with the bold curve
+# already shown in panel A) is dropped. ---
+bigrec_scores <- fromJSON(file.path(DATA, "extra_proteins", "candidates_bigreceptors_scores.json"), simplifyVector = FALSE)
+p_plxna1 <- build_extra_protein_panel("Q9UIW2", bigrec_scores[["Q9UIW2"]], title = "Q9UIW2 - Plexin A1", base_theme_fn = base_theme)
+panel_b <- plot_grid(p_plxna1, labels = "B", label_size = 10)
 
 # --- Panel C: two more example proteins showing repeated-domain
 # localization (Q9Y7R4/SET1_SCHPO: PF00076 RRM has an unannotated second
@@ -134,15 +123,15 @@ panel_b <- plot_grid(p_b, build_domain_track(), ncol = 1, align = "v", axis = "l
 # since the extra peak just falls out of real find_peaks() calls, not a
 # hardcoded position. ---
 extra_scores <- fromJSON(file.path(DATA, "extra_proteins", "extra_proteins_scores.json"), simplifyVector = FALSE)
-p_set1  <- build_extra_protein_panel("Q9Y7R4", extra_scores[["Q9Y7R4"]], title = "Q9Y7R4 - SET1_SCHPO", base_theme_fn = base_theme)
-p_pldz  <- build_extra_protein_panel("Q54SA1", extra_scores[["Q54SA1"]], title = "Q54SA1 - PLDZ_DICDI", base_theme_fn = base_theme)
+p_set1  <- build_extra_protein_panel("Q9Y7R4", extra_scores[["Q9Y7R4"]], title = "Q9Y7R4 - SET1_SCHPO", base_theme_fn = base_theme, legend_position = "bottom")
+p_pldz  <- build_extra_protein_panel("Q54SA1", extra_scores[["Q54SA1"]], title = "Q54SA1 - PLDZ_DICDI", base_theme_fn = base_theme, legend_position = "bottom")
 panel_c <- plot_grid(p_set1, p_pldz, nrow = 1, labels = c("C", "D"), label_size = 10)
 
-fig <- plot_grid(panel_a, panel_b, panel_c, ncol = 1, labels = c("A", "B", NULL), label_size = 10,
-                 rel_heights = c(1, 1, 0.75))
+fig <- plot_grid(panel_a, panel_b, panel_c, ncol = 1, labels = c("A", NULL, NULL), label_size = 10,
+                 rel_heights = c(1, 1, 0.9))
 
 ggsave(file.path(OUT, "draft_fig4_vav_reproduction.pdf"), fig,
-       width = 7.5, height = 9, bg = "white", device = cairo_pdf)
+       width = 7.5, height = 9.5, bg = "white", device = cairo_pdf)
 ggsave(file.path(OUT, "draft_fig4_vav_reproduction.png"), fig,
-       width = 7.5, height = 9, bg = "white", dpi = 220)
+       width = 7.5, height = 9.5, bg = "white", dpi = 220)
 message("Saved draft_fig4_vav_reproduction.pdf/.png")

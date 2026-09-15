@@ -54,7 +54,11 @@ from cav_gene_correlation import correlate_scores_with_genes  # noqa: E402
 
 LIB = Path("cav_library/b617ee1b-f8c8-4de9-b82b-e803ab93550d")
 CAVS = LIB / "cavs"
-DE_DIR = LIB / "results" / "de_mixedlm"
+# Figure 6 and its supplementals all read the paired-donor DE tables
+# (scripts/paired_donor_de_mixedlm.py), so every panel's DE and CAV axes
+# come from the same cells. For this pair that is identical to the
+# atlas-wide results/de_mixedlm/ table (all donors already paired).
+DE_DIR = LIB / "results" / "de_mixedlm_paired_donors"
 COORDS_PATH = LIB / "results" / "hierarchy" / "cell_coordinates.tsv"
 
 # pair_label, cell_type (obs value), tissue_real (obs value), condition (obs

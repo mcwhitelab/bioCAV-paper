@@ -22,7 +22,7 @@
 
 SPAN_FILE=fastas/pairs/myc_mad/MAD1_HUMAN.fasta.spans
 INPUT_FASTA=fastas/pairs/myc_mad/MAD1_HUMAN.fasta
-SEARCH_FASTA=fastas/uniprot_human_all.fasta
+SEARCH_FASTA=/xdisk/clairemcwhite/clairemcwhite/uniprot_human_all.fasta
 
 # -------------
 ### Paths

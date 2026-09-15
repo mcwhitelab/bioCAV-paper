@@ -11,6 +11,7 @@
 #SBATCH --time=3:00:00
 #SBATCH --gres=gpu:1
 #SBATCH --mail-type=ALL
+#SBATCH --mem=64G
 
 # -------------
 ### Inputs — replace these placeholders before running
@@ -22,7 +23,7 @@
 
 SPAN_FILE=fastas/pairs/myc_mad/MYC_HUMAN.fasta.spans
 INPUT_FASTA=fastas/pairs/myc_mad/MYC_HUMAN.fasta
-SEARCH_FASTA=fastas/uniprot_human_all.fasta
+SEARCH_FASTA=/xdisk/clairemcwhite/clairemcwhite/uniprot_human_all.fasta
 
 # -------------
 ### Paths

@@ -51,29 +51,67 @@ _VERSION_SUFFIX = re.compile(r'_v\d+$')
 # Data loading
 # ---------------------------------------------------------------------------
 
-def _concept_name(path: Path) -> str:
+def _concept_name(path: Path, use_grandparent: bool = False) -> str:
     """
     Derive a concept name from a .npy file path.
     Uses the parent directory name when the file lives in a per-concept subdirectory
-    (e.g. cavs/PF01112/L25_concept_v1.npy → 'PF01112'), otherwise falls back to
-    the file stem with any trailing _v1-style suffix stripped.
+    (e.g. cavs/PF01112/L25_concept_v1.npy → 'PF01112'). Some layouts (e.g. GO/EC CAVs,
+    ecNo_1-2-3-4/random_positive_train_max1000_cav/concept_v1.npy) put a fixed,
+    shared subdirectory name between the concept directory and the .npy file --
+    for those, `use_grandparent=True` climbs one more level so each concept still
+    gets a unique name. Falls back to the file stem (trailing _v1-style suffix
+    stripped) when the stem itself isn't a generic "concept" filename.
     """
-    parent = path.parent.name
+    parent = path.parent.parent.name if use_grandparent else path.parent.name
     stem   = _VERSION_SUFFIX.sub('', path.stem)
     if 'concept' in stem:
         return parent
     return stem
 
 
-def load_directions_from_pattern(pattern: str) -> Dict[str, np.ndarray]:
-    """Load and unit-normalise CAV direction vectors from all files matching `pattern`."""
+def _should_use_grandparent(paths: list) -> bool:
+    """
+    Detect whether matched paths share a fixed intermediate subdirectory name
+    (e.g. every file's immediate parent is "random_positive_train_max1000_cav")
+    rather than each file living directly in its own uniquely-named concept
+    directory (e.g. Pfam's cavs/PF01112/...). If most files share the same
+    parent name, the parent alone can't distinguish concepts, so climb one
+    more level to the grandparent.
+    """
+    parent_names = [Path(p).parent.name for p in paths]
+    n_unique = len(set(parent_names))
+    return n_unique < max(1, len(paths)) * 0.5
+
+
+def load_directions_from_pattern(pattern: str,
+                                 include_list: Optional[str] = None) -> Dict[str, np.ndarray]:
+    """Load and unit-normalise CAV direction vectors from all files matching `pattern`.
+
+    include_list: optional path to a text file of concept names (one per line);
+    if given, only concepts in this list are kept. Useful for subsetting a glob
+    that spans multiple categories on disk with no directory-level split (e.g.
+    GO terms, which aren't separated into MF/BP/CC subdirectories).
+    """
     paths = sorted(glob(pattern))
     if not paths:
         raise FileNotFoundError(f"No files matched pattern: {pattern}")
+
+    use_grandparent = _should_use_grandparent(paths)
+    logger.info(f"Concept name = {'grandparent' if use_grandparent else 'parent'} "
+                f"directory name (auto-detected from {len(paths)} matched paths)")
+
+    keep_names = None
+    if include_list:
+        with open(include_list) as fh:
+            keep_names = {line.strip() for line in fh if line.strip()}
+        logger.info(f"Restricting to {len(keep_names)} concepts from {include_list}")
+
     result = {}
     for p in paths:
         path = Path(p)
-        name = _concept_name(path)
+        name = _concept_name(path, use_grandparent=use_grandparent)
+        if keep_names is not None and name not in keep_names:
+            continue
         v    = np.load(path).astype(np.float64)
         norm = np.linalg.norm(v)
         if norm > 1e-10:
@@ -290,16 +328,51 @@ def plot_direction_map(
     reducer: str = "pca",
     figsize: Tuple[int, int] = (10, 9),
     label_points: bool = True,
+    include_list: Optional[str] = None,
+    clan_annotations: Optional[str] = None,
+    title: Optional[str] = None,
 ):
-    """Embed all matched CAV direction vectors in 2D and save a static PNG."""
-    cav_dirs = load_directions_from_pattern(cav_pattern)
+    """Embed all matched CAV direction vectors in 2D and save a static PNG.
+
+    If clan_annotations is given, points are colored by Pfam clan (same
+    palette/logic as plot_direction_map_interactive's clan coloring) with a
+    legend; points with no clan mapping are grey. Otherwise all points are
+    a single steelblue color, as before.
+    """
+    cav_dirs = load_directions_from_pattern(cav_pattern, include_list=include_list)
     coord_df, red = _embed(cav_dirs, reducer)
     xl, yl = _axis_labels(reducer, red)
 
     fig, ax = plt.subplots(figsize=figsize)
-    ax.scatter(coord_df["D1"], coord_df["D2"], s=70, marker="o",
-               color="steelblue", alpha=0.85, edgecolors="white",
-               linewidths=0.5, zorder=3)
+
+    if clan_annotations:
+        clans = load_clan_annotations(clan_annotations)
+        NO_CLAN = "no clan"
+        clan_name_per_point = [
+            clans.loc[acc, "clan_name"] if acc in clans.index else NO_CLAN
+            for acc in coord_df.index
+        ]
+        color_map = _clan_colors([c for c in clan_name_per_point if c != NO_CLAN])
+        color_map[NO_CLAN] = "#aaaaaa"
+        point_colors = [color_map[c] for c in clan_name_per_point]
+
+        ax.scatter(coord_df["D1"], coord_df["D2"], s=18, marker="o",
+                   color=point_colors, alpha=0.75, edgecolors="none", zorder=3)
+
+        # legend: top clans by point count (full clan list is usually too
+        # large to show cleanly), grey "no clan" bucket always included
+        counts = pd.Series(clan_name_per_point).value_counts()
+        top_clans = [c for c in counts.index if c != NO_CLAN][:15]
+        handles = [plt.Line2D([0], [0], marker="o", linestyle="", color=color_map[c],
+                              markersize=6, label=c) for c in top_clans]
+        handles.append(plt.Line2D([0], [0], marker="o", linestyle="", color="#aaaaaa",
+                                  markersize=6, label=f"{NO_CLAN} (or clan not in top 15)"))
+        ax.legend(handles=handles, fontsize=6, loc="center left",
+                 bbox_to_anchor=(1.01, 0.5), frameon=False, title="Pfam clan", title_fontsize=7)
+    else:
+        ax.scatter(coord_df["D1"], coord_df["D2"], s=70, marker="o",
+                   color="steelblue", alpha=0.85, edgecolors="white",
+                   linewidths=0.5, zorder=3)
 
     if label_points:
         for name in coord_df.index:
@@ -309,7 +382,7 @@ def plot_direction_map(
 
     ax.set_xlabel(xl, fontsize=11)
     ax.set_ylabel(yl, fontsize=11)
-    ax.set_title(f"CAV direction space ({reducer.upper()})\n{cav_pattern}", fontsize=12)
+    ax.set_title(title if title else f"CAV direction space ({reducer.upper()})\n{cav_pattern}", fontsize=12)
     if reducer == "pca":
         ax.axhline(0, color="lightgray", lw=0.5)
         ax.axvline(0, color="lightgray", lw=0.5)
@@ -335,6 +408,7 @@ def plot_direction_map_interactive(
     distance_mode: str = "approximate",
     n_neighbors: Optional[int] = None,
     min_dist: Optional[float] = None,
+    include_list: Optional[str] = None,
 ):
     """Embed CAV direction vectors in 2D or 3D and save an interactive Plotly HTML."""
     try:
@@ -345,7 +419,7 @@ def plot_direction_map_interactive(
     if dims not in (2, 3):
         raise ValueError("--dims must be 2 or 3")
 
-    cav_dirs = load_directions_from_pattern(cav_pattern)
+    cav_dirs = load_directions_from_pattern(cav_pattern, include_list=include_list)
     coord_df, red = _embed(cav_dirs, reducer, dims=dims, distance_mode=distance_mode,
                            n_neighbors=n_neighbors, min_dist=min_dist)
     xl, yl = _axis_labels(reducer, red)
@@ -532,6 +606,7 @@ def plot_direction_map_gif(
     elev: float = 25,         # fixed elevation angle
     point_size: int = 20,
     figsize: Tuple[int, int] = (7, 7),
+    include_list: Optional[str] = None,
 ):
     """
     Render a rotating 3-D scatter of CAV direction vectors and save as an
@@ -546,7 +621,7 @@ def plot_direction_map_gif(
     except ImportError as e:
         raise ImportError(f"Missing dependency: {e}. Run: pip install Pillow") from e
 
-    cav_dirs = load_directions_from_pattern(cav_pattern)
+    cav_dirs = load_directions_from_pattern(cav_pattern, include_list=include_list)
     coord_df, _ = _embed(cav_dirs, reducer, dims=3, distance_mode=distance_mode,
                          n_neighbors=n_neighbors, min_dist=min_dist)
 
@@ -636,6 +711,11 @@ def main():
                         help="Number of frames in the GIF (default: 72 = 5° per step).")
     parser.add_argument("--gif-fps", type=int, default=20,
                         help="Frames per second of the GIF (default: 20).")
+    parser.add_argument("--include-list",
+                        help="Path to a text file of concept names (one per line) to "
+                             "restrict the plot to. Useful when --cav-pattern spans "
+                             "multiple categories with no directory-level split (e.g. "
+                             "GO terms, which aren't separated into MF/BP/CC subdirs).")
     args = parser.parse_args()
 
     if args.gif_out:
@@ -649,6 +729,7 @@ def main():
             min_dist=args.min_dist,
             n_frames=args.gif_frames,
             fps=args.gif_fps,
+            include_list=args.include_list,
         )
 
     if args.interactive:
@@ -662,13 +743,16 @@ def main():
             distance_mode=args.distance_mode,
             n_neighbors=args.n_neighbors,
             min_dist=args.min_dist,
+            include_list=args.include_list,
         )
     else:
         plot_direction_map(
             cav_pattern=args.cav_pattern,
             out_path=args.out,
             reducer=args.reducer,
+            include_list=args.include_list,
             label_points=not args.no_labels,
+            clan_annotations=args.clan_annotations,
         )
 
 

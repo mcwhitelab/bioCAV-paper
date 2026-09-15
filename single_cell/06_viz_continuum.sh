@@ -88,9 +88,28 @@ T_cell__colorectum__normal_vs_colorectal_cancer \
     --title "Colorectal cancer vs. normal — transcriptional continuum (L2)" \
     --out   $LIB/results/figures/cav_continuum_colorectalcancer.png \
 --top-n-each 4 \
---style strips 
+--style strips
 
 
+
+python "$(dirname "$0")/scripts/cav_continuum_viz.py" \
+    --coords        $LIB/results/hierarchy/cell_coordinates.tsv \
+    --h5ad          $LIB/data/cells.h5ad \
+    --gene-corr-dir $LIB/results/gene_correlation_celltype_tissue/ \
+    --group-col     cell_type \
+    --context-col   tissue \
+    --condition-col disease \
+    --level         L2 \
+    --pairs \
+endothelial_cell__ovary__normal_vs_ovarian_cancer \
+epithelial_cell__ovary__normal_vs_ovarian_cancer \
+fibroblast__ovary__normal_vs_ovarian_cancer \
+mononuclear_phagocyte__ovary__normal_vs_ovarian_cancer \
+T_cell__ovary__normal_vs_ovarian_cancer \
+    --title "Ovarian cancer vs. normal — transcriptional continuum (L2)" \
+    --out   $LIB/results/figures/cav_continuum_ovariancancer.png \
+--top-n-each 4 \
+--style strips
 
 
 

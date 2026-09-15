@@ -4,7 +4,8 @@
 # fibroblast/colorectum CAV data. Not part of the figures.R pipeline; run
 # standalone with: Rscript draft_adamdec1_module.R
 #
-# Data from single_cell/scripts/draft_adamdec1_module_check.py.
+# Data from single_cell/archive/scripts/draft_adamdec1_module_check.py
+# (archived 2026-09-13; the finished version is scripts/export_subpop_supp_data.py).
 
 suppressPackageStartupMessages({
   library(tidyverse)

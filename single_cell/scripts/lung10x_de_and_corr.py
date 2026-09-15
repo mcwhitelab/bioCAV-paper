@@ -6,6 +6,15 @@ cell_type/tissue/disease metadata matching (there's no real "lung10x" tissue
 value in obs -- it's a naming convention for the assay-restricted axes, not
 a real category) by selecting cells explicitly (assay == "10x 3' v2") and
 calling the same underlying functions the normal pipeline uses directly.
+
+NOTE (2026-09-13): Figure 6 no longer uses the DE table this script writes.
+The DE it produces pools all 8 donors (1407 cells), including the 4 that
+contribute only one condition, whereas the figure's CAV correlations are
+restricted to paired donors. Figure 6 reads
+results/de_mixedlm_paired_donors/, written by paired_donor_de_mixedlm.py
+(658 cells, 4 paired donors). Re-running this script regenerates the
+superseded unpaired table in results/de_mixedlm/; that is harmless as long
+as nothing points the figure export back at that directory.
 """
 
 import os
@@ -18,7 +27,7 @@ import anndata as ad
 
 _biocav_repo = os.environ.get("BIOCAV_REPO")
 sys.path.insert(0, os.path.join(_biocav_repo, "specific_scripts"))
-from de_pseudobulk import run_mixedlm_pair            # noqa: E402
+from de_methods import run_mixedlm_pair            # noqa: E402
 from cav_gene_correlation import correlate_scores_with_genes  # noqa: E402
 
 LIB = Path("cav_library/b617ee1b-f8c8-4de9-b82b-e803ab93550d")

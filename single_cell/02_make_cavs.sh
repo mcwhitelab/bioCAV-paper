@@ -28,6 +28,8 @@ conda activate $CONDA_ENV_DIR
 
 #ds=9d8e5dca-03a3-457d-b7fb-844c75735c83
 
+# This need to be modifieds to also accept .h5ad (or precomputed embeddings, or a lists of these things)
+# This whole pipeline needs to be modified to be more flexible  (i.e. in choosing confounders, and for example drawing a transition betwen multiple cavs
 ds=b617ee1b-f8c8-4de9-b82b-e803ab93550d
 export LD_LIBRARY_PATH=$CONDA_PREFIX/lib:$LD_LIBRARY_PATH
 python $BIOCAV_REPO/specific_scripts/run_cav_pipeline.py \

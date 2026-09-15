@@ -10,7 +10,7 @@ co-expressed (pairwise r=0.54-0.79), consistent with marking a real
 subpopulation rather than being independently regulated per-cell.
 
 Outputs (into --figure-data-dir):
-  subpop_gene_scatter.csv   pair, gene, gene_name, log2fc, cav_r, module (quiescent/other/activated)
+  subpop_gene_scatter.csv   pair, gene, gene_name, log2fc, cav_r, module (quiescent/activated/independent)
   subpop_gene_corr.csv      gene1, gene2, r   (long-format correlation matrix)
   subpop_cell_scores.csv    cell_id, disease, quiescent_score, l2_score
 """
@@ -77,10 +77,14 @@ def main():
     expr_df = pd.DataFrame(expr, index=shared)
 
     # --- 1. scatter table (DE log2fc vs CAV r) ---
-    de = pd.read_csv(LIB / "results" / "de_mixedlm" / f"{PAIR_LABEL}.tsv", sep="\t")
+    de = pd.read_csv(LIB / "results" / "de_mixedlm_paired_donors" / f"{PAIR_LABEL}.tsv", sep="\t")
     cav = pd.read_csv(LIB / "results" / "gene_correlation_paired_donors" / f"{PAIR_LABEL}.tsv", sep="\t")
     merged = de[["gene", "gene_name", "log2fc"]].merge(cav[["gene", "r"]], on="gene", how="inner")
-    module_map = {**{n: "quiescent" for n in QUIESCENT_GENES}, "CXCR4": "activated", "ADAMDEC1": "independent"}
+    # ADAMDEC1 and CXCL14 share a category: they co-express with each other
+    # (r = 0.58) but not with the quiescent module (r = 0.02-0.25), and both
+    # are DE-null with positive CAV r.
+    module_map = {**{n: "quiescent" for n in QUIESCENT_GENES}, "CXCR4": "activated",
+                  "ADAMDEC1": "independent", "CXCL14": "independent"}
     highlight = merged[merged["gene_name"].isin(module_map)].copy()
     highlight["module"] = highlight["gene_name"].map(module_map)
     highlight["pair"] = PAIR_LABEL

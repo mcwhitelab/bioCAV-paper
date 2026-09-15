@@ -25,7 +25,13 @@ from cav_continuum_viz import load_coords, load_obs, load_expression, get_pair_d
 
 LIB = Path("cav_library/b617ee1b-f8c8-4de9-b82b-e803ab93550d")
 GENE_CORR_DIR = LIB / "results" / "gene_correlation_paired_donors"
-DE_DIR = LIB / "results" / "de_mixedlm"
+# Paired-donor DE (scripts/paired_donor_de_mixedlm.py): the mixed model is
+# re-fit on exactly the paired-donor cells the CAV correlations use, so both
+# axes of the DE-vs-CAV scatter come from the same cells. For neutrophil/breast
+# (3/3 donors paired) and fibroblast/colorectum (7/7) this is identical to the
+# atlas-wide results/de_mixedlm/ tables; for epithelial/lung10x (4/8 paired)
+# it is a genuine re-fit on 658 rather than 1407 cells.
+DE_DIR = LIB / "results" / "de_mixedlm_paired_donors"
 FIGURE_DATA_DIR = Path(sys.argv[1]) if len(sys.argv) > 1 else Path("../figures/figure_data")
 
 CASES = [

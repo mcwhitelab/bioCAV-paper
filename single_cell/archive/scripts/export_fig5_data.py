@@ -2,7 +2,7 @@
 """
 export_fig5_data.py — Export flat CSVs for Figure 5 (single-cell case studies)
 so figures.R can render native ggplot panels instead of embedding the
-matplotlib PNGs from cav_continuum_viz.py / de_pseudobulk.py.
+matplotlib PNGs from cav_continuum_viz.py / de_methods.py.
 
 Reuses cav_continuum_viz.py's data-assembly (get_pair_data) so the cell/gene
 selection and expression scaling exactly match the existing exploratory

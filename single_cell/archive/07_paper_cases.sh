@@ -16,7 +16,7 @@ mkdir -p $LIB/results/figures
 # neutrophil__breast (too few donors); mixedlm has all three pairs, so this
 # keeps the DE method consistent across the panel.
 
-$PY $BIOCAV_REPO/specific_scripts/de_pseudobulk.py \
+$PY $BIOCAV_REPO/specific_scripts/de_methods.py \
     --lib-dir       $LIB/ \
     --out-dir       $LIB/results/de_mixedlm/ \
     --cav-dir       $LIB/results/gene_correlation_celltype_tissue/ \

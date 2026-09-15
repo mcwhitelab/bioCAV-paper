@@ -11,7 +11,7 @@ python "$(dirname "$0")/cav_viz_pattern.py" \
     --interactive \
     --distance-mode cophenetic \
     --n-neighbors 10 \
-    --min-dist 0.3 \
+    --min-dist 0.8 \
     --dims          3 \
     --pfam-annotations results/figures/pfamA.txt \
     --out           results/figures/pfam_umap_sim_3d.html
@@ -19,7 +19,7 @@ python "$(dirname "$0")/cav_viz_pattern.py" \
 python "$(dirname "$0")/cav_viz_pattern.py"     --cav-pattern "$AHMAD_CAV_OUTPUTS_DIR/cavs/*/L25_concept_v1.npy"     --reducer umap     --pfam-annotations results/figures/pfamA.txt     --interactive     --out results/figures/pfam_umap_sim.html --dims 2 --clan-annotations results/figures/Pfam-A.clans.tsv      --distance-mode cophenetic 
 
 
-
+echo "Running normal"
 
 python "$(dirname "$0")/cav_viz_pattern.py" \
     --cav-pattern   "$AHMAD_CAV_OUTPUTS_DIR/cavs/*/L25_concept_v1.npy" \
@@ -30,6 +30,7 @@ python "$(dirname "$0")/cav_viz_pattern.py" \
     --gif-fps       72 \
     --interactive \
     --dims          3 \
+    --min-dist 0.1 \
     --pfam-annotations results/figures/pfamA.txt \
     --out           results/figures/pfam_umap_3d.html
 
