@@ -1,0 +1,2 @@
+n_pairs,n_ec_cavs,n_go_cavs,pct_rank1,pct_rank_le10,median_matched_sim,median_background_sim,mannwhitney_u,mannwhitney_p
+239,952,6677,88.28451882845188,99.16317991631799,0.6005681401772124,0.025729611759107117,54271586.0,1.6629666104434862e-157

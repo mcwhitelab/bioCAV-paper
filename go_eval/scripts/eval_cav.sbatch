@@ -30,6 +30,9 @@ do
 #    --scaler-pkl     reference_population/scaler_v1.pkl \
 #    --min-n          5 \
 #    --date-cutoff    20211231
+# 2026-09-29: the paper run adds --exclude-known-positives and
+# --go-terms-file static/fig2_go_terms_${ont}.txt, with fresh *_noknown out-dirs;
+# see ../06_eval_exclude_known_positives.sh.
 
 python $BIOCAV_REPO/specific_scripts/summarize_temporal_eval.py \
     --results  results/temporal_eval_${ont}/eval_temporal_results.tsv \

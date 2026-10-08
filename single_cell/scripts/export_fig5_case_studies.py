@@ -14,6 +14,7 @@ assay-10x-3'v2-restricted axes), the tissue column is additionally patched
 for the assay-matched subset before donor-pairing is applied.
 """
 
+import argparse
 import sys
 from pathlib import Path
 
@@ -25,14 +26,35 @@ from cav_continuum_viz import load_coords, load_obs, load_expression, get_pair_d
 
 LIB = Path("cav_library/b617ee1b-f8c8-4de9-b82b-e803ab93550d")
 GENE_CORR_DIR = LIB / "results" / "gene_correlation_paired_donors"
-# Paired-donor DE (scripts/paired_donor_de_mixedlm.py): the mixed model is
-# re-fit on exactly the paired-donor cells the CAV correlations use, so both
-# axes of the DE-vs-CAV scatter come from the same cells. For neutrophil/breast
-# (3/3 donors paired) and fibroblast/colorectum (7/7) this is identical to the
-# atlas-wide results/de_mixedlm/ tables; for epithelial/lung10x (4/8 paired)
-# it is a genuine re-fit on 658 rather than 1407 cells.
-DE_DIR = LIB / "results" / "de_mixedlm_paired_donors"
-FIGURE_DATA_DIR = Path(sys.argv[1]) if len(sys.argv) > 1 else Path("../figures/figure_data")
+# DE axis of the DE-vs-CAV scatter: pseudobulk DESeq2 (scripts/
+# paired_donor_pseudobulk.py -> scripts/paired_donor_pseudobulk_de.R).
+# Raw counts summed per donor x condition over the paired-donor cells,
+# design ~ donor + condition, pseudobulk samples with < 10 cells dropped
+# (and their donor with them), edgeR::filterByExpr gene filter. The plotted
+# log2FC is DESeq2's unshrunk log2FoldChange (column log2fc_mle -- the TSV's
+# own `log2fc` column is the apeglm-shrunk value and is NOT what's plotted).
+# The min-10-cells rule removes AziziBRCA_1 (neutrophil/breast, 21 cells)
+# and QianCRC_CRC_6 (fibroblast/colorectum, 23 cells) from the DE only; the
+# CAV correlations and continuum strips still use every paired donor.
+# (Previous version: per-cell mixed model, results/de_mixedlm_paired_donors/,
+# via scripts/paired_donor_de_mixedlm.py.)
+DE_DIR = LIB / "results" / "de_pseudobulk_paired_donors" / "min10"
+_ap = argparse.ArgumentParser()
+_ap.add_argument("out_dir", nargs="?", default="../figures/figure_data")
+# Matched-donor variant: drop paired donors with < N cells in either condition
+# from the CAV side too (continuum strips + gene correlations), matching the
+# pseudobulk DE's sample QC. Pair with --gene-corr-dir pointing at
+# results/gene_correlation_paired_donors_min10 (paired_donor_gene_corr.py
+# --min-cells-per-sample 10). Default 0 = every paired donor (current Fig 6).
+_ap.add_argument("--min-cells-per-sample", type=int, default=0)
+_ap.add_argument("--gene-corr-dir", default=None)
+# Alternative hierarchy coordinates (e.g. a CAV-estimator comparison under
+# convergence_check/). Default = the library's results/hierarchy file.
+_ap.add_argument("--coords", default=None)
+_args = _ap.parse_args()
+FIGURE_DATA_DIR = Path(_args.out_dir)
+if _args.gene_corr_dir:
+    GENE_CORR_DIR = Path(_args.gene_corr_dir)
 
 CASES = [
     # pair_label, cell_type, tissue_real, condition, assay_filter (None if not needed)
@@ -40,7 +62,7 @@ CASES = [
     ("epithelial_cell__lung10x__normal_vs_lung_cancer", "epithelial cell", "lung", "lung cancer", "10x 3' v2"),
     # fibroblast/colorectum: 7/7 donors paired (no cells lost), and CAV
     # recovers ADAMDEC1 (r=0.21, p=7e-21) as a top correlate despite near-
-    # zero DE log2fc (0.016, p=0.77) -- ADAMDEC1 marks a specific mucosal
+    # zero pseudobulk DE (log2FC 0.09, padj = 1) -- ADAMDEC1 marks a specific mucosal
     # fibroblast subpopulation in gut atlases (e.g. Kinchen et al.), so this
     # likely reflects a subpopulation-abundance shift that a population-
     # average DE test misses but the per-cell CAV score picks up.
@@ -53,7 +75,7 @@ def norm(v):
 
 
 def main():
-    coords = load_coords(str(LIB / "results" / "hierarchy" / "cell_coordinates.tsv"), "L2")
+    coords = load_coords(_args.coords or str(LIB / "results" / "hierarchy" / "cell_coordinates.tsv"), "L2")
     obs = load_obs(str(LIB / "data" / "cells.h5ad"),
                    ["cell_type", "tissue", "disease", "assay", "donor_id"])
     obs["donor_id"] = obs["donor_id"].astype(str)
@@ -80,6 +102,13 @@ def main():
         sub = obs[mask]
         dc = sub.groupby("donor_id")["disease"].nunique()
         paired_donors = set(dc[dc == 2].index)
+        if _args.min_cells_per_sample > 0:
+            per = sub[sub["donor_id"].isin(paired_donors)].groupby(["donor_id", "disease"]).size().unstack(fill_value=0)
+            small = set(per.index[(per < _args.min_cells_per_sample).any(axis=1)])
+            if small:
+                print(f"  dropping donors with < {_args.min_cells_per_sample} cells in a condition: "
+                      f"{', '.join(sorted(small))}", file=sys.stderr)
+            paired_donors -= small
         excluded = obs.index[mask & ~obs["donor_id"].isin(paired_donors)]
         print(f"{pair_label}: excluding {len(excluded)} cells from non-paired donors "
               f"({len(paired_donors)} paired donors kept)", file=sys.stderr)
@@ -124,11 +153,15 @@ def main():
 
         de = pd.read_csv(DE_DIR / f"{pair_label}.tsv", sep="\t")
         cav = pd.read_csv(GENE_CORR_DIR / f"{pair_label}.tsv", sep="\t")
-        merged = (de[["gene", "log2fc", "gene_name"]].rename(columns={"log2fc": "lfc"})
+        # padj may be NA (DESeq2 independent filtering / Cook's outliers):
+        # those genes were tested, so they stay in; figures.R treats NA as
+        # not significant.
+        merged = (de[["gene", "gene_name", "log2fc_mle", "padj", "n_donors"]]
+                  .rename(columns={"log2fc_mle": "log2fc"})
                   .merge(cav[["gene", "r"]].rename(columns={"r": "cav_r"}), on="gene", how="inner")
-                  .dropna(subset=["lfc", "cav_r"]))
+                  .dropna(subset=["log2fc", "cav_r"]))
         merged["pair"] = pair_label
-        de_rows.append(merged[["pair", "gene", "gene_name", "lfc", "cav_r"]].rename(columns={"lfc": "log2fc"}))
+        de_rows.append(merged[["pair", "gene", "gene_name", "log2fc", "padj", "n_donors", "cav_r"]])
 
     out_dir = FIGURE_DATA_DIR
     out_dir.mkdir(parents=True, exist_ok=True)

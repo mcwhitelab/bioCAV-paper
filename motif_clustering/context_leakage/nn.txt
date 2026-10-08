@@ -1,0 +1,57 @@
+library CAVs: (27459, 1152)
+
+pairwise among the four:
+   D123           x CPSase_L_D1    = -0.0569
+   D123           x Biotin_carb_N  = -0.0373
+   D123           x CPSase_L_D2    = +0.1188
+   CPSase_L_D1    x Biotin_carb_N  = +0.5188
+   CPSase_L_D1    x CPSase_L_D2    = +0.0385
+   Biotin_carb_N  x CPSase_L_D2    = -0.1386
+
+top-10 library neighbours of PF07065 (D123, ATP-grasp):
+   +0.4554  PF03133  TTL                      ATP-grasp
+   +0.4540  PF05770  Ins134_P3_kin            ATP-grasp
+   +0.4327  PF03917  GSH_synth_ATP            NADP_Rossmann
+   +0.3862  PF02750  Synapsin_C               ATP-grasp
+   +0.3531  PF15349  DCA16                    
+   +0.3348  PF05623  DUF789                   
+   +0.3284  PF15340  COPR5                    
+   +0.3269  PF17722  IFTAP                    
+   +0.3265  PF04360  Serglycin                
+   +0.3115  PF14989  CCDC32                   
+
+top-10 library neighbours of PF25596 (CPSase_L_D1, NADP_Rossmann):
+   +0.5188  PF00289  Biotin_carb_N            NADP_Rossmann
+   +0.4278  PF02844  GARS_N                   NADP_Rossmann
+   +0.4187  PF22660  RS_preATP-grasp-like     NADP_Rossmann
+   +0.3328  PF21360  PylC-like_N              NADP_Rossmann
+   +0.3076  PF18130  ATPgrasp_N               
+   +0.2973  PF06849  DUF1246                  NADP_Rossmann
+   +0.2879  PF02310  B12-binding              
+   +0.2810  PF01820  Dala_Dala_lig_N          NADP_Rossmann
+   +0.2608  PF02629  CoA_binding              NADP_Rossmann
+   +0.2423  PF02787  CPSase_L_D3              HTH
+
+top-10 library neighbours of PF00289 (Biotin_carb_N, NADP_Rossmann):
+   +0.7078  PF02844  GARS_N                   NADP_Rossmann
+   +0.6307  PF22660  RS_preATP-grasp-like     NADP_Rossmann
+   +0.6196  PF21360  PylC-like_N              NADP_Rossmann
+   +0.5584  PF01820  Dala_Dala_lig_N          NADP_Rossmann
+   +0.5269  PF18130  ATPgrasp_N               
+   +0.5188  PF25596  CPSase_L_D1              NADP_Rossmann
+   +0.4788  PF06849  DUF1246                  NADP_Rossmann
+   +0.4274  PF18301  preATP-grasp_3           
+   +0.4110  PF18030  Rimk_N                   NADP_Rossmann
+   +0.4106  PF22626  LysX_preATP_grasp        NADP_Rossmann
+
+top-10 library neighbours of PF02786 (CPSase_L_D2, ATP-grasp):
+   +0.5927  PF01071  GARS_A                   ATP-grasp
+   +0.5432  PF02222  ATP-grasp                ATP-grasp
+   +0.4818  PF02655  ATP-grasp_3              ATP-grasp
+   +0.4556  PF13535  ATP-grasp_4              ATP-grasp
+   +0.3790  PF08443  RimK                     ATP-grasp
+   +0.3667  PF07478  Dala_Dala_lig_C          ATP-grasp
+   +0.3424  PF08442  ATP-grasp_2              ATP-grasp
+   +0.3285  PF24923  ATP-grasp_IQCH           ATP-grasp
+   +0.2986  PF24948  Citrate_synth_N          ATP-grasp
+   +0.2794  PF13549  ATP-grasp_5              ATP-grasp

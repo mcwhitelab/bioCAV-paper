@@ -1,0 +1,73 @@
+ontology,fam,method,r1,t10
+MF,20-59 families,CAV,14.4,32.1
+MF,>=60 families,CAV,5.6,42.6
+MF,<20 families,CAV,37.8,66.0
+MF,20-59 families,DeepGoSE,7.9,19.3
+MF,>=60 families,DeepGoSE,6.9,16.7
+MF,<20 families,DeepGoSE,18.7,37.4
+MF,20-59 families,BLAST,8.6,28.6
+MF,>=60 families,BLAST,9.3,34.7
+MF,<20 families,BLAST,21.0,50.4
+MF,20-59 families,CAV x BLAST (rank product),17.0,38.7
+MF,>=60 families,CAV x BLAST (rank product),18.1,43.5
+MF,<20 families,CAV x BLAST (rank product),40.8,63.4
+MF,20-59 families,"CAV x BLAST (soft, eps 0.1)",16.4,38.7
+MF,>=60 families,"CAV x BLAST (soft, eps 0.1)",14.8,45.8
+MF,<20 families,"CAV x BLAST (soft, eps 0.1)",45.4,66.4
+MF,20-59 families,soft eps 0.01,16.8,38.3
+MF,>=60 families,soft eps 0.01,14.8,43.5
+MF,<20 families,soft eps 0.01,44.7,66.0
+MF,20-59 families,soft eps 1,14.8,36.4
+MF,>=60 families,soft eps 1,10.2,46.3
+MF,<20 families,soft eps 1,42.7,67.6
+MF,20-59 families,"Best of CAV or BLAST, per pair",17.3,42.6
+MF,>=60 families,"Best of CAV or BLAST, per pair",13.0,52.3
+MF,<20 families,"Best of CAV or BLAST, per pair",44.3,67.9
+BP,>=60 families,CAV,2.3,10.0
+BP,20-59 families,CAV,6.0,24.7
+BP,<20 families,CAV,12.0,28.6
+BP,>=60 families,DeepGoSE,2.6,6.8
+BP,20-59 families,DeepGoSE,1.3,6.7
+BP,<20 families,DeepGoSE,0.0,1.7
+BP,>=60 families,BLAST,1.8,9.6
+BP,20-59 families,BLAST,3.7,13.4
+BP,<20 families,BLAST,0.4,15.4
+BP,>=60 families,CAV x BLAST (rank product),4.5,15.7
+BP,20-59 families,CAV x BLAST (rank product),10.4,25.0
+BP,<20 families,CAV x BLAST (rank product),16.2,29.5
+BP,>=60 families,"CAV x BLAST (soft, eps 0.1)",3.9,16.4
+BP,20-59 families,"CAV x BLAST (soft, eps 0.1)",9.4,27.9
+BP,<20 families,"CAV x BLAST (soft, eps 0.1)",17.4,33.2
+BP,>=60 families,soft eps 0.01,4.0,16.5
+BP,20-59 families,soft eps 0.01,9.7,26.5
+BP,<20 families,soft eps 0.01,17.0,32.8
+BP,>=60 families,soft eps 1,3.2,12.9
+BP,20-59 families,soft eps 1,7.6,27.3
+BP,<20 families,soft eps 1,14.9,33.2
+BP,>=60 families,"Best of CAV or BLAST, per pair",4.2,16.9
+BP,20-59 families,"Best of CAV or BLAST, per pair",8.6,29.4
+BP,<20 families,"Best of CAV or BLAST, per pair",13.3,31.5
+CC,<20 families,CAV,12.4,31.7
+CC,>=60 families,CAV,6.3,22.7
+CC,20-59 families,CAV,9.2,30.1
+CC,<20 families,DeepGoSE,7.3,30.2
+CC,>=60 families,DeepGoSE,4.9,13.4
+CC,20-59 families,DeepGoSE,1.1,15.8
+CC,<20 families,BLAST,5.4,20.0
+CC,>=60 families,BLAST,8.6,33.1
+CC,20-59 families,BLAST,8.5,26.2
+CC,<20 families,CAV x BLAST (rank product),15.9,30.5
+CC,>=60 families,CAV x BLAST (rank product),13.2,35.8
+CC,20-59 families,CAV x BLAST (rank product),16.2,35.5
+CC,<20 families,"CAV x BLAST (soft, eps 0.1)",14.9,30.2
+CC,>=60 families,"CAV x BLAST (soft, eps 0.1)",12.8,38.3
+CC,20-59 families,"CAV x BLAST (soft, eps 0.1)",14.8,36.1
+CC,<20 families,soft eps 0.01,15.6,29.5
+CC,>=60 families,soft eps 0.01,14.2,38.9
+CC,20-59 families,soft eps 0.01,15.5,36.3
+CC,<20 families,soft eps 1,14.0,32.1
+CC,>=60 families,soft eps 1,8.4,29.7
+CC,20-59 families,soft eps 1,11.8,33.2
+CC,<20 families,"Best of CAV or BLAST, per pair",14.9,34.9
+CC,>=60 families,"Best of CAV or BLAST, per pair",13.4,43.6
+CC,20-59 families,"Best of CAV or BLAST, per pair",14.7,38.9

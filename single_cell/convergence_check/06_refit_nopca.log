@@ -1,0 +1,112 @@
+B_cell__breast__breast_cancer 355 0.607
+B_cell__breast__normal 167 0.508
+B_cell__colorectum__colorectal_cancer 331 0.593
+B_cell__colorectum__normal 324 0.573
+B_cell__liver__liver_cancer 260 0.566
+B_cell__lung__lung_cancer 412 0.545
+B_cell__lung__normal 418 0.551
+B_cell__ovary__ovarian_cancer 310 0.591
+B_cell__skin_epidermis__melanoma 80 0.6
+B_cell__uvea__uveal_melanoma 305 0.524
+T_cell__breast__breast_cancer 349 0.572
+T_cell__breast__normal 171 0.508
+T_cell__colorectum__colorectal_cancer 413 0.589
+T_cell__colorectum__normal 295 0.585
+T_cell__liver__liver_cancer 336 0.544
+T_cell__lung__lung_cancer 326 0.536
+T_cell__lung__normal 395 0.597
+T_cell__ovary__normal 258 0.556
+T_cell__ovary__ovarian_cancer 390 0.556
+T_cell__skin_epidermis__melanoma 90 0.544
+T_cell__skin_epidermis__normal 196 0.557
+T_cell__uvea__uveal_melanoma 379 0.546
+endothelial_cell__breast__breast_cancer 388 0.6
+endothelial_cell__colorectum__colorectal_cancer 399 0.563
+endothelial_cell__colorectum__normal 271 0.561
+endothelial_cell__liver__liver_cancer 283 0.534
+endothelial_cell__lung__lung_cancer 405 0.537
+endothelial_cell__lung__normal 327 0.534
+endothelial_cell__ovary__normal 288 0.567
+endothelial_cell__ovary__ovarian_cancer 376 0.568
+endothelial_cell__skin_epidermis__melanoma 73 0.584
+endothelial_cell__skin_epidermis__normal 222 0.524
+endothelial_cell__uvea__uveal_melanoma 344 0.52
+epithelial_cell__breast__breast_cancer 406 0.623
+epithelial_cell__colorectum__colorectal_cancer 357 0.63
+epithelial_cell__colorectum__normal 358 0.596
+epithelial_cell__liver__liver_cancer 240 0.51
+epithelial_cell__lung10x__lung_cancer 224 0.556
+epithelial_cell__lung10x__normal 309 0.549
+epithelial_cell__lung__lung_cancer 411 0.589
+epithelial_cell__lung__normal 292 0.542
+epithelial_cell__ovary__normal 320 0.59
+epithelial_cell__ovary__ovarian_cancer 363 0.558
+epithelial_cell__skin_epidermis__melanoma 79 0.591
+epithelial_cell__skin_epidermis__normal 365 0.559
+epithelial_cell__uvea__uveal_melanoma 274 0.535
+fibroblast__breast__breast_cancer 415 0.596
+fibroblast__colorectum__colorectal_cancer 356 0.594
+fibroblast__colorectum__normal 372 0.611
+fibroblast__liver__liver_cancer 304 0.568
+fibroblast__lung__lung_cancer 323 0.559
+fibroblast__lung__normal 343 0.537
+fibroblast__ovary__normal 303 0.567
+fibroblast__ovary__ovarian_cancer 345 0.587
+fibroblast__skin_epidermis__melanoma 63 0.6
+fibroblast__skin_epidermis__normal 232 0.531
+fibroblast__uvea__uveal_melanoma 259 0.551
+malignant_cell__breast__breast_cancer 408 0.586
+malignant_cell__colorectum__colorectal_cancer 305 0.6
+malignant_cell__liver__liver_cancer 322 0.559
+malignant_cell__lung__lung_cancer 406 0.588
+malignant_cell__ovary__ovarian_cancer 351 0.623
+malignant_cell__skin_epidermis__melanoma 61 0.642
+malignant_cell__uvea__uveal_melanoma 307 0.524
+mast_cell__breast__breast_cancer 375 0.583
+mast_cell__colorectum__colorectal_cancer 331 0.548
+mast_cell__colorectum__normal 235 0.544
+mast_cell__lung__lung_cancer 446 0.544
+mast_cell__lung__normal 345 0.506
+mast_cell__ovary__ovarian_cancer 232 0.544
+megakaryocyte__lung__normal 236 0.468
+mononuclear_phagocyte__breast__breast_cancer 406 0.587
+mononuclear_phagocyte__breast__normal 165 0.501
+mononuclear_phagocyte__colorectum__colorectal_cancer 365 0.583
+mononuclear_phagocyte__colorectum__normal 337 0.621
+mononuclear_phagocyte__liver__liver_cancer 359 0.606
+mononuclear_phagocyte__lung__lung_cancer 446 0.565
+mononuclear_phagocyte__lung__normal 360 0.558
+mononuclear_phagocyte__ovary__normal 248 0.575
+mononuclear_phagocyte__ovary__ovarian_cancer 300 0.622
+mononuclear_phagocyte__skin_epidermis__normal 259 0.536
+mononuclear_phagocyte__uvea__uveal_melanoma 411 0.569
+neutrophil__breast__breast_cancer 130 0.565
+neutrophil__breast__normal 94 0.484
+neutrophil__colorectum__colorectal_cancer 230 0.566
+neutrophil__lung__lung_cancer 361 0.601
+neutrophil__lung__normal 271 0.518
+plasmacytoid_dendritic_cell__breast__breast_cancer 356 0.599
+plasmacytoid_dendritic_cell__liver__liver_cancer 209 0.537
+plasmacytoid_dendritic_cell__lung__lung_cancer 323 0.579
+plasmacytoid_dendritic_cell__lung__normal 319 0.52
+plasmacytoid_dendritic_cell__ovary__ovarian_cancer 233 0.585
+plasmacytoid_dendritic_cell__uvea__uveal_melanoma 259 0.529
+                       count      mean       std      min       5%       50%       95%       max
+n_pos                   93.0  421.5484  146.6756  53.0000  77.6000  500.0000  500.0000  500.0000
+auroc_stored            93.0    0.9991    0.0008   0.9968   0.9978    0.9991    1.0000    1.0000
+n_iter_np_orig          93.0   34.0430    7.3616  18.0000  20.0000   35.0000   44.4000   52.0000
+cos_stored_np_orig      93.0    0.3085    0.0437   0.2189   0.2503    0.3045    0.3823    0.4705
+cos_pcaconv4_np_orig    93.0    0.2609    0.0329   0.1520   0.2075    0.2635    0.3036    0.3305
+cos_meandiff_np_orig    93.0    0.3271    0.0410   0.2131   0.2707    0.3273    0.3940    0.4916
+auroc_np_orig           93.0    1.0000    0.0000   1.0000   1.0000    1.0000    1.0000    1.0000
+n_iter_np_conv1         93.0  301.6129   93.2556  61.0000  86.0000  323.0000  412.4000  446.0000
+cos_stored_np_conv1     93.0    0.4492    0.0722   0.3341   0.3733    0.4366    0.6417    0.6821
+cos_pcaconv4_np_conv1   93.0    0.4037    0.0810   0.3175   0.3309    0.3846    0.5874    0.7127
+cos_meandiff_np_conv1   93.0    0.4126    0.0896   0.2474   0.3328    0.3940    0.5939    0.7925
+auroc_np_conv1          93.0    1.0000    0.0000   1.0000   1.0000    1.0000    1.0000    1.0000
+n_iter_np_conv4         93.0   29.5054    2.4255  25.0000  26.0000   29.0000   34.0000   35.0000
+cos_stored_np_conv4     93.0    0.5638    0.0341   0.4677   0.5080    0.5648    0.6214    0.6417
+cos_pcaconv4_np_conv4   93.0    0.8927    0.0201   0.8308   0.8611    0.8974    0.9181    0.9277
+cos_meandiff_np_conv4   93.0    0.8578    0.0420   0.7122   0.7846    0.8622    0.9284    0.9598
+auroc_np_conv4          93.0    0.9972    0.0016   0.9922   0.9950    0.9972    0.9999    1.0000
+cos_np_conv1_np_conv4   93.0    0.6259    0.0752   0.5333   0.5548    0.6111    0.8078    0.8968

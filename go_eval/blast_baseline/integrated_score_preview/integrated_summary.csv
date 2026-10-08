@@ -1,0 +1,25 @@
+ontology,method,n,rank1_pct,top10_pct
+MF,CAV,1223,17.8,41.2
+MF,DeepGoSE,1223,10.1,22.7
+MF,BLAST,1223,11.4,34.3
+MF,CAV x BLAST (rank product),1223,22.3,44.8
+MF,"CAV x BLAST (soft, eps 0.1)",1223,22.3,45.9
+MF,soft eps 0.01,1223,22.4,45.1
+MF,soft eps 1,1223,20.0,44.8
+MF,"Best of CAV or BLAST, per pair",1223,22.3,49.7
+BP,CAV,2739,5.5,20.9
+BP,DeepGoSE,2739,1.5,6.2
+BP,BLAST,2739,2.9,12.5
+BP,CAV x BLAST (rank product),2739,9.3,22.8
+BP,"CAV x BLAST (soft, eps 0.1)",2739,8.5,25.1
+BP,soft eps 0.01,2739,8.8,24.2
+BP,soft eps 1,2739,7.0,23.7
+BP,"Best of CAV or BLAST, per pair",2739,7.7,26.1
+CC,CAV,4052,8.0,26.5
+CC,DeepGoSE,4052,3.5,15.7
+CC,BLAST,4052,8.3,29.2
+CC,CAV x BLAST (rank product),4052,14.6,35.3
+CC,"CAV x BLAST (soft, eps 0.1)",4052,13.8,36.7
+CC,soft eps 0.01,4052,14.9,37.1
+CC,soft eps 1,4052,10.2,31.4
+CC,"Best of CAV or BLAST, per pair",4052,14.0,41.0

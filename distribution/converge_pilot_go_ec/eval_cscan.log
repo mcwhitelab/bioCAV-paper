@@ -1,0 +1,232 @@
+proFAB positives loaded for 407 of 550 pair proteins
+Loaded 6677 GO CAVs; scaler frames: {'shared': 6677}
+CAV namespaces: {'bp': 4297, 'mf': 1114, 'cc': 660, None: 606}
+
+[mf] 138 pairs -> go_specificity_ranks_allterms_mf.csv  (candidates: all 6071, ont 1114, eval 10)
+  tool_rank_eval == shipped: 0.775; cav_rank_eval == shipped: 0.174
+  eval_shipped  CAV rank1  17.4%  top10  44.9%  median     20 | DeepGo-SE rank1  76.1%  top10 100.0%  median      1
+  eval          CAV rank1  44.9%  top10 100.0%  median      2 | DeepGo-SE rank1  97.8%  top10 100.0%  median      1
+  ont           CAV rank1   8.7%  top10  32.6%  median    166 | DeepGo-SE rank1   0.0%  top10  46.4%  median     11
+  ont_filt      CAV rank1  13.0%  top10  32.6%  median    164 | DeepGo-SE rank1  10.1%  top10  55.8%  median      9
+  ont_filt_pf   CAV rank1  13.0%  top10  32.6%  median    164 | DeepGo-SE rank1  10.1%  top10  58.0%  median      9
+  all           CAV rank1   5.8%  top10  18.8%  median   1092 | DeepGo-SE rank1   0.0%  top10   2.2%  median     73
+  all_filt      CAV rank1  10.1%  top10  18.8%  median   1088 | DeepGo-SE rank1   0.0%  top10  10.9%  median     60
+
+[bp] 81 pairs -> go_specificity_ranks_allterms_bp.csv  (candidates: all 6071, ont 4297, eval 10)
+  tool_rank_eval == shipped: 0.198; cav_rank_eval == shipped: 0.222
+  eval_shipped  CAV rank1  22.2%  top10  48.1%  median     11 | DeepGo-SE rank1  19.8%  top10  97.5%  median      2
+  eval          CAV rank1  56.8%  top10 100.0%  median      1 | DeepGo-SE rank1  97.5%  top10 100.0%  median      1
+  ont           CAV rank1   3.7%  top10  32.1%  median    104 | DeepGo-SE rank1   0.0%  top10   0.0%  median     42
+  ont_filt      CAV rank1   8.6%  top10  32.1%  median    100 | DeepGo-SE rank1   0.0%  top10  14.8%  median     30
+  ont_filt_pf   CAV rank1   9.9%  top10  32.1%  median     91 | DeepGo-SE rank1   0.0%  top10  21.0%  median     26
+  all           CAV rank1   1.2%  top10  25.9%  median    138 | DeepGo-SE rank1   0.0%  top10   0.0%  median     73
+  all_filt      CAV rank1   7.4%  top10  28.4%  median    133 | DeepGo-SE rank1   0.0%  top10   9.9%  median     53
+
+[cc] 338 pairs -> go_specificity_ranks_allterms_cc.csv  (candidates: all 6071, ont 660, eval 10)
+  tool_rank_eval == shipped: 0.574; cav_rank_eval == shipped: 0.136
+  eval_shipped  CAV rank1  13.6%  top10  47.3%  median     12 | DeepGo-SE rank1  54.1%  top10 100.0%  median      1
+  eval          CAV rank1  49.1%  top10 100.0%  median      2 | DeepGo-SE rank1  91.1%  top10 100.0%  median      1
+  ont           CAV rank1   6.5%  top10  30.8%  median     36 | DeepGo-SE rank1   0.0%  top10   2.4%  median     26
+  ont_filt      CAV rank1   7.4%  top10  32.5%  median     30 | DeepGo-SE rank1   3.6%  top10  40.2%  median     12
+  ont_filt_pf   CAV rank1   8.0%  top10  33.1%  median     28 | DeepGo-SE rank1   7.1%  top10  50.6%  median     10
+  all           CAV rank1   2.7%  top10  13.3%  median    318 | DeepGo-SE rank1   0.0%  top10   0.0%  median     92
+  all_filt      CAV rank1   3.3%  top10  13.9%  median    302 | DeepGo-SE rank1   0.0%  top10   3.0%  median     64
+proFAB positives loaded for 407 of 550 pair proteins
+Loaded 6677 GO CAVs; scaler frames: {'shared': 6677}
+CAV namespaces: {'bp': 4297, 'mf': 1114, 'cc': 660, None: 606}
+
+[mf] 138 pairs -> go_specificity_ranks_allterms_mf.csv  (candidates: all 6071, ont 1114, eval 10)
+  tool_rank_eval == shipped: 0.775; cav_rank_eval == shipped: 0.174
+  eval_shipped  CAV rank1  17.4%  top10  44.9%  median     20 | DeepGo-SE rank1  76.1%  top10 100.0%  median      1
+  eval          CAV rank1  44.2%  top10 100.0%  median      2 | DeepGo-SE rank1  97.8%  top10 100.0%  median      1
+  ont           CAV rank1   8.0%  top10  32.6%  median    150 | DeepGo-SE rank1   0.0%  top10  46.4%  median     11
+  ont_filt      CAV rank1  13.0%  top10  32.6%  median    146 | DeepGo-SE rank1  10.1%  top10  55.8%  median      9
+  ont_filt_pf   CAV rank1  13.0%  top10  32.6%  median    146 | DeepGo-SE rank1  10.1%  top10  58.0%  median      9
+  all           CAV rank1   4.3%  top10  19.6%  median   1061 | DeepGo-SE rank1   0.0%  top10   2.2%  median     73
+  all_filt      CAV rank1   9.4%  top10  22.5%  median   1050 | DeepGo-SE rank1   0.0%  top10  10.9%  median     60
+
+[bp] 81 pairs -> go_specificity_ranks_allterms_bp.csv  (candidates: all 6071, ont 4297, eval 10)
+  tool_rank_eval == shipped: 0.198; cav_rank_eval == shipped: 0.222
+  eval_shipped  CAV rank1  22.2%  top10  48.1%  median     11 | DeepGo-SE rank1  19.8%  top10  97.5%  median      2
+  eval          CAV rank1  56.8%  top10 100.0%  median      1 | DeepGo-SE rank1  97.5%  top10 100.0%  median      1
+  ont           CAV rank1   3.7%  top10  30.9%  median    102 | DeepGo-SE rank1   0.0%  top10   0.0%  median     42
+  ont_filt      CAV rank1   8.6%  top10  30.9%  median     95 | DeepGo-SE rank1   0.0%  top10  14.8%  median     30
+  ont_filt_pf   CAV rank1   9.9%  top10  32.1%  median     90 | DeepGo-SE rank1   0.0%  top10  21.0%  median     26
+  all           CAV rank1   1.2%  top10  23.5%  median    143 | DeepGo-SE rank1   0.0%  top10   0.0%  median     73
+  all_filt      CAV rank1   7.4%  top10  27.2%  median    142 | DeepGo-SE rank1   0.0%  top10   9.9%  median     53
+
+[cc] 338 pairs -> go_specificity_ranks_allterms_cc.csv  (candidates: all 6071, ont 660, eval 10)
+  tool_rank_eval == shipped: 0.574; cav_rank_eval == shipped: 0.136
+  eval_shipped  CAV rank1  13.6%  top10  47.3%  median     12 | DeepGo-SE rank1  54.1%  top10 100.0%  median      1
+  eval          CAV rank1  47.3%  top10 100.0%  median      2 | DeepGo-SE rank1  91.1%  top10 100.0%  median      1
+  ont           CAV rank1   6.5%  top10  29.3%  median     40 | DeepGo-SE rank1   0.0%  top10   2.4%  median     26
+  ont_filt      CAV rank1   7.1%  top10  31.7%  median     34 | DeepGo-SE rank1   3.6%  top10  40.2%  median     12
+  ont_filt_pf   CAV rank1   7.7%  top10  32.0%  median     31 | DeepGo-SE rank1   7.1%  top10  50.6%  median     10
+  all           CAV rank1   2.7%  top10  13.6%  median    348 | DeepGo-SE rank1   0.0%  top10   0.0%  median     92
+  all_filt      CAV rank1   3.3%  top10  13.9%  median    341 | DeepGo-SE rank1   0.0%  top10   3.0%  median     64
+proFAB positives loaded for 407 of 550 pair proteins
+Loaded 6677 GO CAVs; scaler frames: {'shared': 6677}
+CAV namespaces: {'bp': 4297, 'mf': 1114, 'cc': 660, None: 606}
+
+[mf] 138 pairs -> go_specificity_ranks_allterms_mf.csv  (candidates: all 6071, ont 1114, eval 10)
+  tool_rank_eval == shipped: 0.775; cav_rank_eval == shipped: 0.167
+  eval_shipped  CAV rank1  17.4%  top10  44.9%  median     20 | DeepGo-SE rank1  76.1%  top10 100.0%  median      1
+  eval          CAV rank1  36.2%  top10 100.0%  median      3 | DeepGo-SE rank1  97.8%  top10 100.0%  median      1
+  ont           CAV rank1  14.5%  top10  39.9%  median     32 | DeepGo-SE rank1   0.0%  top10  46.4%  median     11
+  ont_filt      CAV rank1  18.8%  top10  39.9%  median     30 | DeepGo-SE rank1  10.1%  top10  55.8%  median      9
+  ont_filt_pf   CAV rank1  19.6%  top10  39.9%  median     28 | DeepGo-SE rank1  10.1%  top10  58.0%  median      9
+  all           CAV rank1  10.1%  top10  28.3%  median    246 | DeepGo-SE rank1   0.0%  top10   2.2%  median     73
+  all_filt      CAV rank1  14.5%  top10  30.4%  median    244 | DeepGo-SE rank1   0.0%  top10  10.9%  median     60
+
+[bp] 81 pairs -> go_specificity_ranks_allterms_bp.csv  (candidates: all 6071, ont 4297, eval 10)
+  tool_rank_eval == shipped: 0.198; cav_rank_eval == shipped: 0.222
+  eval_shipped  CAV rank1  22.2%  top10  48.1%  median     11 | DeepGo-SE rank1  19.8%  top10  97.5%  median      2
+  eval          CAV rank1  58.0%  top10 100.0%  median      1 | DeepGo-SE rank1  97.5%  top10 100.0%  median      1
+  ont           CAV rank1  13.6%  top10  40.7%  median     24 | DeepGo-SE rank1   0.0%  top10   0.0%  median     42
+  ont_filt      CAV rank1  16.0%  top10  42.0%  median     21 | DeepGo-SE rank1   0.0%  top10  14.8%  median     30
+  ont_filt_pf   CAV rank1  17.3%  top10  43.2%  median     21 | DeepGo-SE rank1   0.0%  top10  21.0%  median     26
+  all           CAV rank1   3.7%  top10  33.3%  median     37 | DeepGo-SE rank1   0.0%  top10   0.0%  median     73
+  all_filt      CAV rank1   8.6%  top10  34.6%  median     35 | DeepGo-SE rank1   0.0%  top10   9.9%  median     53
+
+[cc] 338 pairs -> go_specificity_ranks_allterms_cc.csv  (candidates: all 6071, ont 660, eval 10)
+  tool_rank_eval == shipped: 0.574; cav_rank_eval == shipped: 0.151
+  eval_shipped  CAV rank1  13.6%  top10  47.3%  median     12 | DeepGo-SE rank1  54.1%  top10 100.0%  median      1
+  eval          CAV rank1  50.9%  top10 100.0%  median      1 | DeepGo-SE rank1  91.1%  top10 100.0%  median      1
+  ont           CAV rank1  13.6%  top10  55.9%  median      8 | DeepGo-SE rank1   0.0%  top10   2.4%  median     26
+  ont_filt      CAV rank1  15.1%  top10  58.3%  median      6 | DeepGo-SE rank1   3.6%  top10  40.2%  median     12
+  ont_filt_pf   CAV rank1  16.3%  top10  59.8%  median      5 | DeepGo-SE rank1   7.1%  top10  50.6%  median     10
+  all           CAV rank1   5.9%  top10  18.9%  median     38 | DeepGo-SE rank1   0.0%  top10   0.0%  median     92
+  all_filt      CAV rank1   5.9%  top10  21.9%  median     36 | DeepGo-SE rank1   0.0%  top10   3.0%  median     64
+proFAB positives loaded for 407 of 550 pair proteins
+Loaded 6677 GO CAVs; scaler frames: {'shared': 6677}
+CAV namespaces: {'bp': 4297, 'mf': 1114, 'cc': 660, None: 606}
+
+[mf] 138 pairs -> go_specificity_ranks_allterms_mf.csv  (candidates: all 6071, ont 1114, eval 10)
+  tool_rank_eval == shipped: 0.775; cav_rank_eval == shipped: 0.181
+  eval_shipped  CAV rank1  17.4%  top10  44.9%  median     20 | DeepGo-SE rank1  76.1%  top10 100.0%  median      1
+  eval          CAV rank1  38.4%  top10 100.0%  median      2 | DeepGo-SE rank1  97.8%  top10 100.0%  median      1
+  ont           CAV rank1  28.3%  top10  45.7%  median     20 | DeepGo-SE rank1   0.0%  top10  46.4%  median     11
+  ont_filt      CAV rank1  30.4%  top10  45.7%  median     20 | DeepGo-SE rank1  10.1%  top10  55.8%  median      9
+  ont_filt_pf   CAV rank1  31.2%  top10  45.7%  median     17 | DeepGo-SE rank1  10.1%  top10  58.0%  median      9
+  all           CAV rank1  19.6%  top10  35.5%  median    107 | DeepGo-SE rank1   0.0%  top10   2.2%  median     73
+  all_filt      CAV rank1  24.6%  top10  36.2%  median    102 | DeepGo-SE rank1   0.0%  top10  10.9%  median     60
+
+[bp] 81 pairs -> go_specificity_ranks_allterms_bp.csv  (candidates: all 6071, ont 4297, eval 10)
+  tool_rank_eval == shipped: 0.198; cav_rank_eval == shipped: 0.235
+  eval_shipped  CAV rank1  22.2%  top10  48.1%  median     11 | DeepGo-SE rank1  19.8%  top10  97.5%  median      2
+  eval          CAV rank1  60.5%  top10 100.0%  median      1 | DeepGo-SE rank1  97.5%  top10 100.0%  median      1
+  ont           CAV rank1  33.3%  top10  55.6%  median      6 | DeepGo-SE rank1   0.0%  top10   0.0%  median     42
+  ont_filt      CAV rank1  34.6%  top10  58.0%  median      6 | DeepGo-SE rank1   0.0%  top10  14.8%  median     30
+  ont_filt_pf   CAV rank1  34.6%  top10  58.0%  median      4 | DeepGo-SE rank1   0.0%  top10  21.0%  median     26
+  all           CAV rank1  22.2%  top10  51.9%  median      9 | DeepGo-SE rank1   0.0%  top10   0.0%  median     73
+  all_filt      CAV rank1  28.4%  top10  51.9%  median      9 | DeepGo-SE rank1   0.0%  top10   9.9%  median     53
+
+[cc] 338 pairs -> go_specificity_ranks_allterms_cc.csv  (candidates: all 6071, ont 660, eval 10)
+  tool_rank_eval == shipped: 0.574; cav_rank_eval == shipped: 0.136
+  eval_shipped  CAV rank1  13.6%  top10  47.3%  median     12 | DeepGo-SE rank1  54.1%  top10 100.0%  median      1
+  eval          CAV rank1  50.3%  top10 100.0%  median      1 | DeepGo-SE rank1  91.1%  top10 100.0%  median      1
+  ont           CAV rank1  29.9%  top10  68.3%  median      5 | DeepGo-SE rank1   0.0%  top10   2.4%  median     26
+  ont_filt      CAV rank1  31.4%  top10  69.2%  median      3 | DeepGo-SE rank1   3.6%  top10  40.2%  median     12
+  ont_filt_pf   CAV rank1  33.4%  top10  70.1%  median      3 | DeepGo-SE rank1   7.1%  top10  50.6%  median     10
+  all           CAV rank1  13.9%  top10  37.0%  median     22 | DeepGo-SE rank1   0.0%  top10   0.0%  median     92
+  all_filt      CAV rank1  14.8%  top10  39.3%  median     18 | DeepGo-SE rank1   0.0%  top10   3.0%  median     64
+proFAB positives loaded for 407 of 550 pair proteins
+Loaded 6677 GO CAVs; scaler frames: {'shared': 6677}
+CAV namespaces: {'bp': 4297, 'mf': 1114, 'cc': 660, None: 606}
+
+[mf] 138 pairs -> go_specificity_ranks_allterms_mf.csv  (candidates: all 6071, ont 1114, eval 10)
+  tool_rank_eval == shipped: 0.775; cav_rank_eval == shipped: 0.152
+  eval_shipped  CAV rank1  17.4%  top10  44.9%  median     20 | DeepGo-SE rank1  76.1%  top10 100.0%  median      1
+  eval          CAV rank1  39.1%  top10 100.0%  median      2 | DeepGo-SE rank1  97.8%  top10 100.0%  median      1
+  ont           CAV rank1  33.3%  top10  55.1%  median      6 | DeepGo-SE rank1   0.0%  top10  46.4%  median     11
+  ont_filt      CAV rank1  34.1%  top10  55.8%  median      5 | DeepGo-SE rank1  10.1%  top10  55.8%  median      9
+  ont_filt_pf   CAV rank1  34.1%  top10  55.8%  median      4 | DeepGo-SE rank1  10.1%  top10  58.0%  median      9
+  all           CAV rank1  20.3%  top10  44.2%  median     22 | DeepGo-SE rank1   0.0%  top10   2.2%  median     73
+  all_filt      CAV rank1  25.4%  top10  44.9%  median     20 | DeepGo-SE rank1   0.0%  top10  10.9%  median     60
+
+[bp] 81 pairs -> go_specificity_ranks_allterms_bp.csv  (candidates: all 6071, ont 4297, eval 10)
+  tool_rank_eval == shipped: 0.198; cav_rank_eval == shipped: 0.235
+  eval_shipped  CAV rank1  22.2%  top10  48.1%  median     11 | DeepGo-SE rank1  19.8%  top10  97.5%  median      2
+  eval          CAV rank1  61.7%  top10 100.0%  median      1 | DeepGo-SE rank1  97.5%  top10 100.0%  median      1
+  ont           CAV rank1  46.9%  top10  72.8%  median      2 | DeepGo-SE rank1   0.0%  top10   0.0%  median     42
+  ont_filt      CAV rank1  46.9%  top10  72.8%  median      2 | DeepGo-SE rank1   0.0%  top10  14.8%  median     30
+  ont_filt_pf   CAV rank1  46.9%  top10  74.1%  median      2 | DeepGo-SE rank1   0.0%  top10  21.0%  median     26
+  all           CAV rank1  28.4%  top10  70.4%  median      4 | DeepGo-SE rank1   0.0%  top10   0.0%  median     73
+  all_filt      CAV rank1  32.1%  top10  70.4%  median      4 | DeepGo-SE rank1   0.0%  top10   9.9%  median     53
+
+[cc] 338 pairs -> go_specificity_ranks_allterms_cc.csv  (candidates: all 6071, ont 660, eval 10)
+  tool_rank_eval == shipped: 0.574; cav_rank_eval == shipped: 0.139
+  eval_shipped  CAV rank1  13.6%  top10  47.3%  median     12 | DeepGo-SE rank1  54.1%  top10 100.0%  median      1
+  eval          CAV rank1  54.7%  top10 100.0%  median      1 | DeepGo-SE rank1  91.1%  top10 100.0%  median      1
+  ont           CAV rank1  40.8%  top10  81.1%  median      2 | DeepGo-SE rank1   0.0%  top10   2.4%  median     26
+  ont_filt      CAV rank1  42.9%  top10  83.4%  median      2 | DeepGo-SE rank1   3.6%  top10  40.2%  median     12
+  ont_filt_pf   CAV rank1  45.9%  top10  85.2%  median      2 | DeepGo-SE rank1   7.1%  top10  50.6%  median     10
+  all           CAV rank1  20.1%  top10  57.1%  median      7 | DeepGo-SE rank1   0.0%  top10   0.0%  median     92
+  all_filt      CAV rank1  22.2%  top10  59.5%  median      6 | DeepGo-SE rank1   0.0%  top10   3.0%  median     64
+proFAB positives loaded for 407 of 550 pair proteins
+Loaded 6677 GO CAVs; scaler frames: {'shared': 6677}
+CAV namespaces: {'bp': 4297, 'mf': 1114, 'cc': 660, None: 606}
+
+[mf] 138 pairs -> go_specificity_ranks_allterms_mf.csv  (candidates: all 6071, ont 1114, eval 10)
+  tool_rank_eval == shipped: 0.775; cav_rank_eval == shipped: 0.174
+  eval_shipped  CAV rank1  17.4%  top10  44.9%  median     20 | DeepGo-SE rank1  76.1%  top10 100.0%  median      1
+  eval          CAV rank1  44.2%  top10 100.0%  median      2 | DeepGo-SE rank1  97.8%  top10 100.0%  median      1
+  ont           CAV rank1  42.0%  top10  67.4%  median      2 | DeepGo-SE rank1   0.0%  top10  46.4%  median     11
+  ont_filt      CAV rank1  42.0%  top10  67.4%  median      2 | DeepGo-SE rank1  10.1%  top10  55.8%  median      9
+  ont_filt_pf   CAV rank1  42.0%  top10  67.4%  median      2 | DeepGo-SE rank1  10.1%  top10  58.0%  median      9
+  all           CAV rank1  25.4%  top10  55.1%  median      5 | DeepGo-SE rank1   0.0%  top10   2.2%  median     73
+  all_filt      CAV rank1  30.4%  top10  55.8%  median      4 | DeepGo-SE rank1   0.0%  top10  10.9%  median     60
+
+[bp] 81 pairs -> go_specificity_ranks_allterms_bp.csv  (candidates: all 6071, ont 4297, eval 10)
+  tool_rank_eval == shipped: 0.198; cav_rank_eval == shipped: 0.210
+  eval_shipped  CAV rank1  22.2%  top10  48.1%  median     11 | DeepGo-SE rank1  19.8%  top10  97.5%  median      2
+  eval          CAV rank1  61.7%  top10 100.0%  median      1 | DeepGo-SE rank1  97.5%  top10 100.0%  median      1
+  ont           CAV rank1  51.9%  top10  82.7%  median      1 | DeepGo-SE rank1   0.0%  top10   0.0%  median     42
+  ont_filt      CAV rank1  51.9%  top10  82.7%  median      1 | DeepGo-SE rank1   0.0%  top10  14.8%  median     30
+  ont_filt_pf   CAV rank1  53.1%  top10  85.2%  median      1 | DeepGo-SE rank1   0.0%  top10  21.0%  median     26
+  all           CAV rank1  39.5%  top10  79.0%  median      2 | DeepGo-SE rank1   0.0%  top10   0.0%  median     73
+  all_filt      CAV rank1  43.2%  top10  80.2%  median      2 | DeepGo-SE rank1   0.0%  top10   9.9%  median     53
+
+[cc] 338 pairs -> go_specificity_ranks_allterms_cc.csv  (candidates: all 6071, ont 660, eval 10)
+  tool_rank_eval == shipped: 0.574; cav_rank_eval == shipped: 0.136
+  eval_shipped  CAV rank1  13.6%  top10  47.3%  median     12 | DeepGo-SE rank1  54.1%  top10 100.0%  median      1
+  eval          CAV rank1  57.7%  top10 100.0%  median      1 | DeepGo-SE rank1  91.1%  top10 100.0%  median      1
+  ont           CAV rank1  50.6%  top10  92.9%  median      1 | DeepGo-SE rank1   0.0%  top10   2.4%  median     26
+  ont_filt      CAV rank1  52.7%  top10  94.4%  median      1 | DeepGo-SE rank1   3.6%  top10  40.2%  median     12
+  ont_filt_pf   CAV rank1  55.3%  top10  94.4%  median      1 | DeepGo-SE rank1   7.1%  top10  50.6%  median     10
+  all           CAV rank1  30.5%  top10  76.0%  median      3 | DeepGo-SE rank1   0.0%  top10   0.0%  median     92
+  all_filt      CAV rank1  32.2%  top10  82.8%  median      3 | DeepGo-SE rank1   0.0%  top10   3.0%  median     64
+proFAB positives loaded for 407 of 550 pair proteins
+Loaded 6677 GO CAVs; scaler frames: {'shared': 6677}
+CAV namespaces: {'bp': 4297, 'mf': 1114, 'cc': 660, None: 606}
+
+[mf] 138 pairs -> go_specificity_ranks_allterms_mf.csv  (candidates: all 6071, ont 1114, eval 10)
+  tool_rank_eval == shipped: 0.775; cav_rank_eval == shipped: 0.152
+  eval_shipped  CAV rank1  17.4%  top10  44.9%  median     20 | DeepGo-SE rank1  76.1%  top10 100.0%  median      1
+  eval          CAV rank1  46.4%  top10 100.0%  median      2 | DeepGo-SE rank1  97.8%  top10 100.0%  median      1
+  ont           CAV rank1  42.0%  top10  82.6%  median      2 | DeepGo-SE rank1   0.0%  top10  46.4%  median     11
+  ont_filt      CAV rank1  42.8%  top10  82.6%  median      2 | DeepGo-SE rank1  10.1%  top10  55.8%  median      9
+  ont_filt_pf   CAV rank1  42.8%  top10  82.6%  median      2 | DeepGo-SE rank1  10.1%  top10  58.0%  median      9
+  all           CAV rank1  26.8%  top10  61.6%  median      4 | DeepGo-SE rank1   0.0%  top10   2.2%  median     73
+  all_filt      CAV rank1  33.3%  top10  63.0%  median      4 | DeepGo-SE rank1   0.0%  top10  10.9%  median     60
+
+[bp] 81 pairs -> go_specificity_ranks_allterms_bp.csv  (candidates: all 6071, ont 4297, eval 10)
+  tool_rank_eval == shipped: 0.198; cav_rank_eval == shipped: 0.198
+  eval_shipped  CAV rank1  22.2%  top10  48.1%  median     11 | DeepGo-SE rank1  19.8%  top10  97.5%  median      2
+  eval          CAV rank1  58.0%  top10 100.0%  median      1 | DeepGo-SE rank1  97.5%  top10 100.0%  median      1
+  ont           CAV rank1  58.0%  top10  90.1%  median      1 | DeepGo-SE rank1   0.0%  top10   0.0%  median     42
+  ont_filt      CAV rank1  58.0%  top10  90.1%  median      1 | DeepGo-SE rank1   0.0%  top10  14.8%  median     30
+  ont_filt_pf   CAV rank1  59.3%  top10  90.1%  median      1 | DeepGo-SE rank1   0.0%  top10  21.0%  median     26
+  all           CAV rank1  48.1%  top10  84.0%  median      2 | DeepGo-SE rank1   0.0%  top10   0.0%  median     73
+  all_filt      CAV rank1  51.9%  top10  85.2%  median      1 | DeepGo-SE rank1   0.0%  top10   9.9%  median     53
+
+[cc] 338 pairs -> go_specificity_ranks_allterms_cc.csv  (candidates: all 6071, ont 660, eval 10)
+  tool_rank_eval == shipped: 0.574; cav_rank_eval == shipped: 0.136
+  eval_shipped  CAV rank1  13.6%  top10  47.3%  median     12 | DeepGo-SE rank1  54.1%  top10 100.0%  median      1
+  eval          CAV rank1  56.8%  top10 100.0%  median      1 | DeepGo-SE rank1  91.1%  top10 100.0%  median      1
+  ont           CAV rank1  55.6%  top10  96.7%  median      1 | DeepGo-SE rank1   0.0%  top10   2.4%  median     26
+  ont_filt      CAV rank1  59.2%  top10  97.0%  median      1 | DeepGo-SE rank1   3.6%  top10  40.2%  median     12
+  ont_filt_pf   CAV rank1  61.8%  top10  97.0%  median      1 | DeepGo-SE rank1   7.1%  top10  50.6%  median     10
+  all           CAV rank1  36.4%  top10  92.0%  median      2 | DeepGo-SE rank1   0.0%  top10   0.0%  median     92
+  all_filt      CAV rank1  38.5%  top10  92.3%  median      2 | DeepGo-SE rank1   0.0%  top10   3.0%  median     64
+wrote per_term_cscan.tsv, per_pair_cscan.tsv

@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>__TITLE__</title>
+<style>
+  *{ box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+  body {
+    font: 13px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    color: #1a1a1a; background: #fcfcfb; display: flex; overflow: hidden;
+  }
+  #side {
+    width: 330px; flex: 0 0 330px; height: 100%; border-right: 1px solid #e3e2dc;
+    display: flex; flex-direction: column; background: #fff;
+  }
+  #side header { padding: 14px 16px 10px; border-bottom: 1px solid #eeede8; }
+  h1 { font-size: 15px; margin: 0 0 3px; letter-spacing: -0.01em; }
+  .sub { font-size: 11.5px; color: #6b6a65; }
+  #searchwrap { padding: 12px 16px 10px; border-bottom: 1px solid #eeede8; }
+  #q {
+    width: 100%; padding: 8px 10px; font-size: 13px; font-family: inherit;
+    border: 1px solid #d5d4cd; border-radius: 6px; background: #fcfcfb; color: #1a1a1a;
+  }
+  #q:focus { outline: 2px solid #2a78d6; outline-offset: -1px; border-color: #2a78d6; }
+  .row { display: flex; gap: 8px; align-items: center; margin-top: 8px; }
+  button {
+    font: inherit; font-size: 12px; padding: 5px 10px; border: 1px solid #d5d4cd;
+    background: #fcfcfb; color: #1a1a1a; border-radius: 5px; cursor: pointer;
+  }
+  button:hover { background: #f2f1ec; }
+  #count { font-size: 11.5px; color: #6b6a65; margin-left: auto; }
+  #results { flex: 1; overflow-y: auto; padding: 4px 0 12px; }
+  .hit {
+    padding: 6px 16px; cursor: pointer; border-left: 3px solid transparent;
+    display: flex; gap: 8px; align-items: baseline;
+  }
+  .hit:hover { background: #f4f3ee; }
+  .hit.on { background: #eef4fd; border-left-color: #2a78d6; }
+  .sw { width: 9px; height: 9px; border-radius: 50%; flex: 0 0 9px; }
+  .hit .nm { font-weight: 600; font-size: 12px; }
+  .hit .ac { color: #8a8982; font-size: 11px; font-variant-numeric: tabular-nums; }
+  .hit .ln { display: block; color: #6b6a65; font-size: 11px; margin-top: 1px; }
+  .note { padding: 10px 16px; color: #8a8982; font-size: 11.5px; }
+  #stage { flex: 1; position: relative; height: 100%; }
+  canvas { display: block; width: 100%; height: 100%; cursor: grab; }
+  canvas.drag { cursor: grabbing; }
+  #tip {
+    position: absolute; pointer-events: none; z-index: 5; max-width: 330px;
+    background: rgba(255,255,255,.97); border: 1px solid #d5d4cd; border-radius: 6px;
+    padding: 8px 10px; box-shadow: 0 4px 14px rgba(0,0,0,.10); display: none;
+  }
+  #tip .t { font-weight: 600; margin-bottom: 2px; }
+  #tip .d { color: #52514e; }
+  #tip .m { color: #8a8982; font-size: 11.5px; margin-top: 4px; }
+  #hud {
+    position: absolute; left: 12px; bottom: 12px; z-index: 4; display: flex; gap: 6px;
+  }
+  #hud button { background: rgba(255,255,255,.94); }
+  #pin {
+    position: absolute; right: 12px; top: 12px; z-index: 4; width: 290px; display: none;
+    background: rgba(255,255,255,.97); border: 1px solid #d5d4cd; border-radius: 6px;
+    padding: 10px 12px; box-shadow: 0 4px 14px rgba(0,0,0,.10);
+  }
+  #pin .t { font-weight: 600; margin-bottom: 2px; }
+  #pin .d { color: #52514e; }
+  #pin .m { color: #8a8982; font-size: 11.5px; margin-top: 6px; }
+  #pin a { color: #2a78d6; }
+  #pin .x { position: absolute; right: 8px; top: 6px; cursor: pointer; color: #8a8982; }
+  kbd { font: 11px ui-monospace, Menlo, monospace; background: #f2f1ec;
+        border: 1px solid #e3e2dc; border-radius: 3px; padding: 0 4px; }
+</style>
+</head>
+<body>
+<div id="side">
+  <header>
+    <h1>__TITLE__</h1>
+    <div class="sub">__SUBTITLE__</div>
+  </header>
+  <div id="searchwrap">
+    <input id="q" type="search" placeholder="Search name, accession, clan&hellip;" autocomplete="off" spellcheck="false">
+    <div class="row">
+      <button id="clear">Clear</button>
+      <button id="prev">&larr;</button>
+      <button id="next">&rarr;</button>
+      <span id="count"></span>
+    </div>
+  </div>
+  <div id="results"></div>
+  <div class="note">
+    Scroll to zoom, drag to pan. Hover a circle for details, click to pin it.
+    <kbd>Enter</kbd> jumps to the next match, <kbd>Esc</kbd> clears.
+  </div>
+</div>
+<div id="stage">
+  <canvas id="cv"></canvas>
+  <div id="tip"></div>
+  <div id="pin"><span class="x" id="pinx">&times;</span><div id="pinbody"></div></div>
+  <div id="hud">
+    <button id="fit">Reset view</button>
+    <button id="zin">+</button>
+    <button id="zout">&minus;</button>
+  </div>
+</div>
+<script>
+const DATA = /*__DATA__*/null;
+
+const TAU = Math.PI * 2;
+const cl = DATA.cl, tp = DATA.tp, pal = DATA.palette, lab = DATA.lab, cid = DATA.cid;
+
+// The packing's y grows upward, as in the static ggraph figures; canvas y grows
+// downward. Flip once, here, so this view is the same way up as the PNG/PDF and
+// a circle can be found in one from its position in the other. Everything below
+// -- drawing, hover picking, zoom-to-node, the bounding box -- reads these
+// arrays, so the flip stays consistent.
+for (let i = 0; i < cl.y.length; i++) cl.y[i] = -cl.y[i];
+for (let i = 0; i < tp.y.length; i++) tp.y[i] = -tp.y[i];
+const NC = cl.r.length, NT = tp.r.length, NCUT = DATA.meta.cutNames.length;
+const NOCLAN = '#c9c8c0', DIM = '#e6e5e0', HL = '#d81f4a';
+
+// label fields: accession | short | long | clan_acc | clan_name
+const parts = lab.map(s => s.split('|'));
+const hay = lab.map(s => s.toLowerCase());
+
+const cv = document.getElementById('cv'), ctx = cv.getContext('2d');
+const tipEl = document.getElementById('tip'), pinEl = document.getElementById('pin');
+let W = 0, H = 0, dpr = 1;
+let view = { k: 1, tx: 0, ty: 0 };
+let matches = [], matchSet = null, cursor = -1, selected = -1, hoverI = -1;
+
+// ---- static draw batches: group tips by colour so each fill is one path ----
+const groups = new Map();
+for (let i = 0; i < NT; i++) {
+  const c = tp.c[i];
+  if (!groups.has(c)) groups.set(c, []);
+  groups.get(c).push(i);
+}
+const colourOf = c => (c < 0 ? NOCLAN : pal[c]);
+
+// ---- spatial grid for hover picking ----
+const bb = (() => {
+  let x0 = Infinity, x1 = -Infinity, y0 = Infinity, y1 = -Infinity;
+  for (let i = 0; i < NC; i++) {
+    x0 = Math.min(x0, cl.x[i] - cl.r[i]); x1 = Math.max(x1, cl.x[i] + cl.r[i]);
+    y0 = Math.min(y0, cl.y[i] - cl.r[i]); y1 = Math.max(y1, cl.y[i] + cl.r[i]);
+  }
+  return { x0, x1, y0, y1 };
+})();
+const CELL = 4;
+const gw = Math.ceil((bb.x1 - bb.x0) / CELL) + 1;
+const grid = new Map();
+for (let i = 0; i < NT; i++) {
+  const gx = ((tp.x[i] - bb.x0) / CELL) | 0, gy = ((tp.y[i] - bb.y0) / CELL) | 0;
+  const key = gy * gw + gx;
+  if (!grid.has(key)) grid.set(key, []);
+  grid.get(key).push(i);
+}
+function pick(dx, dy, tol) {
+  const gx = ((dx - bb.x0) / CELL) | 0, gy = ((dy - bb.y0) / CELL) | 0;
+  let best = -1, bd = Infinity;
+  for (let a = -1; a <= 1; a++) for (let b = -1; b <= 1; b++) {
+    const arr = grid.get((gy + b) * gw + (gx + a));
+    if (!arr) continue;
+    for (const i of arr) {
+      const d = Math.hypot(tp.x[i] - dx, tp.y[i] - dy);
+      if (d < bd && d <= Math.max(tp.r[i], tol)) { bd = d; best = i; }
+    }
+  }
+  return best;
+}
+
+// ---- view helpers ----
+// Until the user pans or zooms, keep the pack fitted to the stage. The canvas
+// can report zero size on the first paint, so this is also what recovers from it.
+let userMoved = false;
+function resize() {
+  dpr = window.devicePixelRatio || 1;
+  const r = cv.getBoundingClientRect();
+  W = r.width; H = r.height;
+  cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
+  if (W < 2 || H < 2) return;
+  if (userMoved) draw(); else fit();
+}
+function fitK() {
+  return Math.min(W / (bb.x1 - bb.x0), H / (bb.y1 - bb.y0)) * 0.96;
+}
+function fit() {
+  const k = fitK();
+  view = { k, tx: W / 2 - (bb.x0 + bb.x1) / 2 * k, ty: H / 2 - (bb.y0 + bb.y1) / 2 * k };
+  draw();
+}
+const clampK = k => Math.max(fitK() * 0.4, Math.min(260, k));
+
+function zoomAt(sx, sy, factor) {
+  userMoved = true;
+  const k0 = view.k, k1 = clampK(k0 * factor);
+  const f = k1 / k0;
+  view.tx = sx - (sx - view.tx) * f;
+  view.ty = sy - (sy - view.ty) * f;
+  view.k = k1;
+  draw();
+}
+
+let anim = null;
+function flyTo(i) {
+  userMoved = true;
+  const k1 = clampK(26 / tp.r[i]);
+  const from = { ...view }, t0 = performance.now(), dur = 680;
+  const tx1 = W / 2 - tp.x[i] * k1, ty1 = H / 2 - tp.y[i] * k1;
+  if (anim) cancelAnimationFrame(anim);
+  const ease = t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+  (function step(now) {
+    const t = Math.min(1, (now - t0) / dur), e = ease(t);
+    // interpolate scale geometrically so the zoom feels even
+    view.k = from.k * Math.pow(k1 / from.k, e);
+    view.tx = from.tx + (tx1 - from.tx) * e;
+    view.ty = from.ty + (ty1 - from.ty) * e;
+    draw();
+    if (t < 1) anim = requestAnimationFrame(step); else anim = null;
+  })(t0);
+}
+
+// ---- render ----
+function draw() {
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  ctx.fillStyle = '#fcfcfb';
+  ctx.fillRect(0, 0, W, H);
+  const k = view.k, tx = view.tx, ty = view.ty;
+  const vis = (x, y, r) => !(x + r < 0 || x - r > W || y + r < 0 || y - r > H);
+
+  // cluster outlines, coarsest first
+  for (let i = 0; i < NC; i++) {
+    const rr = cl.r[i] * k;
+    if (rr < 1.2) continue;
+    const sx = cl.x[i] * k + tx, sy = cl.y[i] * k + ty;
+    if (!vis(sx, sy, rr)) continue;
+    ctx.beginPath();
+    ctx.arc(sx, sy, rr, 0, TAU);
+    ctx.strokeStyle = '#cbcac3';
+    ctx.lineWidth = Math.max(0.4, 1.5 - cl.d[i] * 0.22);
+    ctx.stroke();
+  }
+
+  // tips, batched by colour
+  const active = matchSet !== null;
+  if (active) {
+    ctx.beginPath();
+    for (let i = 0; i < NT; i++) {
+      if (matchSet.has(i)) continue;
+      const rr = Math.max(tp.r[i] * k, 0.45);
+      const sx = tp.x[i] * k + tx, sy = tp.y[i] * k + ty;
+      if (!vis(sx, sy, rr)) continue;
+      ctx.moveTo(sx + rr, sy); ctx.arc(sx, sy, rr, 0, TAU);
+    }
+    ctx.fillStyle = DIM; ctx.fill();
+  }
+  for (const [c, idx] of groups) {
+    ctx.beginPath();
+    let any = false;
+    for (const i of idx) {
+      if (active && !matchSet.has(i)) continue;
+      const rr = Math.max(tp.r[i] * k, 0.45);
+      const sx = tp.x[i] * k + tx, sy = tp.y[i] * k + ty;
+      if (!vis(sx, sy, rr)) continue;
+      ctx.moveTo(sx + rr, sy); ctx.arc(sx, sy, rr, 0, TAU);
+      any = true;
+    }
+    if (any) { ctx.fillStyle = colourOf(c); ctx.fill(); }
+  }
+
+  // rings around every match, so hits stay findable when zoomed out
+  if (active && matches.length <= 6000) {
+    ctx.strokeStyle = HL; ctx.lineWidth = 1.4;
+    ctx.beginPath();
+    for (const i of matches) {
+      const rr = Math.max(tp.r[i] * k * 1.7, 3.5);
+      const sx = tp.x[i] * k + tx, sy = tp.y[i] * k + ty;
+      if (!vis(sx, sy, rr)) continue;
+      ctx.moveTo(sx + rr, sy); ctx.arc(sx, sy, rr, 0, TAU);
+    }
+    ctx.stroke();
+  }
+
+  for (const [i, col, wd, mul] of [[selected, HL, 2.2, 2.4], [hoverI, '#1a1a1a', 1.4, 2.0]]) {
+    if (i < 0) continue;
+    const rr = Math.max(tp.r[i] * k * mul, 6);
+    ctx.beginPath();
+    ctx.arc(tp.x[i] * k + tx, tp.y[i] * k + ty, rr, 0, TAU);
+    ctx.strokeStyle = col; ctx.lineWidth = wd; ctx.stroke();
+  }
+}
+
+// ---- descriptions ----
+function html(i, withLink) {
+  const p = parts[i];
+  const clan = p[3] ? `${p[3]} ${p[4]}` : 'no clan assigned';
+  const path = DATA.meta.cutNames
+    .map((c, j) => `${c} #${cid[i * NCUT + j]}`).join(' &middot; ');
+  return `<div class="t">${esc(p[0])} &middot; ${esc(p[1])}</div>
+          <div class="d">${esc(p[2])}</div>
+          <div class="m">Clan: ${esc(clan)}<br>${path}</div>` +
+    (withLink ? `<div class="m"><a href="https://www.ebi.ac.uk/interpro/entry/pfam/${encodeURIComponent(p[0])}/" target="_blank" rel="noopener">Open ${esc(p[0])} at InterPro &rarr;</a></div>` : '');
+}
+function esc(s) {
+  return String(s).replace(/[&<>]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[c]));
+}
+
+// ---- search ----
+const qEl = document.getElementById('q'), resEl = document.getElementById('results'),
+      cntEl = document.getElementById('count');
+let timer = null;
+qEl.addEventListener('input', () => { clearTimeout(timer); timer = setTimeout(runSearch, 110); });
+
+function runSearch() {
+  const q = qEl.value.trim().toLowerCase();
+  if (!q) { matches = []; matchSet = null; cursor = -1; render([]); draw(); return; }
+  const toks = q.split(/\s+/);
+  matches = [];
+  for (let i = 0; i < NT; i++) {
+    const h = hay[i];
+    let ok = true;
+    for (const t of toks) if (h.indexOf(t) === -1) { ok = false; break; }
+    if (ok) matches.push(i);
+  }
+  matchSet = new Set(matches);
+  cursor = -1;
+  render(matches);
+  draw();
+}
+function render(list) {
+  cntEl.textContent = list.length ? `${list.length} match${list.length > 1 ? 'es' : ''}` : '';
+  if (!qEl.value.trim()) { resEl.innerHTML = ''; return; }
+  if (!list.length) { resEl.innerHTML = '<div class="note">No matches.</div>'; return; }
+  const cap = Math.min(list.length, 300);
+  let s = '';
+  for (let n = 0; n < cap; n++) {
+    const i = list[n], p = parts[i];
+    s += `<div class="hit" data-i="${i}">
+            <span class="sw" style="background:${colourOf(tp.c[i])}"></span>
+            <span><span class="nm">${esc(p[1])}</span>
+            <span class="ac"> ${esc(p[0])}</span>
+            <span class="ln">${esc(p[2])}</span></span></div>`;
+  }
+  if (list.length > cap) s += `<div class="note">Showing first ${cap} of ${list.length}. All ${list.length} are ringed on the map.</div>`;
+  resEl.innerHTML = s;
+}
+resEl.addEventListener('click', e => {
+  const el = e.target.closest('.hit');
+  if (!el) return;
+  const i = +el.dataset.i;
+  cursor = matches.indexOf(i);
+  select(i);
+});
+function select(i) {
+  selected = i;
+  flyTo(i);
+  pinEl.style.display = 'block';
+  document.getElementById('pinbody').innerHTML = html(i, true);
+  for (const el of resEl.querySelectorAll('.hit')) el.classList.toggle('on', +el.dataset.i === i);
+  const on = resEl.querySelector('.hit.on');
+  if (on) on.scrollIntoView({ block: 'nearest' });
+}
+function step(dir) {
+  if (!matches.length) return;
+  cursor = (cursor + dir + matches.length) % matches.length;
+  select(matches[cursor]);
+}
+document.getElementById('next').onclick = () => step(1);
+document.getElementById('prev').onclick = () => step(-1);
+document.getElementById('clear').onclick = () => {
+  qEl.value = ''; runSearch(); selected = -1; pinEl.style.display = 'none'; draw();
+};
+document.getElementById('pinx').onclick = () => {
+  pinEl.style.display = 'none'; selected = -1; draw();
+};
+qEl.addEventListener('keydown', e => {
+  if (e.key === 'Enter') { e.preventDefault(); step(e.shiftKey ? -1 : 1); }
+  if (e.key === 'Escape') document.getElementById('clear').click();
+});
+
+// ---- pointer ----
+let dragging = false, moved = false, lx = 0, ly = 0;
+cv.addEventListener('mousedown', e => { dragging = true; moved = false; lx = e.clientX; ly = e.clientY; cv.classList.add('drag'); });
+window.addEventListener('mouseup', () => { dragging = false; cv.classList.remove('drag'); });
+window.addEventListener('mousemove', e => {
+  if (dragging) {
+    const dx = e.clientX - lx, dy = e.clientY - ly;
+    if (Math.abs(dx) + Math.abs(dy) > 2) moved = true;
+    userMoved = true;
+    view.tx += dx; view.ty += dy; lx = e.clientX; ly = e.clientY;
+    tipEl.style.display = 'none';
+    draw();
+    return;
+  }
+  const r = cv.getBoundingClientRect();
+  if (e.clientX < r.left || e.clientY < r.top || e.clientX > r.right || e.clientY > r.bottom) {
+    if (hoverI !== -1) { hoverI = -1; tipEl.style.display = 'none'; draw(); }
+    return;
+  }
+  const sx = e.clientX - r.left, sy = e.clientY - r.top;
+  const i = pick((sx - view.tx) / view.k, (sy - view.ty) / view.k, 4 / view.k);
+  if (i !== hoverI) { hoverI = i; draw(); }
+  if (i < 0) { tipEl.style.display = 'none'; return; }
+  tipEl.innerHTML = html(i, false);
+  tipEl.style.display = 'block';
+  const tw = tipEl.offsetWidth, th = tipEl.offsetHeight;
+  tipEl.style.left = Math.min(sx + 16, r.width - tw - 8) + 'px';
+  tipEl.style.top = (sy + th + 20 > r.height ? sy - th - 12 : sy + 16) + 'px';
+});
+cv.addEventListener('click', () => { if (!moved && hoverI >= 0) select(hoverI); });
+cv.addEventListener('wheel', e => {
+  e.preventDefault();
+  const r = cv.getBoundingClientRect();
+  zoomAt(e.clientX - r.left, e.clientY - r.top, Math.pow(1.0016, -e.deltaY));
+}, { passive: false });
+document.getElementById('fit').onclick = () => { userMoved = false; fit(); };
+document.getElementById('zin').onclick = () => zoomAt(W / 2, H / 2, 1.6);
+document.getElementById('zout').onclick = () => zoomAt(W / 2, H / 2, 1 / 1.6);
+window.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { pinEl.style.display = 'none'; selected = -1; draw(); }
+  if (e.key === '/' && document.activeElement !== qEl) { e.preventDefault(); qEl.focus(); }
+});
+new ResizeObserver(resize).observe(document.getElementById('stage'));
+resize();
+</script>
+</body>
+</html>

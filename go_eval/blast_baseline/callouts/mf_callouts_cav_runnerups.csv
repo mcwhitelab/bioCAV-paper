@@ -1,0 +1,67 @@
+protein_id,gene,true_go_term,cav_rank,go_name,cav_score,is_true_term
+Q8IMZ4,p53,GO:0001091,1,RNA polymerase II general transcription initiation factor binding,3.9,True
+Q8IMZ4,p53,GO:0001091,2,WW domain binding,3.8,False
+Q8IMZ4,p53,GO:0001091,3,ligand-modulated transcription factor activity,3.8,False
+Q8IMZ4,p53,GO:0001091,4,nuclear receptor activity,3.6,False
+Q8IMZ4,p53,GO:0001091,5,transcription coactivator binding,3.5,False
+Q8IMZ4,p53,GO:0001091,6,transcription coregulator binding,3.5,False
+Q2RVS1,fer,GO:0004322,1,ferroxidase activity,3.7,True
+Q2RVS1,fer,GO:0004322,2,ferric iron binding,3.1,False
+Q2RVS1,fer,GO:0004322,3,sodium:proton antiporter activity,3.0,False
+Q2RVS1,fer,GO:0004322,4,"L-tryptophan 2,3-dioxygenase activity",3.0,False
+Q2RVS1,fer,GO:0004322,5,metal cation:proton antiporter activity,3.0,False
+Q2RVS1,fer,GO:0004322,6,transaldolase activity,2.9,False
+Q386F0,Nucleobase/nucleoside transporter 8.1,GO:0015205,1,nucleobase transmembrane transporter activity,4.1,True
+Q386F0,Nucleobase/nucleoside transporter 8.1,GO:0015205,2,peptide:proton symporter activity,3.6,False
+Q386F0,Nucleobase/nucleoside transporter 8.1,GO:0015205,3,arachidonate monooxygenase activity,2.8,False
+Q386F0,Nucleobase/nucleoside transporter 8.1,GO:0015205,4,carbohydrate derivative transmembrane transporter activity,2.7,False
+Q386F0,Nucleobase/nucleoside transporter 8.1,GO:0015205,5,translation release factor activity,2.7,False
+Q386F0,Nucleobase/nucleoside transporter 8.1,GO:0015205,6,vitamin transmembrane transporter activity,2.6,False
+Q386F1,Nucleobase transporter 8.1,GO:0015205,1,nucleobase transmembrane transporter activity,4.1,True
+Q386F1,Nucleobase transporter 8.1,GO:0015205,2,peptide:proton symporter activity,3.6,False
+Q386F1,Nucleobase transporter 8.1,GO:0015205,3,arachidonate monooxygenase activity,2.8,False
+Q386F1,Nucleobase transporter 8.1,GO:0015205,4,carbohydrate derivative transmembrane transporter activity,2.7,False
+Q386F1,Nucleobase transporter 8.1,GO:0015205,5,translation release factor activity,2.7,False
+Q386F1,Nucleobase transporter 8.1,GO:0015205,6,sterol transfer activity,2.6,False
+Q54KA3,nup133,GO:0017056,1,structural constituent of nuclear pore,4.5,True
+Q54KA3,nup133,GO:0017056,2,snoRNA binding,3.4,False
+Q54KA3,nup133,GO:0017056,3,tRNA-specific ribonuclease activity,3.2,False
+Q54KA3,nup133,GO:0017056,4,RNA polymerase III transcription regulatory region sequence-specific DNA binding,3.0,False
+Q54KA3,nup133,GO:0017056,5,GTP-dependent protein binding,3.0,False
+Q54KA3,nup133,GO:0017056,6,plus-end-directed microtubule motor activity,3.0,False
+Q75JH1,RRM Nup35-type domain-containing protein,GO:0017056,1,structural constituent of nuclear pore,5.9,True
+Q75JH1,RRM Nup35-type domain-containing protein,GO:0017056,2,calcium/calmodulin-dependent protein kinase activity,4.0,False
+Q75JH1,RRM Nup35-type domain-containing protein,GO:0017056,3,deubiquitinase activity,3.5,False
+Q75JH1,RRM Nup35-type domain-containing protein,GO:0017056,4,phosphatidylinositol kinase activity,3.4,False
+Q75JH1,RRM Nup35-type domain-containing protein,GO:0017056,5,ubiquitin-like protein peptidase activity,3.1,False
+Q75JH1,RRM Nup35-type domain-containing protein,GO:0017056,6,cysteine-type deubiquitinase activity,3.1,False
+Q504P2,Clec12a,GO:0038187,1,pattern recognition receptor activity,4.2,True
+Q504P2,Clec12a,GO:0038187,2,D-mannose binding,4.1,False
+Q504P2,Clec12a,GO:0038187,3,signaling receptor inhibitor activity,3.8,False
+Q504P2,Clec12a,GO:0038187,4,immunoglobulin receptor binding,3.7,False
+Q504P2,Clec12a,GO:0038187,5,quercetin 3-O-glucosyltransferase activity,3.6,False
+Q504P2,Clec12a,GO:0038187,6,MHC protein binding,3.3,False
+Q05672,RBS1,GO:0048027,1,mRNA 5'-UTR binding,5.2,True
+Q05672,RBS1,GO:0048027,2,mRNA 3'-UTR binding,4.7,False
+Q05672,RBS1,GO:0048027,3,poly-pyrimidine tract binding,4.2,False
+Q05672,RBS1,GO:0048027,4,poly(U) RNA binding,4.2,False
+Q05672,RBS1,GO:0048027,5,translation activator activity,3.7,False
+Q05672,RBS1,GO:0048027,6,mRNA 3'-UTR AU-rich region binding,3.6,False
+F6ZE64,Lonrf2,GO:0051787,1,misfolded protein binding,3.0,True
+F6ZE64,Lonrf2,GO:0051787,2,SMAD binding,2.8,False
+F6ZE64,Lonrf2,GO:0051787,3,ubiquitin conjugating enzyme binding,2.6,False
+F6ZE64,Lonrf2,GO:0051787,4,cytoskeletal motor activity,2.4,False
+F6ZE64,Lonrf2,GO:0051787,5,protein-folding chaperone binding,2.4,False
+F6ZE64,Lonrf2,GO:0051787,6,R-SMAD binding,2.3,False
+P47048,Uncharacterized protein YJL049W,GO:0070300,1,phosphatidic acid binding,3.3,True
+P47048,Uncharacterized protein YJL049W,GO:0070300,2,DNA-directed RNA polymerase activity,3.1,False
+P47048,Uncharacterized protein YJL049W,GO:0070300,3,SUMO transferase activity,3.0,False
+P47048,Uncharacterized protein YJL049W,GO:0070300,4,beta-galactosidase activity,2.8,False
+P47048,Uncharacterized protein YJL049W,GO:0070300,5,galactosidase activity,2.8,False
+P47048,Uncharacterized protein YJL049W,GO:0070300,6,transcription coregulator activity,2.7,False
+Q06169,PEX30,GO:0070300,1,phosphatidic acid binding,3.3,True
+Q06169,PEX30,GO:0070300,2,ubiquitin-like modifier activating enzyme activity,3.1,False
+Q06169,PEX30,GO:0070300,3,signaling receptor activity,2.5,False
+Q06169,PEX30,GO:0070300,4,calcium-dependent phospholipid binding,2.5,False
+Q06169,PEX30,GO:0070300,5,haptoglobin binding,2.3,False
+Q06169,PEX30,GO:0070300,6,inositol phosphate phosphatase activity,2.2,False

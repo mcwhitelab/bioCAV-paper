@@ -1,0 +1,92 @@
+protein_id,go_term,n_train,n_families,n_terms_ont,llr,cav_rank_ont_filt_pf,tool_predicted,tool_rank_ont_filt_pf,blast_predicted,blast_rank_mid,blast_true_pident,ont,name
+Q96KN2,GO:0004177,250,41,1114,12.642871557495564,1,False,9,False,557.5,0.0,mf,aminopeptidase activity
+Q2RVS1,GO:0004322,102,8,1114,10.312432892058848,1,False,17,False,555.5,0.0,mf,ferroxidase activity
+H2KZB2,GO:0004860,196,72,1114,1.0481551957689108,1,False,11,False,553.5,0.0,mf,protein kinase inhibitor activity
+Q5JTJ3,GO:0015035,139,22,1114,8.477043180239331,1,False,5,False,551.5,0.0,mf,protein-disulfide reductase activity
+Q54KA3,GO:0017056,151,95,1114,9.710530289133985,1,False,13,False,557.0,0.0,mf,structural constituent of nuclear pore
+Q75JH1,GO:0017056,151,95,1114,9.857153492807612,1,False,9,False,557.5,0.0,mf,structural constituent of nuclear pore
+O74191,GO:0031491,269,71,1114,1.4268392959475245,1,False,10,False,576.0,0.0,mf,nucleosome binding
+Q3UL36,GO:0036002,188,46,1114,4.2216027303154045,1,False,5,False,557.0,0.0,mf,pre-mRNA binding
+Q6PJT7,GO:0036002,188,46,1114,4.332602606670579,1,False,6,False,557.0,0.0,mf,pre-mRNA binding
+Q9NWB6,GO:0036002,188,46,1114,4.2498321984504965,1,False,5,False,555.5,0.0,mf,pre-mRNA binding
+Q9VL63,GO:0036002,188,46,1114,3.5898059322968563,1,False,5,False,556.0,0.0,mf,pre-mRNA binding
+A0A3Q7HJG4,GO:0038187,96,16,1114,10.823929765119347,1,False,12,False,557.0,0.0,mf,pattern recognition receptor activity
+Q9VW36,GO:1990380,52,18,1114,23.361844951774483,1,False,6,False,554.0,0.0,mf,K48-linked deubiquitinase activity
+P0AEF0,GO:0006270,214,73,4298,2.903700231614565,1,False,29,False,2145.5,0.0,bp,DNA replication initiation
+P32800,GO:0006513,229,67,4298,7.318787323558709,1,False,18,False,2148.0,0.0,bp,protein monoubiquitination
+Q06436,GO:0006513,229,67,4298,7.90251496403819,1,False,39,False,2156.5,0.0,bp,protein monoubiquitination
+Q8N5U6,GO:0006513,229,67,4298,7.842054671136115,1,False,49,False,2120.5,0.0,bp,protein monoubiquitination
+P24394,GO:0007259,76,27,4298,3.9309032182771135,1,False,69,False,2189.5,0.0,bp,cell surface receptor signaling pathway via JAK-STAT
+Q9S1E6,GO:0009061,90,43,4298,66.56326955355004,1,False,13,False,2147.5,0.0,bp,anaerobic respiration
+Q9VTG7,GO:0016266,76,26,4298,54.664570589529454,1,False,24,False,2158.0,0.0,bp,protein O-linked glycosylation via N-acetylgalactosamine
+A1Z9A5,GO:0031146,296,111,4298,7.681371140422777,1,False,25,False,2145.0,0.0,bp,SCF-dependent proteasomal ubiquitin-dependent protein catabolic process
+Q9Y3I1,GO:0031146,296,111,4298,6.6059800830474416,1,False,52,False,2124.0,0.0,bp,SCF-dependent proteasomal ubiquitin-dependent protein catabolic process
+Q8TER0,GO:0033627,83,26,4298,7.555251996131327,1,False,99,False,2440.5,0.0,bp,cell adhesion mediated by integrin
+O00566,GO:0042274,114,52,4298,29.517338426376703,1,False,16,False,2140.0,0.0,bp,ribosomal small subunit biogenesis
+Q9NY61,GO:0042274,114,52,4298,26.06982508901638,1,False,60,False,2157.5,0.0,bp,ribosomal small subunit biogenesis
+Q9UMY1,GO:0042274,114,52,4298,29.37190999804701,1,False,29,False,2148.0,0.0,bp,ribosomal small subunit biogenesis
+Q9Y3A2,GO:0042274,114,52,4298,27.36335223557437,1,False,21,False,2146.5,0.0,bp,ribosomal small subunit biogenesis
+Q9Y2K6,GO:0043124,114,39,4298,4.599943394190087,1,False,31,False,2358.5,0.0,bp,negative regulation of canonical NF-kappaB signal transduction
+Q8WUX9,GO:0043162,61,32,4298,3.753711049081259,1,False,41,False,2158.0,0.0,bp,ubiquitin-dependent protein catabolic process via the multivesicular body sorting pathway
+Q8I2J3,GO:0043171,194,35,4298,26.92245907713382,1,False,11,False,2151.5,0.0,bp,peptide catabolic process
+P33448,GO:0045040,63,19,4298,11.500781236496383,1,False,17,False,2130.5,0.0,bp,protein insertion into mitochondrial outer membrane
+Q16594,GO:0051123,109,37,4298,12.228801304116857,1,False,16,False,2105.0,0.0,bp,RNA polymerase II preinitiation complex assembly
+C3RT22,GO:0061844,287,58,4298,25.581252679354,1,False,16,False,2151.0,0.0,bp,antimicrobial humoral immune response mediated by antimicrobial peptide
+Q2HYY9,GO:0061844,287,58,4298,17.321035146707377,1,False,15,False,2140.0,0.0,bp,antimicrobial humoral immune response mediated by antimicrobial peptide
+Q7YXK5,GO:0061844,287,58,4298,17.16995636090535,1,False,21,False,2144.0,0.0,bp,antimicrobial humoral immune response mediated by antimicrobial peptide
+Q9NX47,GO:0070534,180,27,4298,3.734419962878713,1,False,44,False,2129.0,0.0,bp,protein K63-linked ubiquitination
+Q91WT8,GO:0070935,53,17,4298,36.45276748609161,1,False,48,False,2344.5,0.0,bp,3'-UTR-mediated mRNA stabilization
+Q8CBG9,GO:0070936,168,41,4298,5.197977210884821,1,False,57,False,2315.0,0.0,bp,protein K48-linked ubiquitination
+Q9NX47,GO:0070936,168,41,4298,14.86214265191718,1,False,44,False,2129.0,0.0,bp,protein K48-linked ubiquitination
+Q68FM6,GO:0099560,57,18,4298,10.524451867233024,1,False,78,False,2153.5,0.0,bp,synaptic membrane adhesion
+Q8C8T7,GO:0099560,57,18,4298,10.324353647398995,1,False,57,False,2164.0,0.0,bp,synaptic membrane adhesion
+Q15078,GO:0000307,295,28,660,12.710841176086037,1,False,4,False,311.0,0.0,cc,cyclin-dependent protein kinase holoenzyme complex
+Q8IRA1,GO:0000930,93,27,660,6.80193738306157,1,False,24,False,325.5,0.0,cc,gamma-tubulin complex
+P39731,GO:0000940,95,38,660,33.31259099869938,1,False,9,False,321.5,0.0,cc,outer kinetochore
+P40014,GO:0000940,95,38,660,21.30372853139748,1,False,11,False,324.5,0.0,cc,outer kinetochore
+Q10430,GO:0000940,95,38,660,20.361620743398586,1,False,13,False,325.0,0.0,cc,outer kinetochore
+Q6P1K2,GO:0000940,95,38,660,34.938757440373934,1,False,22,False,323.0,0.0,cc,outer kinetochore
+Q8NBT2,GO:0000940,95,38,660,26.299488582108992,1,False,17,False,321.5,0.0,cc,outer kinetochore
+Q96IY1,GO:0000940,95,38,660,28.56928385252566,1,False,17,False,321.0,0.0,cc,outer kinetochore
+Q9HBM1,GO:0000940,95,38,660,19.79800506375628,1,False,13,False,323.5,0.0,cc,outer kinetochore
+A0A087WTA9,GO:0001669,202,98,660,1.0001588481128896,1,False,5,False,324.5,0.0,cc,acrosomal vesicle
+H7C3K1,GO:0001669,202,98,660,0.7900878506043014,1,False,11,False,324.5,0.0,cc,acrosomal vesicle
+Q5JX69,GO:0001669,202,98,660,0.9338722177600038,1,False,8,False,324.5,0.0,cc,acrosomal vesicle
+G4NCH6,GO:0005778,199,77,660,6.824016927600855,1,False,13,False,325.0,0.0,cc,peroxisomal membrane
+Q7RY61,GO:0005778,199,77,660,5.634184499898353,1,False,19,False,325.0,0.0,cc,peroxisomal membrane
+P81702,GO:0009277,267,113,660,4.321669099271152,1,False,9,False,329.0,0.0,cc,fungal-type cell wall
+O81862,GO:0009505,164,67,660,8.519433568859299,1,False,10,False,327.0,0.0,cc,plant-type cell wall
+Q39066,GO:0009505,164,67,660,15.429218366618391,1,False,5,False,329.0,0.0,cc,plant-type cell wall
+Q8LEJ6,GO:0009505,164,67,660,9.832162917713584,1,False,20,False,333.5,0.0,cc,plant-type cell wall
+Q9C7S6,GO:0009505,164,67,660,2.503125301740088,1,False,17,False,328.5,0.0,cc,plant-type cell wall
+Q9LMU2,GO:0009505,164,67,660,2.0717572963611666,1,False,7,False,322.5,0.0,cc,plant-type cell wall
+Q9LRJ9,GO:0009505,164,67,660,12.224514059656975,1,False,8,False,325.0,0.0,cc,plant-type cell wall
+Q9M2U5,GO:0009505,164,67,660,6.77160684550063,1,False,20,False,331.5,0.0,cc,plant-type cell wall
+Q67XQ0,GO:0009705,135,53,660,17.81374421313524,1,False,6,False,331.0,0.0,cc,plant-type vacuole membrane
+P53262,GO:0016471,89,20,660,24.13757017944575,1,False,10,False,317.5,0.0,cc,vacuolar proton-transporting V-type ATPase complex
+Q8I2D9,GO:0020002,59,17,660,449.1086584425333,1,False,8,False,329.5,0.0,cc,host cell plasma membrane
+Q8IEJ0,GO:0020002,59,17,660,521.277349786227,1,False,8,False,329.5,0.0,cc,host cell plasma membrane
+Q7TPB7,GO:0030672,182,39,660,3.2076980763492813,1,False,9,False,322.5,0.0,cc,synaptic vesicle membrane
+Q9VPF9,GO:0032039,76,26,660,4.542224157827702,1,False,11,False,327.0,0.0,cc,integrator complex
+P53262,GO:0033176,117,26,660,12.179927640448645,1,False,10,False,317.5,0.0,cc,proton-transporting V-type ATPase complex
+P0C1C6,GO:0042025,113,86,660,11.675328558206772,1,False,12,False,330.0,0.0,cc,host cell nucleus
+Q9VIF1,GO:0043186,189,59,660,5.799846331358718,1,False,7,False,326.0,0.0,cc,P granule
+P0ADC3,GO:0043190,196,31,660,17.66212135769894,1,False,2,False,325.0,0.0,cc,ATP-binding cassette (ABC) transporter complex
+P75958,GO:0043190,196,31,660,19.81685956297551,1,False,3,False,327.5,0.0,cc,ATP-binding cassette (ABC) transporter complex
+O00584,GO:0043202,94,61,660,3.3792137920356304,1,False,5,False,319.5,0.0,cc,lysosomal lumen
+E1B8U2,GO:0043527,94,7,660,45.844019148095256,1,False,14,False,328.5,0.0,cc,tRNA methyltransferase complex
+Q9BTF0,GO:0043527,94,7,660,41.58148447881111,1,False,10,False,326.0,0.0,cc,tRNA methyltransferase complex
+Q9BV44,GO:0043527,94,7,660,37.39601550773446,1,False,5,False,323.5,0.0,cc,tRNA methyltransferase complex
+P53855,GO:0044232,129,60,660,3.335541292336911,1,False,6,False,322.0,0.0,cc,organelle membrane contact site
+P0ABA0,GO:0045259,208,29,660,6.243945037688407,1,False,10,False,326.5,0.0,cc,proton-transporting ATP synthase complex
+Q04613,GO:0045259,208,29,660,46.63050041811871,1,False,10,False,322.5,0.0,cc,proton-transporting ATP synthase complex
+B3H4Y2,GO:0048046,261,154,660,5.357715187107607,1,False,1,False,321.0,0.0,cc,apoplast
+F4KCH3,GO:0048046,261,154,660,6.068459270844393,1,False,2,False,324.0,0.0,cc,apoplast
+Q9FIW1,GO:0048046,261,154,660,5.320162488314615,1,False,2,False,324.0,0.0,cc,apoplast
+Q86X95,GO:0071006,92,23,660,16.978999656862527,1,False,11,False,320.0,0.0,cc,U2-type catalytic step 1 spliceosome
+Q9GZU8,GO:0071006,92,23,660,8.72087153387908,1,False,6,False,324.0,0.0,cc,U2-type catalytic step 1 spliceosome
+Q9H875,GO:0071006,92,23,660,12.4410904309542,1,False,10,False,320.5,0.0,cc,U2-type catalytic step 1 spliceosome
+Q9P013,GO:0071006,92,23,660,18.026531215589465,1,False,15,False,319.0,0.0,cc,U2-type catalytic step 1 spliceosome
+Q5JCS6,GO:0099092,51,25,660,35.52072474652127,1,False,19,False,342.0,0.0,cc,"postsynaptic density, intracellular component"
+P36040,GO:0101031,183,23,660,0.9894756009629688,1,False,3,False,326.0,0.0,cc,protein folding chaperone complex
+Q05778,GO:0101031,183,23,660,0.4080378994763101,1,False,14,False,329.0,0.0,cc,protein folding chaperone complex

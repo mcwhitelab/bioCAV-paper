@@ -16,6 +16,11 @@ adjusting for it.
 For "lung10x" (not a real tissue value -- a naming convention for the
 assay-10x-3'v2-restricted axes), pass --assay-filter to additionally
 restrict to that assay.
+
+--min-cells-per-sample N (default 0 = off) additionally drops any paired donor
+whose normal or condition cells number < N -- the same donor rule the
+Figure 6 pseudobulk DE applies (scripts/paired_donor_pseudobulk_de.R, N = 10),
+so the CAV correlations can be computed on exactly the DE's cells.
 """
 
 import argparse
@@ -42,6 +47,10 @@ def main():
     ap.add_argument("--pairs-csv", required=True,
                     help="CSV with cell_type,tissue,condition,score_col,tissue_real,assay_filter columns")
     ap.add_argument("--out-dir", required=True)
+    ap.add_argument("--min-cells-per-sample", type=int, default=0,
+                    help="drop paired donors with < N cells in either condition (default 0 = off)")
+    ap.add_argument("--only", nargs="*", default=None,
+                    help="restrict to these pair_labels (default: every row of --pairs-csv)")
     args = ap.parse_args()
 
     import os
@@ -50,6 +59,8 @@ def main():
     from cav_gene_correlation import correlate_scores_with_genes  # noqa: E402
 
     pairs = pd.read_csv(args.pairs_csv)
+    if args.only:
+        pairs = pairs[pairs["pair_label"].isin(args.only)]
     out_dir = Path(args.out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
 
@@ -77,6 +88,14 @@ def main():
         dc = sub_obs.groupby("donor_id")["disease"].nunique()
         paired_donors = dc[dc == 2].index
         sub_obs = sub_obs[sub_obs["donor_id"].isin(paired_donors)]
+        if args.min_cells_per_sample > 0:
+            per = sub_obs.groupby(["donor_id", "disease"]).size().unstack(fill_value=0)
+            small = per.index[(per < args.min_cells_per_sample).any(axis=1)]
+            if len(small):
+                print(f"  dropping donors with < {args.min_cells_per_sample} cells in a condition: "
+                      f"{', '.join(small)}", file=sys.stderr)
+            paired_donors = paired_donors.difference(small)
+            sub_obs = sub_obs[sub_obs["donor_id"].isin(paired_donors)]
 
         n_normal = (sub_obs["disease"].map(norm) == "normal").sum()
         n_cond = (sub_obs["disease"].map(norm) == cond).sum()

@@ -1,0 +1,360 @@
+ontology,fam,method,tier,n,prop
+BP,20-59 families,BLAST,No prediction,1019,0.5896990740740741
+BP,20-59 families,BLAST,Rank 1,64,0.037037037037037035
+BP,20-59 families,BLAST,Rank 2-3,53,0.030671296296296297
+BP,20-59 families,BLAST,Rank 4-10,115,0.06655092592592593
+BP,20-59 families,BLAST,Rank >10,477,0.2760416666666667
+BP,20-59 families,"Best of CAV or BLAST, per pair",No prediction,562,0.32523148148148145
+BP,20-59 families,"Best of CAV or BLAST, per pair",Rank 1,148,0.08564814814814815
+BP,20-59 families,"Best of CAV or BLAST, per pair",Rank 2-3,119,0.06886574074074074
+BP,20-59 families,"Best of CAV or BLAST, per pair",Rank 4-10,241,0.1394675925925926
+BP,20-59 families,"Best of CAV or BLAST, per pair",Rank >10,658,0.38078703703703703
+BP,20-59 families,CAV,No prediction,625,0.3616898148148148
+BP,20-59 families,CAV,Rank 1,103,0.05960648148148148
+BP,20-59 families,CAV,Rank 2-3,96,0.05555555555555555
+BP,20-59 families,CAV,Rank 4-10,227,0.13136574074074073
+BP,20-59 families,CAV,Rank >10,677,0.3917824074074074
+BP,20-59 families,CAV x BLAST (rank product),No prediction,562,0.32523148148148145
+BP,20-59 families,CAV x BLAST (rank product),Rank 1,180,0.10416666666666667
+BP,20-59 families,CAV x BLAST (rank product),Rank 2-3,112,0.06481481481481481
+BP,20-59 families,CAV x BLAST (rank product),Rank 4-10,140,0.08101851851851852
+BP,20-59 families,CAV x BLAST (rank product),Rank >10,734,0.42476851851851855
+BP,20-59 families,"CAV x BLAST (soft, eps 0.1)",No prediction,562,0.32523148148148145
+BP,20-59 families,"CAV x BLAST (soft, eps 0.1)",Rank 1,162,0.09375
+BP,20-59 families,"CAV x BLAST (soft, eps 0.1)",Rank 2-3,108,0.0625
+BP,20-59 families,"CAV x BLAST (soft, eps 0.1)",Rank 4-10,212,0.12268518518518519
+BP,20-59 families,"CAV x BLAST (soft, eps 0.1)",Rank >10,684,0.3958333333333333
+BP,20-59 families,DeepGoSE,No prediction,1439,0.8327546296296297
+BP,20-59 families,DeepGoSE,Rank 1,22,0.01273148148148148
+BP,20-59 families,DeepGoSE,Rank 2-3,31,0.017939814814814815
+BP,20-59 families,DeepGoSE,Rank 4-10,62,0.03587962962962963
+BP,20-59 families,DeepGoSE,Rank >10,174,0.10069444444444445
+BP,20-59 families,soft eps 0.01,No prediction,562,0.32523148148148145
+BP,20-59 families,soft eps 0.01,Rank 1,168,0.09722222222222222
+BP,20-59 families,soft eps 0.01,Rank 2-3,115,0.06655092592592593
+BP,20-59 families,soft eps 0.01,Rank 4-10,175,0.10127314814814815
+BP,20-59 families,soft eps 0.01,Rank >10,708,0.4097222222222222
+BP,20-59 families,soft eps 1,No prediction,562,0.32523148148148145
+BP,20-59 families,soft eps 1,Rank 1,131,0.07581018518518519
+BP,20-59 families,soft eps 1,Rank 2-3,121,0.07002314814814815
+BP,20-59 families,soft eps 1,Rank 4-10,219,0.1267361111111111
+BP,20-59 families,soft eps 1,Rank >10,695,0.40219907407407407
+BP,<20 families,BLAST,No prediction,144,0.5975103734439834
+BP,<20 families,BLAST,Rank 1,1,0.004149377593360996
+BP,<20 families,BLAST,Rank 2-3,18,0.07468879668049792
+BP,<20 families,BLAST,Rank 4-10,18,0.07468879668049792
+BP,<20 families,BLAST,Rank >10,60,0.24896265560165975
+BP,<20 families,"Best of CAV or BLAST, per pair",No prediction,106,0.43983402489626555
+BP,<20 families,"Best of CAV or BLAST, per pair",Rank 1,32,0.13278008298755187
+BP,<20 families,"Best of CAV or BLAST, per pair",Rank 2-3,17,0.07053941908713693
+BP,<20 families,"Best of CAV or BLAST, per pair",Rank 4-10,27,0.11203319502074689
+BP,<20 families,"Best of CAV or BLAST, per pair",Rank >10,59,0.24481327800829875
+BP,<20 families,CAV,No prediction,114,0.4730290456431535
+BP,<20 families,CAV,Rank 1,29,0.12033195020746888
+BP,<20 families,CAV,Rank 2-3,14,0.058091286307053944
+BP,<20 families,CAV,Rank 4-10,26,0.1078838174273859
+BP,<20 families,CAV,Rank >10,58,0.24066390041493776
+BP,<20 families,CAV x BLAST (rank product),No prediction,106,0.43983402489626555
+BP,<20 families,CAV x BLAST (rank product),Rank 1,39,0.16182572614107885
+BP,<20 families,CAV x BLAST (rank product),Rank 2-3,13,0.05394190871369295
+BP,<20 families,CAV x BLAST (rank product),Rank 4-10,19,0.07883817427385892
+BP,<20 families,CAV x BLAST (rank product),Rank >10,64,0.26556016597510373
+BP,<20 families,"CAV x BLAST (soft, eps 0.1)",No prediction,106,0.43983402489626555
+BP,<20 families,"CAV x BLAST (soft, eps 0.1)",Rank 1,42,0.17427385892116182
+BP,<20 families,"CAV x BLAST (soft, eps 0.1)",Rank 2-3,15,0.06224066390041494
+BP,<20 families,"CAV x BLAST (soft, eps 0.1)",Rank 4-10,23,0.0954356846473029
+BP,<20 families,"CAV x BLAST (soft, eps 0.1)",Rank >10,55,0.22821576763485477
+BP,<20 families,DeepGoSE,No prediction,225,0.9336099585062241
+BP,<20 families,DeepGoSE,Rank 2-3,2,0.008298755186721992
+BP,<20 families,DeepGoSE,Rank 4-10,2,0.008298755186721992
+BP,<20 families,DeepGoSE,Rank >10,12,0.04979253112033195
+BP,<20 families,soft eps 0.01,No prediction,106,0.43983402489626555
+BP,<20 families,soft eps 0.01,Rank 1,41,0.17012448132780084
+BP,<20 families,soft eps 0.01,Rank 2-3,15,0.06224066390041494
+BP,<20 families,soft eps 0.01,Rank 4-10,23,0.0954356846473029
+BP,<20 families,soft eps 0.01,Rank >10,56,0.23236514522821577
+BP,<20 families,soft eps 1,No prediction,106,0.43983402489626555
+BP,<20 families,soft eps 1,Rank 1,36,0.14937759336099585
+BP,<20 families,soft eps 1,Rank 2-3,16,0.06639004149377593
+BP,<20 families,soft eps 1,Rank 4-10,28,0.11618257261410789
+BP,<20 families,soft eps 1,Rank >10,55,0.22821576763485477
+BP,>=60 families,BLAST,No prediction,476,0.6181818181818182
+BP,>=60 families,BLAST,Rank 1,14,0.01818181818181818
+BP,>=60 families,BLAST,Rank 2-3,21,0.02727272727272727
+BP,>=60 families,BLAST,Rank 4-10,39,0.05064935064935065
+BP,>=60 families,BLAST,Rank >10,220,0.2857142857142857
+BP,>=60 families,"Best of CAV or BLAST, per pair",No prediction,269,0.34935064935064936
+BP,>=60 families,"Best of CAV or BLAST, per pair",Rank 1,32,0.04155844155844156
+BP,>=60 families,"Best of CAV or BLAST, per pair",Rank 2-3,32,0.04155844155844156
+BP,>=60 families,"Best of CAV or BLAST, per pair",Rank 4-10,66,0.08571428571428572
+BP,>=60 families,"Best of CAV or BLAST, per pair",Rank >10,371,0.4818181818181818
+BP,>=60 families,CAV,No prediction,305,0.3961038961038961
+BP,>=60 families,CAV,Rank 1,18,0.023376623376623377
+BP,>=60 families,CAV,Rank 2-3,14,0.01818181818181818
+BP,>=60 families,CAV,Rank 4-10,45,0.05844155844155844
+BP,>=60 families,CAV,Rank >10,388,0.5038961038961038
+BP,>=60 families,CAV x BLAST (rank product),No prediction,269,0.34935064935064936
+BP,>=60 families,CAV x BLAST (rank product),Rank 1,35,0.045454545454545456
+BP,>=60 families,CAV x BLAST (rank product),Rank 2-3,36,0.046753246753246755
+BP,>=60 families,CAV x BLAST (rank product),Rank 4-10,50,0.06493506493506493
+BP,>=60 families,CAV x BLAST (rank product),Rank >10,380,0.4935064935064935
+BP,>=60 families,"CAV x BLAST (soft, eps 0.1)",No prediction,269,0.34935064935064936
+BP,>=60 families,"CAV x BLAST (soft, eps 0.1)",Rank 1,30,0.03896103896103896
+BP,>=60 families,"CAV x BLAST (soft, eps 0.1)",Rank 2-3,26,0.033766233766233764
+BP,>=60 families,"CAV x BLAST (soft, eps 0.1)",Rank 4-10,70,0.09090909090909091
+BP,>=60 families,"CAV x BLAST (soft, eps 0.1)",Rank >10,375,0.487012987012987
+BP,>=60 families,DeepGoSE,No prediction,635,0.8246753246753247
+BP,>=60 families,DeepGoSE,Rank 1,20,0.025974025974025976
+BP,>=60 families,DeepGoSE,Rank 2-3,8,0.01038961038961039
+BP,>=60 families,DeepGoSE,Rank 4-10,24,0.03116883116883117
+BP,>=60 families,DeepGoSE,Rank >10,83,0.10779220779220779
+BP,>=60 families,soft eps 0.01,No prediction,269,0.34935064935064936
+BP,>=60 families,soft eps 0.01,Rank 1,31,0.04025974025974026
+BP,>=60 families,soft eps 0.01,Rank 2-3,25,0.032467532467532464
+BP,>=60 families,soft eps 0.01,Rank 4-10,71,0.09220779220779221
+BP,>=60 families,soft eps 0.01,Rank >10,374,0.4857142857142857
+BP,>=60 families,soft eps 1,No prediction,269,0.34935064935064936
+BP,>=60 families,soft eps 1,Rank 1,25,0.032467532467532464
+BP,>=60 families,soft eps 1,Rank 2-3,21,0.02727272727272727
+BP,>=60 families,soft eps 1,Rank 4-10,53,0.06883116883116883
+BP,>=60 families,soft eps 1,Rank >10,402,0.522077922077922
+CC,20-59 families,BLAST,No prediction,1060,0.629080118694362
+CC,20-59 families,BLAST,Rank 1,144,0.08545994065281899
+CC,20-59 families,BLAST,Rank 2-3,136,0.08071216617210683
+CC,20-59 families,BLAST,Rank 4-10,162,0.09614243323442137
+CC,20-59 families,BLAST,Rank >10,183,0.1086053412462908
+CC,20-59 families,"Best of CAV or BLAST, per pair",No prediction,490,0.29080118694362017
+CC,20-59 families,"Best of CAV or BLAST, per pair",Rank 1,247,0.14658753709198813
+CC,20-59 families,"Best of CAV or BLAST, per pair",Rank 2-3,205,0.12166172106824925
+CC,20-59 families,"Best of CAV or BLAST, per pair",Rank 4-10,203,0.12047477744807121
+CC,20-59 families,"Best of CAV or BLAST, per pair",Rank >10,540,0.32047477744807124
+CC,20-59 families,CAV,No prediction,537,0.31869436201780416
+CC,20-59 families,CAV,Rank 1,155,0.09198813056379822
+CC,20-59 families,CAV,Rank 2-3,145,0.08605341246290801
+CC,20-59 families,CAV,Rank 4-10,208,0.12344213649851632
+CC,20-59 families,CAV,Rank >10,640,0.3798219584569733
+CC,20-59 families,CAV x BLAST (rank product),No prediction,490,0.29080118694362017
+CC,20-59 families,CAV x BLAST (rank product),Rank 1,273,0.16201780415430267
+CC,20-59 families,CAV x BLAST (rank product),Rank 2-3,142,0.08427299703264095
+CC,20-59 families,CAV x BLAST (rank product),Rank 4-10,184,0.10919881305637982
+CC,20-59 families,CAV x BLAST (rank product),Rank >10,596,0.3537091988130564
+CC,20-59 families,"CAV x BLAST (soft, eps 0.1)",No prediction,490,0.29080118694362017
+CC,20-59 families,"CAV x BLAST (soft, eps 0.1)",Rank 1,249,0.14777448071216617
+CC,20-59 families,"CAV x BLAST (soft, eps 0.1)",Rank 2-3,178,0.10563798219584569
+CC,20-59 families,"CAV x BLAST (soft, eps 0.1)",Rank 4-10,182,0.10801186943620178
+CC,20-59 families,"CAV x BLAST (soft, eps 0.1)",Rank >10,586,0.34777448071216616
+CC,20-59 families,DeepGoSE,No prediction,1268,0.7525222551928783
+CC,20-59 families,DeepGoSE,Rank 1,18,0.010682492581602374
+CC,20-59 families,DeepGoSE,Rank 2-3,84,0.049851632047477744
+CC,20-59 families,DeepGoSE,Rank 4-10,164,0.0973293768545994
+CC,20-59 families,DeepGoSE,Rank >10,151,0.08961424332344213
+CC,20-59 families,soft eps 0.01,No prediction,490,0.29080118694362017
+CC,20-59 families,soft eps 0.01,Rank 1,261,0.15489614243323443
+CC,20-59 families,soft eps 0.01,Rank 2-3,181,0.10741839762611276
+CC,20-59 families,soft eps 0.01,Rank 4-10,170,0.10089020771513353
+CC,20-59 families,soft eps 0.01,Rank >10,583,0.34599406528189913
+CC,20-59 families,soft eps 1,No prediction,490,0.29080118694362017
+CC,20-59 families,soft eps 1,Rank 1,199,0.11810089020771514
+CC,20-59 families,soft eps 1,Rank 2-3,164,0.0973293768545994
+CC,20-59 families,soft eps 1,Rank 4-10,197,0.1169139465875371
+CC,20-59 families,soft eps 1,Rank >10,635,0.3768545994065282
+CC,<20 families,BLAST,No prediction,236,0.7492063492063492
+CC,<20 families,BLAST,Rank 1,17,0.05396825396825397
+CC,<20 families,BLAST,Rank 2-3,31,0.09841269841269841
+CC,<20 families,BLAST,Rank 4-10,15,0.047619047619047616
+CC,<20 families,BLAST,Rank >10,16,0.050793650793650794
+CC,<20 families,"Best of CAV or BLAST, per pair",No prediction,176,0.5587301587301587
+CC,<20 families,"Best of CAV or BLAST, per pair",Rank 1,47,0.1492063492063492
+CC,<20 families,"Best of CAV or BLAST, per pair",Rank 2-3,40,0.12698412698412698
+CC,<20 families,"Best of CAV or BLAST, per pair",Rank 4-10,23,0.07301587301587302
+CC,<20 families,"Best of CAV or BLAST, per pair",Rank >10,29,0.09206349206349207
+CC,<20 families,CAV,No prediction,182,0.5777777777777777
+CC,<20 families,CAV,Rank 1,39,0.12380952380952381
+CC,<20 families,CAV,Rank 2-3,35,0.1111111111111111
+CC,<20 families,CAV,Rank 4-10,26,0.08253968253968254
+CC,<20 families,CAV,Rank >10,33,0.10476190476190476
+CC,<20 families,CAV x BLAST (rank product),No prediction,176,0.5587301587301587
+CC,<20 families,CAV x BLAST (rank product),Rank 1,50,0.15873015873015872
+CC,<20 families,CAV x BLAST (rank product),Rank 2-3,21,0.06666666666666667
+CC,<20 families,CAV x BLAST (rank product),Rank 4-10,25,0.07936507936507936
+CC,<20 families,CAV x BLAST (rank product),Rank >10,43,0.1365079365079365
+CC,<20 families,"CAV x BLAST (soft, eps 0.1)",No prediction,176,0.5587301587301587
+CC,<20 families,"CAV x BLAST (soft, eps 0.1)",Rank 1,47,0.1492063492063492
+CC,<20 families,"CAV x BLAST (soft, eps 0.1)",Rank 2-3,33,0.10476190476190476
+CC,<20 families,"CAV x BLAST (soft, eps 0.1)",Rank 4-10,15,0.047619047619047616
+CC,<20 families,"CAV x BLAST (soft, eps 0.1)",Rank >10,44,0.13968253968253969
+CC,<20 families,DeepGoSE,No prediction,203,0.6444444444444445
+CC,<20 families,DeepGoSE,Rank 1,23,0.07301587301587302
+CC,<20 families,DeepGoSE,Rank 2-3,27,0.08571428571428572
+CC,<20 families,DeepGoSE,Rank 4-10,45,0.14285714285714285
+CC,<20 families,DeepGoSE,Rank >10,17,0.05396825396825397
+CC,<20 families,soft eps 0.01,No prediction,176,0.5587301587301587
+CC,<20 families,soft eps 0.01,Rank 1,49,0.15555555555555556
+CC,<20 families,soft eps 0.01,Rank 2-3,29,0.09206349206349207
+CC,<20 families,soft eps 0.01,Rank 4-10,15,0.047619047619047616
+CC,<20 families,soft eps 0.01,Rank >10,46,0.14603174603174604
+CC,<20 families,soft eps 1,No prediction,176,0.5587301587301587
+CC,<20 families,soft eps 1,Rank 1,44,0.13968253968253969
+CC,<20 families,soft eps 1,Rank 2-3,38,0.12063492063492064
+CC,<20 families,soft eps 1,Rank 4-10,19,0.06031746031746032
+CC,<20 families,soft eps 1,Rank >10,38,0.12063492063492064
+CC,>=60 families,BLAST,No prediction,1128,0.5497076023391813
+CC,>=60 families,BLAST,Rank 1,177,0.08625730994152046
+CC,>=60 families,BLAST,Rank 2-3,253,0.1232943469785575
+CC,>=60 families,BLAST,Rank 4-10,250,0.12183235867446393
+CC,>=60 families,BLAST,Rank >10,244,0.1189083820662768
+CC,>=60 families,"Best of CAV or BLAST, per pair",No prediction,519,0.25292397660818716
+CC,>=60 families,"Best of CAV or BLAST, per pair",Rank 1,275,0.13401559454191034
+CC,>=60 families,"Best of CAV or BLAST, per pair",Rank 2-3,262,0.1276803118908382
+CC,>=60 families,"Best of CAV or BLAST, per pair",Rank 4-10,358,0.17446393762183235
+CC,>=60 families,"Best of CAV or BLAST, per pair",Rank >10,638,0.310916179337232
+CC,>=60 families,CAV,No prediction,632,0.3079922027290448
+CC,>=60 families,CAV,Rank 1,129,0.06286549707602339
+CC,>=60 families,CAV,Rank 2-3,54,0.02631578947368421
+CC,>=60 families,CAV,Rank 4-10,283,0.13791423001949318
+CC,>=60 families,CAV,Rank >10,954,0.4649122807017544
+CC,>=60 families,CAV x BLAST (rank product),No prediction,519,0.25292397660818716
+CC,>=60 families,CAV x BLAST (rank product),Rank 1,270,0.13157894736842105
+CC,>=60 families,CAV x BLAST (rank product),Rank 2-3,194,0.09454191033138401
+CC,>=60 families,CAV x BLAST (rank product),Rank 4-10,271,0.13206627680311891
+CC,>=60 families,CAV x BLAST (rank product),Rank >10,798,0.3888888888888889
+CC,>=60 families,"CAV x BLAST (soft, eps 0.1)",No prediction,519,0.25292397660818716
+CC,>=60 families,"CAV x BLAST (soft, eps 0.1)",Rank 1,263,0.12816764132553607
+CC,>=60 families,"CAV x BLAST (soft, eps 0.1)",Rank 2-3,196,0.09551656920077972
+CC,>=60 families,"CAV x BLAST (soft, eps 0.1)",Rank 4-10,326,0.15886939571150097
+CC,>=60 families,"CAV x BLAST (soft, eps 0.1)",Rank >10,748,0.3645224171539961
+CC,>=60 families,DeepGoSE,No prediction,1682,0.8196881091617934
+CC,>=60 families,DeepGoSE,Rank 1,100,0.04873294346978557
+CC,>=60 families,DeepGoSE,Rank 2-3,59,0.028752436647173488
+CC,>=60 families,DeepGoSE,Rank 4-10,115,0.05604288499025341
+CC,>=60 families,DeepGoSE,Rank >10,96,0.04678362573099415
+CC,>=60 families,soft eps 0.01,No prediction,519,0.25292397660818716
+CC,>=60 families,soft eps 0.01,Rank 1,292,0.14230019493177387
+CC,>=60 families,soft eps 0.01,Rank 2-3,211,0.10282651072124756
+CC,>=60 families,soft eps 0.01,Rank 4-10,295,0.14376218323586745
+CC,>=60 families,soft eps 0.01,Rank >10,735,0.358187134502924
+CC,>=60 families,soft eps 1,No prediction,519,0.25292397660818716
+CC,>=60 families,soft eps 1,Rank 1,172,0.08382066276803118
+CC,>=60 families,soft eps 1,Rank 2-3,121,0.05896686159844054
+CC,>=60 families,soft eps 1,Rank 4-10,317,0.15448343079922028
+CC,>=60 families,soft eps 1,Rank >10,923,0.4498050682261209
+MF,20-59 families,BLAST,No prediction,453,0.6080536912751678
+MF,20-59 families,BLAST,Rank 1,64,0.08590604026845637
+MF,20-59 families,BLAST,Rank 2-3,72,0.09664429530201342
+MF,20-59 families,BLAST,Rank 4-10,77,0.10335570469798658
+MF,20-59 families,BLAST,Rank >10,79,0.10604026845637583
+MF,20-59 families,"Best of CAV or BLAST, per pair",No prediction,263,0.3530201342281879
+MF,20-59 families,"Best of CAV or BLAST, per pair",Rank 1,129,0.17315436241610738
+MF,20-59 families,"Best of CAV or BLAST, per pair",Rank 2-3,93,0.12483221476510067
+MF,20-59 families,"Best of CAV or BLAST, per pair",Rank 4-10,95,0.12751677852348994
+MF,20-59 families,"Best of CAV or BLAST, per pair",Rank >10,165,0.2214765100671141
+MF,20-59 families,CAV,No prediction,284,0.3812080536912752
+MF,20-59 families,CAV,Rank 1,107,0.1436241610738255
+MF,20-59 families,CAV,Rank 2-3,65,0.087248322147651
+MF,20-59 families,CAV,Rank 4-10,67,0.08993288590604027
+MF,20-59 families,CAV,Rank >10,222,0.2979865771812081
+MF,20-59 families,CAV x BLAST (rank product),No prediction,263,0.3530201342281879
+MF,20-59 families,CAV x BLAST (rank product),Rank 1,127,0.1704697986577181
+MF,20-59 families,CAV x BLAST (rank product),Rank 2-3,83,0.11140939597315436
+MF,20-59 families,CAV x BLAST (rank product),Rank 4-10,78,0.10469798657718121
+MF,20-59 families,CAV x BLAST (rank product),Rank >10,194,0.26040268456375837
+MF,20-59 families,"CAV x BLAST (soft, eps 0.1)",No prediction,263,0.3530201342281879
+MF,20-59 families,"CAV x BLAST (soft, eps 0.1)",Rank 1,122,0.16375838926174496
+MF,20-59 families,"CAV x BLAST (soft, eps 0.1)",Rank 2-3,88,0.11812080536912752
+MF,20-59 families,"CAV x BLAST (soft, eps 0.1)",Rank 4-10,78,0.10469798657718121
+MF,20-59 families,"CAV x BLAST (soft, eps 0.1)",Rank >10,194,0.26040268456375837
+MF,20-59 families,DeepGoSE,No prediction,591,0.7932885906040269
+MF,20-59 families,DeepGoSE,Rank 1,59,0.07919463087248323
+MF,20-59 families,DeepGoSE,Rank 2-3,41,0.05503355704697987
+MF,20-59 families,DeepGoSE,Rank 4-10,44,0.05906040268456376
+MF,20-59 families,DeepGoSE,Rank >10,10,0.013422818791946308
+MF,20-59 families,soft eps 0.01,No prediction,263,0.3530201342281879
+MF,20-59 families,soft eps 0.01,Rank 1,125,0.16778523489932887
+MF,20-59 families,soft eps 0.01,Rank 2-3,81,0.1087248322147651
+MF,20-59 families,soft eps 0.01,Rank 4-10,79,0.10604026845637583
+MF,20-59 families,soft eps 0.01,Rank >10,197,0.2644295302013423
+MF,20-59 families,soft eps 1,No prediction,263,0.3530201342281879
+MF,20-59 families,soft eps 1,Rank 1,110,0.1476510067114094
+MF,20-59 families,soft eps 1,Rank 2-3,84,0.11275167785234899
+MF,20-59 families,soft eps 1,Rank 4-10,77,0.10335570469798658
+MF,20-59 families,soft eps 1,Rank >10,211,0.2832214765100671
+MF,<20 families,BLAST,No prediction,100,0.3816793893129771
+MF,<20 families,BLAST,Rank 1,55,0.2099236641221374
+MF,<20 families,BLAST,Rank 2-3,38,0.1450381679389313
+MF,<20 families,BLAST,Rank 4-10,39,0.14885496183206107
+MF,<20 families,BLAST,Rank >10,30,0.11450381679389313
+MF,<20 families,"Best of CAV or BLAST, per pair",No prediction,67,0.25572519083969464
+MF,<20 families,"Best of CAV or BLAST, per pair",Rank 1,116,0.44274809160305345
+MF,<20 families,"Best of CAV or BLAST, per pair",Rank 2-3,34,0.1297709923664122
+MF,<20 families,"Best of CAV or BLAST, per pair",Rank 4-10,28,0.10687022900763359
+MF,<20 families,"Best of CAV or BLAST, per pair",Rank >10,17,0.0648854961832061
+MF,<20 families,CAV,No prediction,69,0.2633587786259542
+MF,<20 families,CAV,Rank 1,99,0.37786259541984735
+MF,<20 families,CAV,Rank 2-3,39,0.14885496183206107
+MF,<20 families,CAV,Rank 4-10,35,0.13358778625954199
+MF,<20 families,CAV,Rank >10,20,0.07633587786259542
+MF,<20 families,CAV x BLAST (rank product),No prediction,67,0.25572519083969464
+MF,<20 families,CAV x BLAST (rank product),Rank 1,107,0.4083969465648855
+MF,<20 families,CAV x BLAST (rank product),Rank 2-3,32,0.12213740458015267
+MF,<20 families,CAV x BLAST (rank product),Rank 4-10,27,0.10305343511450382
+MF,<20 families,CAV x BLAST (rank product),Rank >10,29,0.11068702290076336
+MF,<20 families,"CAV x BLAST (soft, eps 0.1)",No prediction,67,0.25572519083969464
+MF,<20 families,"CAV x BLAST (soft, eps 0.1)",Rank 1,119,0.4541984732824427
+MF,<20 families,"CAV x BLAST (soft, eps 0.1)",Rank 2-3,30,0.11450381679389313
+MF,<20 families,"CAV x BLAST (soft, eps 0.1)",Rank 4-10,25,0.09541984732824428
+MF,<20 families,"CAV x BLAST (soft, eps 0.1)",Rank >10,21,0.08015267175572519
+MF,<20 families,DeepGoSE,No prediction,152,0.5801526717557252
+MF,<20 families,DeepGoSE,Rank 1,49,0.18702290076335878
+MF,<20 families,DeepGoSE,Rank 2-3,37,0.14122137404580154
+MF,<20 families,DeepGoSE,Rank 4-10,12,0.04580152671755725
+MF,<20 families,DeepGoSE,Rank >10,12,0.04580152671755725
+MF,<20 families,soft eps 0.01,No prediction,67,0.25572519083969464
+MF,<20 families,soft eps 0.01,Rank 1,117,0.44656488549618323
+MF,<20 families,soft eps 0.01,Rank 2-3,29,0.11068702290076336
+MF,<20 families,soft eps 0.01,Rank 4-10,27,0.10305343511450382
+MF,<20 families,soft eps 0.01,Rank >10,22,0.08396946564885496
+MF,<20 families,soft eps 1,No prediction,67,0.25572519083969464
+MF,<20 families,soft eps 1,Rank 1,112,0.42748091603053434
+MF,<20 families,soft eps 1,Rank 2-3,28,0.10687022900763359
+MF,<20 families,soft eps 1,Rank 4-10,37,0.14122137404580154
+MF,<20 families,soft eps 1,Rank >10,18,0.06870229007633588
+MF,>=60 families,BLAST,No prediction,117,0.5416666666666666
+MF,>=60 families,BLAST,Rank 1,20,0.09259259259259259
+MF,>=60 families,BLAST,Rank 2-3,21,0.09722222222222222
+MF,>=60 families,BLAST,Rank 4-10,34,0.1574074074074074
+MF,>=60 families,BLAST,Rank >10,24,0.1111111111111111
+MF,>=60 families,"Best of CAV or BLAST, per pair",No prediction,47,0.2175925925925926
+MF,>=60 families,"Best of CAV or BLAST, per pair",Rank 1,28,0.12962962962962962
+MF,>=60 families,"Best of CAV or BLAST, per pair",Rank 2-3,43,0.19907407407407407
+MF,>=60 families,"Best of CAV or BLAST, per pair",Rank 4-10,42,0.19444444444444445
+MF,>=60 families,"Best of CAV or BLAST, per pair",Rank >10,56,0.25925925925925924
+MF,>=60 families,CAV,No prediction,55,0.25462962962962965
+MF,>=60 families,CAV,Rank 1,12,0.05555555555555555
+MF,>=60 families,CAV,Rank 2-3,33,0.1527777777777778
+MF,>=60 families,CAV,Rank 4-10,47,0.2175925925925926
+MF,>=60 families,CAV,Rank >10,69,0.3194444444444444
+MF,>=60 families,CAV x BLAST (rank product),No prediction,47,0.2175925925925926
+MF,>=60 families,CAV x BLAST (rank product),Rank 1,39,0.18055555555555555
+MF,>=60 families,CAV x BLAST (rank product),Rank 2-3,24,0.1111111111111111
+MF,>=60 families,CAV x BLAST (rank product),Rank 4-10,31,0.14351851851851852
+MF,>=60 families,CAV x BLAST (rank product),Rank >10,75,0.3472222222222222
+MF,>=60 families,"CAV x BLAST (soft, eps 0.1)",No prediction,47,0.2175925925925926
+MF,>=60 families,"CAV x BLAST (soft, eps 0.1)",Rank 1,32,0.14814814814814814
+MF,>=60 families,"CAV x BLAST (soft, eps 0.1)",Rank 2-3,33,0.1527777777777778
+MF,>=60 families,"CAV x BLAST (soft, eps 0.1)",Rank 4-10,34,0.1574074074074074
+MF,>=60 families,"CAV x BLAST (soft, eps 0.1)",Rank >10,70,0.32407407407407407
+MF,>=60 families,DeepGoSE,No prediction,176,0.8148148148148148
+MF,>=60 families,DeepGoSE,Rank 1,15,0.06944444444444445
+MF,>=60 families,DeepGoSE,Rank 2-3,10,0.046296296296296294
+MF,>=60 families,DeepGoSE,Rank 4-10,11,0.05092592592592592
+MF,>=60 families,DeepGoSE,Rank >10,4,0.018518518518518517
+MF,>=60 families,soft eps 0.01,No prediction,47,0.2175925925925926
+MF,>=60 families,soft eps 0.01,Rank 1,32,0.14814814814814814
+MF,>=60 families,soft eps 0.01,Rank 2-3,35,0.16203703703703703
+MF,>=60 families,soft eps 0.01,Rank 4-10,27,0.125
+MF,>=60 families,soft eps 0.01,Rank >10,75,0.3472222222222222
+MF,>=60 families,soft eps 1,No prediction,47,0.2175925925925926
+MF,>=60 families,soft eps 1,Rank 1,22,0.10185185185185185
+MF,>=60 families,soft eps 1,Rank 2-3,37,0.1712962962962963
+MF,>=60 families,soft eps 1,Rank 4-10,41,0.18981481481481483
+MF,>=60 families,soft eps 1,Rank >10,69,0.3194444444444444

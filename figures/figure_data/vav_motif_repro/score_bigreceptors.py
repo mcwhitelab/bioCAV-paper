@@ -5,6 +5,7 @@ higher-domain-count second Figure 4 worked example, against layer-25
 ("display layer 26") CAVs from the 20k-motif library.
 """
 import json
+import os
 import sys
 from pathlib import Path
 
@@ -13,13 +14,24 @@ import torch
 from joblib import load as joblib_load
 from transformers import AutoConfig, AutoModelForMaskedLM
 
-REPO_DIR = Path("/groups/clairemcwhite/ahmad_workspace/esm_c")
+# --- Path resolution -------------------------------------------------------
+# Paths are resolved relative to this file so the script runs from any checkout
+# of the repository, with environment overrides for the resources that live
+# outside it. The defaults reproduce the original hard-coded cluster paths
+# exactly, so behaviour is unchanged when the variables are unset.
+_HERE = Path(__file__).resolve().parent
+
+REPO_DIR = Path(os.environ.get(
+    "ESM_C_REPO", "/groups/clairemcwhite/ahmad_workspace/esm_c"))
 sys.path.insert(0, str(REPO_DIR))
 from run_test_detection_full_embed import generate_windows, resolve_stride, cumsum_mean_pool  # noqa: E402
 
-CAV_DIR = Path("/xdisk/clairemcwhite/shamail/tcav_outputs_esmplusplus_all/cavs")
-MODEL_PATH = "/groups/clairemcwhite/models/ESMplusplus_large"
-DATA_DIR = Path("/groups/clairemcwhite/cav_workspace/bioCAV-paper/figures/figure_data/vav_motif_repro/extra_proteins")
+CAV_DIR = Path(os.environ.get(
+    "PFAM_CAV_DIR",
+    "/xdisk/clairemcwhite/shamail/tcav_outputs_esmplusplus_all/cavs"))
+MODEL_PATH = os.environ.get(
+    "ESM_MODEL_DIR", "/groups/clairemcwhite/models/ESMplusplus_large")
+DATA_DIR = _HERE / "extra_proteins"
 OUT_JSON = DATA_DIR / "candidates_bigreceptors_scores.json"
 
 HS_INDEX = 25

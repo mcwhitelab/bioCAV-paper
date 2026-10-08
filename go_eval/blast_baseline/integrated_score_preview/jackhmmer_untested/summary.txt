@@ -1,0 +1,24 @@
+calibration queries ['Q2RVS1', 'Q8IEJ0', 'Q9VTG7']: hits identical to callouts_C1e-4 run: True (159 vs 159)
+
+homology status, newly tested pairs:
+ontology  homology_status_new                                 
+bp        remote homology: jackhmmer finds true-term positives    33
+          no detectable homology to true-term positives            4
+cc        no detectable homology to true-term positives           40
+          remote homology: jackhmmer finds true-term positives    16
+          shares Pfam domain with true-term positives              4
+mf        remote homology: jackhmmer finds true-term positives    10
+          no detectable homology to true-term positives            9
+          shares Pfam domain with true-term positives              6
+
+homology status, all discordant pairs:
+ontology  homology_status                                     
+bp        remote homology: jackhmmer finds true-term positives    49
+          no detectable homology to true-term positives           15
+          shares Pfam domain with true-term positives              1
+cc        no detectable homology to true-term positives           74
+          remote homology: jackhmmer finds true-term positives    25
+          shares Pfam domain with true-term positives             11
+mf        remote homology: jackhmmer finds true-term positives    16
+          no detectable homology to true-term positives           15
+          shares Pfam domain with true-term positives              7

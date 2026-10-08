@@ -1,0 +1,2 @@
+jackhmmer hits for the 60 old queries identical to the old run: True (12599 vs 12599 hits)
+old MF callouts: jackhmmer hit flag reproduced 11/11; best-E reproduced 11/11

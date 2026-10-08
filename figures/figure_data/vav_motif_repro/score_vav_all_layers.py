@@ -16,6 +16,7 @@ Outputs a single JSON with per-layer, per-domain, per-residue score arrays
 so the plotting step (R, to match figures.R conventions) doesn't need torch.
 """
 import json
+import os
 import sys
 from pathlib import Path
 
@@ -24,15 +25,22 @@ import torch
 from joblib import load as joblib_load
 from transformers import AutoConfig, AutoModelForMaskedLM
 
-REPO_DIR = Path("/groups/clairemcwhite/ahmad_workspace/esm_c")
+# --- Path resolution -------------------------------------------------------
+# Paths are resolved relative to this file so the script runs from any checkout
+# of the repository, with environment overrides for the resources that live
+# outside it. The defaults reproduce the original hard-coded cluster paths
+# exactly, so behaviour is unchanged when the variables are unset.
+_HERE = Path(__file__).resolve().parent
+
+REPO_DIR = Path(os.environ.get(
+    "ESM_C_REPO", "/groups/clairemcwhite/ahmad_workspace/esm_c"))
 sys.path.insert(0, str(REPO_DIR))
 from run_test_detection_full_embed import generate_windows, resolve_stride, cumsum_mean_pool  # noqa: E402
 
-CAV_DIR = Path("/groups/clairemcwhite/cav_workspace/bioCAV-paper/figures/figure_data/vav_motif_repro/"
-                "tcav_outputs_all_layers/cavs")
-MODEL_PATH = "/groups/clairemcwhite/models/ESMplusplus_large"
-OUT_JSON = Path("/groups/clairemcwhite/cav_workspace/bioCAV-paper/figures/figure_data/vav_motif_repro/"
-                 "vav_layerwise_scores.json")
+CAV_DIR = _HERE / "tcav_outputs_all_layers" / "cavs"
+MODEL_PATH = os.environ.get(
+    "ESM_MODEL_DIR", "/groups/clairemcwhite/models/ESMplusplus_large")
+OUT_JSON = _HERE / "vav_layerwise_scores.json"
 
 QUERY_SEQ = (
     "MASSSSSNSFGGVAGVNGDLWRECVAWLTRCKVIPPDHKAAQPDAEIRILAMTLRDGVLLCNLVIHLDPSSLDPREFNRKPQMAQFLCSKNIKLFLDVCHNNFGIRDADLFEPTMLYDLT"

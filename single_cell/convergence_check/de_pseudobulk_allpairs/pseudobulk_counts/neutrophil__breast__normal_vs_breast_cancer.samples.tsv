@@ -1,0 +1,7 @@
+sample	donor	condition	n_cells
+AziziBRCA_1__normal	AziziBRCA_1	normal	20
+AziziBRCA_1__cancer	AziziBRCA_1	cancer	1
+AziziBRCA_4__normal	AziziBRCA_4	normal	10
+AziziBRCA_4__cancer	AziziBRCA_4	cancer	78
+AziziBRCA_7__normal	AziziBRCA_7	normal	36
+AziziBRCA_7__cancer	AziziBRCA_7	cancer	152

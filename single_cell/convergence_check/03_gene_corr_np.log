@@ -1,0 +1,22 @@
+Loading h5ad...
+fibroblast__colorectum__normal_vs_colorectal_cancer: 7 paired donors, 1000 normal + 1000 condition = 2000 cells
+  Wrote convergence_check/gene_corr_np_orig/fibroblast__colorectum__normal_vs_colorectal_cancer.tsv (21952 genes)
+neutrophil__breast__normal_vs_breast_cancer: 3 paired donors, 66 normal + 231 condition = 297 cells
+  Wrote convergence_check/gene_corr_np_orig/neutrophil__breast__normal_vs_breast_cancer.tsv (12072 genes)
+epithelial_cell__lung10x__normal_vs_lung_cancer: 4 paired donors, 160 normal + 498 condition = 658 cells
+  Wrote convergence_check/gene_corr_np_orig/epithelial_cell__lung10x__normal_vs_lung_cancer.tsv (16787 genes)
+Loading h5ad...
+fibroblast__colorectum__normal_vs_colorectal_cancer: 7 paired donors, 1000 normal + 1000 condition = 2000 cells
+  Wrote convergence_check/gene_corr_np_conv1/fibroblast__colorectum__normal_vs_colorectal_cancer.tsv (21952 genes)
+neutrophil__breast__normal_vs_breast_cancer: 3 paired donors, 66 normal + 231 condition = 297 cells
+  Wrote convergence_check/gene_corr_np_conv1/neutrophil__breast__normal_vs_breast_cancer.tsv (12072 genes)
+epithelial_cell__lung10x__normal_vs_lung_cancer: 4 paired donors, 160 normal + 498 condition = 658 cells
+  Wrote convergence_check/gene_corr_np_conv1/epithelial_cell__lung10x__normal_vs_lung_cancer.tsv (16787 genes)
+Loading h5ad...
+fibroblast__colorectum__normal_vs_colorectal_cancer: 7 paired donors, 1000 normal + 1000 condition = 2000 cells
+  Wrote convergence_check/gene_corr_np_conv4/fibroblast__colorectum__normal_vs_colorectal_cancer.tsv (21952 genes)
+neutrophil__breast__normal_vs_breast_cancer: 3 paired donors, 66 normal + 231 condition = 297 cells
+  Wrote convergence_check/gene_corr_np_conv4/neutrophil__breast__normal_vs_breast_cancer.tsv (12072 genes)
+epithelial_cell__lung10x__normal_vs_lung_cancer: 4 paired donors, 160 normal + 498 condition = 658 cells
+  Wrote convergence_check/gene_corr_np_conv4/epithelial_cell__lung10x__normal_vs_lung_cancer.tsv (16787 genes)
+DONE

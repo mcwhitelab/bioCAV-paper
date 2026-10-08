@@ -1,0 +1,20 @@
+2026-07-23 17:20:01,854 - INFO - Loaded 27459 CAV directions
+2026-07-23 17:20:02,284 - INFO - Computing cosine similarity matrix …
+2026-07-23 17:20:32,403 - INFO - Running average-linkage hierarchical clustering …
+2026-07-23 17:21:04,849 - INFO - Leaf order computed for 27459 CAVs
+2026-07-23 17:21:50,554 - INFO - Loaded 27481 PFAM annotations
+2026-07-23 17:21:50,580 - INFO - Loaded 27481 clan mappings (813 clans)
+2026-07-23 17:21:52,046 - INFO - Saved 27459 rows × 19 columns → results/figures/pfam_clusters_27k.csv
+2026-07-23 17:21:52,048 - INFO -   dendrogram_order: 27459 clusters
+2026-07-23 17:21:52,048 - INFO -   cut_095: 314 clusters
+2026-07-23 17:21:52,048 - INFO -   cut_090: 1326 clusters
+2026-07-23 17:21:52,048 - INFO -   cut_085: 2769 clusters
+2026-07-23 17:21:52,048 - INFO -   cut_080: 4629 clusters
+2026-07-23 17:21:52,049 - INFO -   cut_075: 6756 clusters
+2026-07-23 17:21:52,049 - INFO -   cut_070: 9172 clusters
+2026-07-23 17:21:52,049 - INFO -   cut_060: 14214 clusters
+2026-07-23 17:21:52,050 - INFO -   cut_050: 18984 clusters
+2026-07-23 17:21:52,050 - INFO -   cut_040: 22788 clusters
+2026-07-23 17:21:52,050 - INFO -   cut_030: 25278 clusters
+2026-07-23 17:21:52,051 - INFO -   cut_020: 26640 clusters
+2026-07-23 17:21:52,051 - INFO -   cut_010: 27272 clusters

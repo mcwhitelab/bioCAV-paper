@@ -1,0 +1,11 @@
+pair	n_donors	dropped_donors	n_samples	resid_df	n_genes	deseq2_sig	edgeR_sig	spearman_deseq2_edgeR
+B_cell__colorectum__normal_vs_colorectal_cancer	5	QianCRC_CRC_1,QianCRC_CRC_5	10	4	2942	3	0	0.995252993324308
+T_cell__colorectum__normal_vs_colorectal_cancer	5	QianCRC_CRC_7	10	4	6122	7	1	0.992903504219859
+endothelial_cell__colorectum__normal_vs_colorectal_cancer	5	QianCRC_CRC_3	10	4	4333	2	0	0.994752954950811
+epithelial_cell__colorectum__normal_vs_colorectal_cancer	6	""	12	5	4617	1	0	0.989373151018041
+fibroblast__colorectum__normal_vs_colorectal_cancer	6	QianCRC_CRC_6	12	5	5429	1	0	0.995174747943236
+mast_cell__colorectum__normal_vs_colorectal_cancer	3	QianCRC_CRC_2,QianCRC_CRC_3,QianCRC_CRC_7	6	2	1898	0	0	0.9856006126448
+mononuclear_phagocyte__colorectum__normal_vs_colorectal_cancer	5	QianCRC_CRC_5,QianCRC_CRC_6	10	4	4228	2	1	0.996156714188757
+neutrophil__breast__normal_vs_breast_cancer	2	AziziBRCA_1	4	1	1326	28	97	0.956569861430465
+neutrophil__lung__normal_vs_lung_cancer	5	ZilionisLUAD_p2	10	4	1846	113	2	0.991904737085582
+epithelial_cell__lung10x__normal_vs_lung_cancer	4	""	8	3	1446	133	35	0.999182588995985

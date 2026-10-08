@@ -1,0 +1,79 @@
+protein_id,gene,true_go_term,cav_rank,go_name,cav_score,is_true_term
+Q96KN2,CNDP1,GO:0004177,1,aminopeptidase activity,13.6,True
+Q96KN2,CNDP1,GO:0004177,2,omega peptidase activity,12.6,False
+Q96KN2,CNDP1,GO:0004177,3,metallocarboxypeptidase activity,12.5,False
+Q96KN2,CNDP1,GO:0004177,4,"oxidoreductase activity, acting on paired donors, with incorporation or reduction of molecular oxygen, reduced flavin or flavoprotein as one donor, and incorporation of one atom of oxygen",11.5,False
+Q96KN2,CNDP1,GO:0004177,5,metalloaminopeptidase activity,10.4,False
+Q96KN2,CNDP1,GO:0004177,6,threonine-tRNA ligase activity,10.1,False
+Q2RVS1,fer,GO:0004322,1,ferroxidase activity,10.6,True
+Q2RVS1,fer,GO:0004322,2,ferric iron binding,10.3,False
+Q2RVS1,fer,GO:0004322,3,"oxidoreductase activity, acting on paired donors, with oxidation of a pair of donors resulting in the reduction of molecular oxygen to two molecules of water",9.0,False
+Q2RVS1,fer,GO:0004322,4,"oxidoreductase activity, acting on diphenols and related substances as donors",8.6,False
+Q2RVS1,fer,GO:0004322,5,ferrous iron binding,7.3,False
+Q2RVS1,fer,GO:0004322,6,iron ion binding,7.2,False
+H2KZB2,lem-4,GO:0004860,1,protein kinase inhibitor activity,7.6,True
+H2KZB2,lem-4,GO:0004860,2,protein serine/threonine kinase inhibitor activity,7.5,False
+H2KZB2,lem-4,GO:0004860,3,nuclear localization sequence binding,7.5,False
+H2KZB2,lem-4,GO:0004860,4,transcription coactivator activity,7.4,False
+H2KZB2,lem-4,GO:0004860,5,R-SMAD binding,7.4,False
+H2KZB2,lem-4,GO:0004860,6,molecular adaptor activity,7.3,False
+Q5JTJ3,COA6,GO:0015035,1,protein-disulfide reductase activity,8.9,True
+Q5JTJ3,COA6,GO:0015035,2,metallochaperone activity,8.7,False
+Q5JTJ3,COA6,GO:0015035,3,follicle-stimulating hormone activity,8.1,False
+Q5JTJ3,COA6,GO:0015035,4,chemoattractant activity,7.7,False
+Q5JTJ3,COA6,GO:0015035,5,cytochrome-c oxidase activity,7.1,False
+Q5JTJ3,COA6,GO:0015035,6,metalloendopeptidase inhibitor activity,6.9,False
+Q54KA3,nup133,GO:0017056,1,structural constituent of nuclear pore,13.5,True
+Q54KA3,nup133,GO:0017056,2,protein-N-terminal amino-acid acetyltransferase activity,9.1,False
+Q54KA3,nup133,GO:0017056,3,GTP-dependent protein binding,8.9,False
+Q54KA3,nup133,GO:0017056,4,actin filament binding,8.9,False
+Q54KA3,nup133,GO:0017056,5,small GTPase binding,8.9,False
+Q54KA3,nup133,GO:0017056,6,nuclear thyroid hormone receptor binding,8.8,False
+Q75JH1,RRM Nup35-type domain-containing protein,GO:0017056,1,structural constituent of nuclear pore,13.6,True
+Q75JH1,RRM Nup35-type domain-containing protein,GO:0017056,2,pre-mRNA binding,12.2,False
+Q75JH1,RRM Nup35-type domain-containing protein,GO:0017056,3,poly(A) binding,11.0,False
+Q75JH1,RRM Nup35-type domain-containing protein,GO:0017056,4,poly-purine tract binding,10.7,False
+Q75JH1,RRM Nup35-type domain-containing protein,GO:0017056,5,translation activator activity,9.8,False
+Q75JH1,RRM Nup35-type domain-containing protein,GO:0017056,6,mRNA 3'-UTR binding,9.8,False
+O74191,fkbp39,GO:0031491,1,nucleosome binding,10.4,True
+O74191,fkbp39,GO:0031491,2,histone binding,10.4,False
+O74191,fkbp39,GO:0031491,3,nuclear import signal receptor activity,10.1,False
+O74191,fkbp39,GO:0031491,4,phosphatase inhibitor activity,10.1,False
+O74191,fkbp39,GO:0031491,5,protein phosphatase inhibitor activity,10.0,False
+O74191,fkbp39,GO:0031491,6,phosphatase regulator activity,9.8,False
+Q3UL36,Arglu1,GO:0036002,1,pre-mRNA binding,14.2,True
+Q3UL36,Arglu1,GO:0036002,2,syntaxin-1 binding,13.4,False
+Q3UL36,Arglu1,GO:0036002,3,"DNA-binding transcription repressor activity, RNA polymerase II-specific",12.5,False
+Q3UL36,Arglu1,GO:0036002,4,clathrin binding,12.4,False
+Q3UL36,Arglu1,GO:0036002,5,dynein complex binding,12.2,False
+Q3UL36,Arglu1,GO:0036002,6,snRNA binding,12.0,False
+Q6PJT7,ZC3H14,GO:0036002,1,pre-mRNA binding,14.3,True
+Q6PJT7,ZC3H14,GO:0036002,2,poly-purine tract binding,14.0,False
+Q6PJT7,ZC3H14,GO:0036002,3,poly(A) binding,13.9,False
+Q6PJT7,ZC3H14,GO:0036002,4,miRNA binding,11.1,False
+Q6PJT7,ZC3H14,GO:0036002,5,snRNA binding,11.1,False
+Q6PJT7,ZC3H14,GO:0036002,6,nuclear retinoic acid receptor binding,10.9,False
+Q9NWB6,ARGLU1,GO:0036002,1,pre-mRNA binding,14.2,True
+Q9NWB6,ARGLU1,GO:0036002,2,syntaxin-1 binding,13.4,False
+Q9NWB6,ARGLU1,GO:0036002,3,"DNA-binding transcription repressor activity, RNA polymerase II-specific",12.5,False
+Q9NWB6,ARGLU1,GO:0036002,4,clathrin binding,12.4,False
+Q9NWB6,ARGLU1,GO:0036002,5,dynein complex binding,12.2,False
+Q9NWB6,ARGLU1,GO:0036002,6,snRNA binding,12.0,False
+Q9VL63,Arglu1,GO:0036002,1,pre-mRNA binding,13.6,True
+Q9VL63,Arglu1,GO:0036002,2,syntaxin-1 binding,12.6,False
+Q9VL63,Arglu1,GO:0036002,3,snRNA binding,11.9,False
+Q9VL63,Arglu1,GO:0036002,4,clathrin binding,11.7,False
+Q9VL63,Arglu1,GO:0036002,5,"DNA-binding transcription repressor activity, RNA polymerase II-specific",11.7,False
+Q9VL63,Arglu1,GO:0036002,6,protein phosphatase 1 binding,11.7,False
+A0A3Q7HJG4,Cuscuta receptor 1,GO:0038187,1,pattern recognition receptor activity,17.4,True
+A0A3Q7HJG4,Cuscuta receptor 1,GO:0038187,2,receptor serine/threonine kinase binding,16.6,False
+A0A3Q7HJG4,Cuscuta receptor 1,GO:0038187,3,transforming growth factor beta binding,16.4,False
+A0A3Q7HJG4,Cuscuta receptor 1,GO:0038187,4,transmembrane receptor protein serine/threonine kinase activity,15.7,False
+A0A3Q7HJG4,Cuscuta receptor 1,GO:0038187,5,insulin-like growth factor binding,15.1,False
+A0A3Q7HJG4,Cuscuta receptor 1,GO:0038187,6,guanylate cyclase activity,14.9,False
+Q9VW36,Vtld,GO:1990380,1,K48-linked deubiquitinase activity,18.2,True
+Q9VW36,Vtld,GO:1990380,2,deNEDDylase activity,16.9,False
+Q9VW36,Vtld,GO:1990380,3,cysteine-type endopeptidase activity,15.2,False
+Q9VW36,Vtld,GO:1990380,4,K63-linked polyubiquitin modification-dependent protein binding,10.5,False
+Q9VW36,Vtld,GO:1990380,5,aminoacyltransferase activity,8.7,False
+Q9VW36,Vtld,GO:1990380,6,polyubiquitin modification-dependent protein binding,8.6,False

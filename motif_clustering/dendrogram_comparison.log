@@ -1,0 +1,373 @@
+########## cosine_average ##########
+2026-09-05 08:56:33,227 - INFO - Loaded 27459 CAV directions, dim 1152
+2026-09-05 08:56:33,237 - INFO - Computing dense cosine similarity matrix …
+2026-09-05 08:58:16,931 - INFO - Running average-linkage hierarchical clustering …
+2026-09-05 08:58:50,065 - INFO - Leaf order computed for 27459 CAVs; merge heights span [0.005944, 0.9955]
+2026-09-05 08:58:50,777 - INFO - Loaded 27481 PFAM annotations
+2026-09-05 08:58:50,810 - INFO - Loaded 27481 clan mappings (813 clans)
+2026-09-05 08:58:52,849 - INFO - Saved 27459 rows × 19 columns → results/dendrogram_comparison/cosine_average.csv
+2026-09-05 08:58:52,849 - INFO - Wrote linkage matrix, leaf names, and cut metadata alongside.
+2026-09-05 08:58:52,850 - INFO -   cut_k00314: 314 clusters (height 0.9499)
+2026-09-05 08:58:52,850 - INFO -   cut_k01326: 1326 clusters (height 0.9)
+2026-09-05 08:58:52,850 - INFO -   cut_k02769: 2769 clusters (height 0.8499)
+2026-09-05 08:58:52,850 - INFO -   cut_k04629: 4629 clusters (height 0.8)
+2026-09-05 08:58:52,850 - INFO -   cut_k06756: 6756 clusters (height 0.75)
+2026-09-05 08:58:52,850 - INFO -   cut_k09172: 9172 clusters (height 0.7)
+2026-09-05 08:58:52,850 - INFO -   cut_k14214: 14214 clusters (height 0.6)
+2026-09-05 08:58:52,850 - INFO -   cut_k18984: 18984 clusters (height 0.5)
+2026-09-05 08:58:52,850 - INFO -   cut_k22788: 22788 clusters (height 0.4)
+2026-09-05 08:58:52,850 - INFO -   cut_k25278: 25278 clusters (height 0.2999)
+2026-09-05 08:58:52,850 - INFO -   cut_k26640: 26640 clusters (height 0.1999)
+2026-09-05 08:58:52,850 - INFO -   cut_k27272: 27272 clusters (height 0.09999)
+2026-09-05 08:58:55,209 - INFO - Loaded 27459 rows, 12 cut columns from results/dendrogram_comparison/cosine_average.csv
+2026-09-05 08:58:55,271 - INFO - Scoring cuts on 12482 clan-labelled rows (45.5% of 27459), 812 clans
+2026-09-05 08:59:56,350 - INFO - Cophenetic: 3123750 sampled pairs from 2500 observations
+2026-09-05 09:01:35,054 - INFO - Wrote scores → results/dendrogram_comparison/cosine_average.scores.csv
+2026-09-05 09:01:35,064 - INFO - Wrote per-clan contiguity → results/dendrogram_comparison/cosine_average.per_clan.csv
+
+=== cosine_average ===
+
+[1] Clan contiguity in leaf order  (norm_span 1.0 = perfectly adjacent)
+    n_clans_scored               812
+    median_norm_span             350.8
+    mean_norm_span               1218
+    median_span_frac             0.1471
+    frac_clans_norm_span_lt2     0.3202
+    perm_median_norm_span        2820
+    contiguity_ratio             8.039
+    -- 10 most contiguous clans --
+        size     lo     hi  span  norm_span  span_frac
+clan                                                  
+CL0932     4  11538  11541     4        1.0   0.000146
+CL0018     3  26897  26899     3        1.0   0.000109
+CL0042     7   3320   3326     7        1.0   0.000255
+CL0817     2  13143  13144     2        1.0   0.000073
+CL0417     3   8823   8825     3        1.0   0.000109
+CL0419     5   7977   7981     5        1.0   0.000182
+CL0420     2   5494   5495     2        1.0   0.000073
+CL0422     2  25047  25048     2        1.0   0.000073
+CL0815     3  16917  16919     3        1.0   0.000109
+CL0411     2  12993  12994     2        1.0   0.000073
+
+[2] Cut quality vs Pfam clans (clan-labelled rows only)
+    column  n_clusters_all  n_clusters_labelled    ARI    AMI  median_per_clan_F1  mean_per_clan_F1
+cut_k00314             314                  284 0.0813 0.4756              0.1000            0.2005
+cut_k01326            1326                 1058 0.1839 0.5953              0.4615            0.4519
+cut_k02769            2769                 1886 0.2067 0.5934              0.5882            0.5684
+cut_k04629            4629                 2812 0.1785 0.5671              0.6667            0.6401
+cut_k06756            6756                 3738 0.1474 0.5318              0.6667            0.6711
+cut_k09172            9172                 4689 0.0928 0.4803              0.6667            0.6714
+cut_k14214           14214                 6517 0.0524 0.3801              0.6667            0.6419
+cut_k18984           18984                 8193 0.0279 0.2762              0.6667            0.5898
+cut_k22788           22788                 9708 0.0131 0.1786              0.5000            0.5219
+cut_k25278           25278                10957 0.0057 0.0967              0.5000            0.4558
+cut_k26640           26640                11839 0.0018 0.0391              0.4000            0.4074
+cut_k27272           27272                12320 0.0004 0.0094              0.3333            0.3766
+
+    best ARI  0.2067 at cut_k02769 (2769 clusters)
+    best F1   0.6667 at cut_k04629 (4629 clusters)
+
+[3] Cophenetic correlation vs RAW COSINE distance
+    (the tree's own input only for --distance cosine; for diffusion/snn
+     this measures how far the reweighting moved from raw cosine)
+    cophenetic_vs_rawcosine_pearson 0.4344
+    cophenetic_vs_rawcosine_spearman 0.2638
+    n_pairs                      3.124e+06
+########## cosine_ward ##########
+2026-09-05 09:01:58,705 - INFO - Loaded 27459 CAV directions, dim 1152
+2026-09-05 09:01:58,716 - INFO - Computing dense cosine similarity matrix …
+2026-09-05 09:02:40,608 - INFO - Running ward-linkage hierarchical clustering …
+2026-09-05 09:03:02,564 - INFO - Leaf order computed for 27459 CAVs; merge heights span [0.005944, 19.15]
+2026-09-05 09:03:03,290 - INFO - Loaded 27481 PFAM annotations
+2026-09-05 09:03:03,325 - INFO - Loaded 27481 clan mappings (813 clans)
+2026-09-05 09:03:05,405 - INFO - Saved 27459 rows × 19 columns → results/dendrogram_comparison/cosine_ward.csv
+2026-09-05 09:03:05,405 - INFO - Wrote linkage matrix, leaf names, and cut metadata alongside.
+2026-09-05 09:03:05,405 - INFO -   cut_k00314: 314 clusters (height 2.712)
+2026-09-05 09:03:05,405 - INFO -   cut_k01326: 1326 clusters (height 1.664)
+2026-09-05 09:03:05,405 - INFO -   cut_k02769: 2769 clusters (height 1.28)
+2026-09-05 09:03:05,405 - INFO -   cut_k04629: 4629 clusters (height 1.056)
+2026-09-05 09:03:05,406 - INFO -   cut_k06756: 6756 clusters (height 0.91)
+2026-09-05 09:03:05,406 - INFO -   cut_k09172: 9172 clusters (height 0.7996)
+2026-09-05 09:03:05,406 - INFO -   cut_k14214: 14214 clusters (height 0.6521)
+2026-09-05 09:03:05,406 - INFO -   cut_k18984: 18984 clusters (height 0.5295)
+2026-09-05 09:03:05,406 - INFO -   cut_k22788: 22788 clusters (height 0.4176)
+2026-09-05 09:03:05,406 - INFO -   cut_k25278: 25278 clusters (height 0.3113)
+2026-09-05 09:03:05,406 - INFO -   cut_k26640: 26640 clusters (height 0.2047)
+2026-09-05 09:03:05,406 - INFO -   cut_k27272: 27272 clusters (height 0.1029)
+2026-09-05 09:03:07,776 - INFO - Loaded 27459 rows, 12 cut columns from results/dendrogram_comparison/cosine_ward.csv
+2026-09-05 09:03:07,837 - INFO - Scoring cuts on 12482 clan-labelled rows (45.5% of 27459), 812 clans
+2026-09-05 09:03:35,200 - INFO - Cophenetic: 3123750 sampled pairs from 2500 observations
+2026-09-05 09:04:07,996 - INFO - Wrote scores → results/dendrogram_comparison/cosine_ward.scores.csv
+2026-09-05 09:04:08,005 - INFO - Wrote per-clan contiguity → results/dendrogram_comparison/cosine_ward.per_clan.csv
+
+=== cosine_ward ===
+
+[1] Clan contiguity in leaf order  (norm_span 1.0 = perfectly adjacent)
+    n_clans_scored               812
+    median_norm_span             443.9
+    mean_norm_span               1112
+    median_span_frac             0.1897
+    frac_clans_norm_span_lt2     0.3005
+    perm_median_norm_span        2284
+    contiguity_ratio             5.145
+    -- 10 most contiguous clans --
+        size     lo     hi  span  norm_span  span_frac
+clan                                                  
+CL0932     4  10893  10896     4        1.0   0.000146
+CL0931     3   5918   5920     3        1.0   0.000109
+CL0047     4  16869  16872     4        1.0   0.000146
+CL0882     2  15390  15391     2        1.0   0.000073
+CL0883     2  15841  15842     2        1.0   0.000073
+CL0867     2  11501  11502     2        1.0   0.000073
+CL0875     2  13672  13673     2        1.0   0.000073
+CL0881     2  23485  23486     2        1.0   0.000073
+CL0852     4  11312  11315     4        1.0   0.000146
+CL0853     3    133    135     3        1.0   0.000109
+
+[2] Cut quality vs Pfam clans (clan-labelled rows only)
+    column  n_clusters_all  n_clusters_labelled    ARI    AMI  median_per_clan_F1  mean_per_clan_F1
+cut_k00314             314                  305 0.1662 0.5289              0.1176            0.2132
+cut_k01326            1326                 1186 0.1058 0.5473              0.4615            0.5028
+cut_k02769            2769                 2223 0.0705 0.5159              0.6250            0.6269
+cut_k04629            4629                 3286 0.0506 0.4732              0.6667            0.6691
+cut_k06756            6756                 4310 0.0379 0.4263              0.6667            0.6766
+cut_k09172            9172                 5217 0.0301 0.3868              0.6667            0.6636
+cut_k14214           14214                 6880 0.0201 0.3078              0.6667            0.6199
+cut_k18984           18984                 8470 0.0128 0.2276              0.5714            0.5701
+cut_k22788           22788                 9818 0.0079 0.1544              0.5000            0.5134
+cut_k25278           25278                11008 0.0039 0.0858              0.4641            0.4523
+cut_k26640           26640                11851 0.0015 0.0365              0.4000            0.4070
+cut_k27272           27272                12321 0.0003 0.0091              0.3333            0.3766
+
+    best ARI  0.1662 at cut_k00314 (314 clusters)
+    best F1   0.6667 at cut_k04629 (4629 clusters)
+
+[3] Cophenetic correlation vs RAW COSINE distance
+    (the tree's own input only for --distance cosine; for diffusion/snn
+     this measures how far the reweighting moved from raw cosine)
+    cophenetic_vs_rawcosine_pearson -0.0101
+    cophenetic_vs_rawcosine_spearman -0.05496
+    n_pairs                      3.124e+06
+########## diffusion_ward ##########
+2026-09-05 09:04:22,095 - INFO - Loaded 27459 CAV directions, dim 1152
+2026-09-05 09:04:43,910 - INFO - kNN graph: k=15 floor=0.15 mutual=True — 177644 directed edges (88822 undirected), mean degree 6.5, 1326 isolated nodes rescued
+2026-09-05 09:04:43,920 - INFO - Graph has 189 connected component(s); largest holds 26875 nodes
+2026-09-05 09:04:43,920 - INFO - Eigendecomposition: requesting 200 eigenpairs of a 27459x27459 sparse matrix …
+2026-09-05 09:13:41,042 - INFO - Eigenvalues: max 1.0000, #(>0.999) 84 (= n components), min 0.9793
+2026-09-05 09:13:41,054 - INFO - Diffusion coords: t=4, 199/199 eigenvectors carry non-negligible weight after lambda^t
+2026-09-05 09:13:41,061 - INFO - Running ward-linkage on 199-d diffusion coords …
+2026-09-05 09:15:12,269 - INFO - Leaf order computed for 27459 CAVs; merge heights span [1.828e-17, 3.245]
+2026-09-05 09:15:12,984 - INFO - Loaded 27481 PFAM annotations
+2026-09-05 09:15:13,016 - INFO - Loaded 27481 clan mappings (813 clans)
+2026-09-05 09:15:15,047 - INFO - Saved 27459 rows × 19 columns → results/dendrogram_comparison/diffusion_ward.csv
+2026-09-05 09:15:15,047 - INFO - Wrote linkage matrix, leaf names, and cut metadata alongside.
+2026-09-05 09:15:15,047 - INFO -   cut_k00314: 314 clusters (height 0.3128)
+2026-09-05 09:15:15,048 - INFO -   cut_k01326: 1326 clusters (height 0.02171)
+2026-09-05 09:15:15,048 - INFO -   cut_k02769: 2769 clusters (height 0.009537)
+2026-09-05 09:15:15,048 - INFO -   cut_k04629: 4629 clusters (height 0.005279)
+2026-09-05 09:15:15,048 - INFO -   cut_k06756: 6756 clusters (height 0.00335)
+2026-09-05 09:15:15,048 - INFO -   cut_k09172: 9172 clusters (height 0.002174)
+2026-09-05 09:15:15,048 - INFO -   cut_k14214: 14214 clusters (height 0.0009878)
+2026-09-05 09:15:15,048 - INFO -   cut_k18984: 18984 clusters (height 0.0004437)
+2026-09-05 09:15:15,048 - INFO -   cut_k22788: 22788 clusters (height 0.0001742)
+2026-09-05 09:15:15,048 - INFO -   cut_k25278: 25278 clusters (height 8.237e-05)
+2026-09-05 09:15:15,048 - INFO -   cut_k26640: 26640 clusters (height 7.539e-06)
+2026-09-05 09:15:15,048 - INFO -   cut_k27272: 27272 clusters (height 3.566e-17)
+2026-09-05 09:15:17,546 - INFO - Loaded 27459 rows, 12 cut columns from results/dendrogram_comparison/diffusion_ward.csv
+2026-09-05 09:15:17,608 - INFO - Scoring cuts on 12482 clan-labelled rows (45.5% of 27459), 812 clans
+2026-09-05 09:16:10,490 - INFO - Cophenetic: 3123750 sampled pairs from 2500 observations
+2026-09-05 09:16:43,534 - INFO - Wrote scores → results/dendrogram_comparison/diffusion_ward.scores.csv
+2026-09-05 09:16:43,545 - INFO - Wrote per-clan contiguity → results/dendrogram_comparison/diffusion_ward.per_clan.csv
+
+=== diffusion_ward ===
+
+[1] Clan contiguity in leaf order  (norm_span 1.0 = perfectly adjacent)
+    n_clans_scored               812
+    median_norm_span             236
+    mean_norm_span               1029
+    median_span_frac             0.08809
+    frac_clans_norm_span_lt2     0.2697
+    perm_median_norm_span        2360
+    contiguity_ratio             10
+    -- 10 most contiguous clans --
+        size     lo     hi  span  norm_span  span_frac
+clan                                                  
+CL0932     4  13120  13123     4        1.0   0.000146
+CL0931     3  14549  14551     3        1.0   0.000109
+CL0930     2  16131  16132     2        1.0   0.000073
+CL0005     6  27298  27303     6        1.0   0.000219
+CL0780     2  11283  11284     2        1.0   0.000073
+CL0753     3  16705  16707     3        1.0   0.000109
+CL0901     3   4393   4395     3        1.0   0.000109
+CL0074     6    534    539     6        1.0   0.000219
+CL0907     3   4484   4486     3        1.0   0.000109
+CL0908     2  15315  15316     2        1.0   0.000073
+
+[2] Cut quality vs Pfam clans (clan-labelled rows only)
+    column  n_clusters_all  n_clusters_labelled    ARI    AMI  median_per_clan_F1  mean_per_clan_F1
+cut_k00314             314                  223 0.0903 0.4910              0.0144            0.1374
+cut_k01326            1326                 1134 0.1583 0.5812              0.4000            0.4437
+cut_k02769            2769                 2194 0.1019 0.5454              0.5714            0.5759
+cut_k04629            4629                 3248 0.0736 0.5030              0.6667            0.6285
+cut_k06756            6756                 4301 0.0550 0.4554              0.6667            0.6411
+cut_k09172            9172                 5365 0.0422 0.4018              0.6667            0.6301
+cut_k14214           14214                 7393 0.0232 0.2896              0.5714            0.5786
+cut_k18984           18984                 9187 0.0126 0.1882              0.5000            0.5121
+cut_k22788           22788                10711 0.0066 0.1009              0.4444            0.4498
+cut_k25278           25278                11506 0.0041 0.0573              0.4000            0.4143
+cut_k26640           26640                12174 0.0023 0.0190              0.4000            0.3828
+cut_k27272           27272                12449 0.0000 0.0006              0.3333            0.3639
+
+    best ARI  0.1583 at cut_k01326 (1326 clusters)
+    best F1   0.6667 at cut_k04629 (4629 clusters)
+
+[3] Cophenetic correlation vs RAW COSINE distance
+    (the tree's own input only for --distance cosine; for diffusion/snn
+     this measures how far the reweighting moved from raw cosine)
+    cophenetic_vs_rawcosine_pearson 0.1021
+    cophenetic_vs_rawcosine_spearman 0.09313
+    n_pairs                      3.124e+06
+########## snn_average ##########
+2026-09-05 09:16:59,690 - INFO - Loaded 27459 CAV directions, dim 1152
+2026-09-05 09:17:21,601 - INFO - kNN graph: k=15 floor=0.15 mutual=True — 177644 directed edges (88822 undirected), mean degree 6.5, 1326 isolated nodes rescued
+2026-09-05 09:17:43,208 - INFO - SNN distance: 99.9% of pairs are exactly 1.0 (tied)
+2026-09-05 09:17:43,398 - INFO - Running average-linkage on SNN distances …
+2026-09-05 09:18:03,324 - INFO - Leaf order computed for 27459 CAVs; merge heights span [0, 1]
+2026-09-05 09:18:04,035 - INFO - Loaded 27481 PFAM annotations
+2026-09-05 09:18:04,068 - INFO - Loaded 27481 clan mappings (813 clans)
+2026-09-05 09:18:06,120 - INFO - Saved 27459 rows × 19 columns → results/dendrogram_comparison/snn_average.csv
+2026-09-05 09:18:06,120 - INFO - Wrote linkage matrix, leaf names, and cut metadata alongside.
+2026-09-05 09:18:06,120 - INFO -   cut_k00314: 1 clusters (height 1)
+2026-09-05 09:18:06,120 - INFO -   cut_k01326: 1326 clusters (height 0.9955)
+2026-09-05 09:18:06,120 - INFO -   cut_k02769: 2769 clusters (height 0.9801)
+2026-09-05 09:18:06,120 - INFO -   cut_k04629: 4627 clusters (height 0.95)
+2026-09-05 09:18:06,121 - INFO -   cut_k06756: 6756 clusters (height 0.905)
+2026-09-05 09:18:06,121 - INFO -   cut_k09172: 9126 clusters (height 0.8571)
+2026-09-05 09:18:06,121 - INFO -   cut_k14214: 14214 clusters (height 0.7654)
+2026-09-05 09:18:06,121 - INFO -   cut_k18984: 18088 clusters (height 0.6667)
+2026-09-05 09:18:06,121 - INFO -   cut_k22788: 22613 clusters (height 0.5)
+2026-09-05 09:18:06,121 - INFO -   cut_k25278: 25240 clusters (height 0.375)
+2026-09-05 09:18:06,121 - INFO -   cut_k26640: 26616 clusters (height 0.2308)
+2026-09-05 09:18:06,121 - INFO -   cut_k27272: 27083 clusters (height 0)
+2026-09-05 09:18:08,530 - INFO - Loaded 27459 rows, 12 cut columns from results/dendrogram_comparison/snn_average.csv
+2026-09-05 09:18:08,591 - INFO - Scoring cuts on 12482 clan-labelled rows (45.5% of 27459), 812 clans
+2026-09-05 09:18:36,137 - INFO - Cophenetic: 3123750 sampled pairs from 2500 observations
+2026-09-05 09:18:44,169 - INFO - Wrote scores → results/dendrogram_comparison/snn_average.scores.csv
+2026-09-05 09:18:44,179 - INFO - Wrote per-clan contiguity → results/dendrogram_comparison/snn_average.per_clan.csv
+
+=== snn_average ===
+
+[1] Clan contiguity in leaf order  (norm_span 1.0 = perfectly adjacent)
+    n_clans_scored               812
+    median_norm_span             316.2
+    mean_norm_span               1175
+    median_span_frac             0.09782
+    frac_clans_norm_span_lt2     0.2069
+    perm_median_norm_span        2665
+    contiguity_ratio             8.427
+    -- 10 most contiguous clans --
+        size     lo     hi  span  norm_span  span_frac
+clan                                                  
+CL0931     3  11264  11266     3        1.0   0.000109
+CL0422     2   2686   2687     2        1.0   0.000073
+CL0428     4  10226  10229     4        1.0   0.000146
+CL0429     2  13775  13776     2        1.0   0.000073
+CL0449     2   7913   7914     2        1.0   0.000073
+CL0442     7  12055  12061     7        1.0   0.000255
+CL0681     7  15277  15283     7        1.0   0.000255
+CL0324     8   8676   8683     8        1.0   0.000291
+CL0901     3  10247  10249     3        1.0   0.000109
+CL0068     2  16368  16369     2        1.0   0.000073
+
+[2] Cut quality vs Pfam clans (clan-labelled rows only)
+    column  n_clusters_all  n_clusters_labelled    ARI    AMI  median_per_clan_F1  mean_per_clan_F1
+cut_k00314               1                    1 0.0000 0.0000              0.0008            0.0024
+cut_k01326            1326                  975 0.2202 0.6254              0.4000            0.4398
+cut_k02769            2769                 1924 0.1314 0.5935              0.5882            0.5841
+cut_k04629            4627                 2824 0.0906 0.5491              0.6667            0.6302
+cut_k06756            6756                 3697 0.0667 0.5026              0.6667            0.6471
+cut_k09172            9126                 4485 0.0542 0.4649              0.6667            0.6457
+cut_k14214           14214                 6074 0.0383 0.3869              0.6667            0.6122
+cut_k18984           18088                 7585 0.0268 0.3052              0.5882            0.5770
+cut_k22788           22613                 9732 0.0132 0.1767              0.5000            0.5021
+cut_k25278           25240                11124 0.0059 0.0889              0.4180            0.4334
+cut_k26640           26616                12067 0.0013 0.0241              0.4000            0.3857
+cut_k27272           27083                12413 0.0001 0.0015              0.3333            0.3663
+
+    best ARI  0.2202 at cut_k01326 (1326 clusters)
+    best F1   0.6667 at cut_k04629 (4627 clusters)
+
+[3] Cophenetic correlation vs RAW COSINE distance
+    (the tree's own input only for --distance cosine; for diffusion/snn
+     this measures how far the reweighting moved from raw cosine)
+    cophenetic_vs_rawcosine_pearson 0.1096
+    cophenetic_vs_rawcosine_spearman 0.06037
+    n_pairs                      3.124e+06
+########## summary ##########
+
+-- cut quality vs clans --
+           run     column  n_clusters_all    ARI    AMI  median_per_clan_F1
+cosine_average cut_k00314             314 0.0813 0.4756              0.1000
+cosine_average cut_k01326            1326 0.1839 0.5953              0.4615
+cosine_average cut_k02769            2769 0.2067 0.5934              0.5882
+cosine_average cut_k04629            4629 0.1785 0.5671              0.6667
+cosine_average cut_k06756            6756 0.1474 0.5318              0.6667
+cosine_average cut_k09172            9172 0.0928 0.4803              0.6667
+cosine_average cut_k14214           14214 0.0524 0.3801              0.6667
+cosine_average cut_k18984           18984 0.0279 0.2762              0.6667
+cosine_average cut_k22788           22788 0.0131 0.1786              0.5000
+cosine_average cut_k25278           25278 0.0057 0.0967              0.5000
+cosine_average cut_k26640           26640 0.0018 0.0391              0.4000
+cosine_average cut_k27272           27272 0.0004 0.0094              0.3333
+   cosine_ward cut_k00314             314 0.1662 0.5289              0.1176
+   cosine_ward cut_k01326            1326 0.1058 0.5473              0.4615
+   cosine_ward cut_k02769            2769 0.0705 0.5159              0.6250
+   cosine_ward cut_k04629            4629 0.0506 0.4732              0.6667
+   cosine_ward cut_k06756            6756 0.0379 0.4263              0.6667
+   cosine_ward cut_k09172            9172 0.0301 0.3868              0.6667
+   cosine_ward cut_k14214           14214 0.0201 0.3078              0.6667
+   cosine_ward cut_k18984           18984 0.0128 0.2276              0.5714
+   cosine_ward cut_k22788           22788 0.0079 0.1544              0.5000
+   cosine_ward cut_k25278           25278 0.0039 0.0858              0.4641
+   cosine_ward cut_k26640           26640 0.0015 0.0365              0.4000
+   cosine_ward cut_k27272           27272 0.0003 0.0091              0.3333
+diffusion_ward cut_k00314             314 0.0903 0.4910              0.0144
+diffusion_ward cut_k01326            1326 0.1583 0.5812              0.4000
+diffusion_ward cut_k02769            2769 0.1019 0.5454              0.5714
+diffusion_ward cut_k04629            4629 0.0736 0.5030              0.6667
+diffusion_ward cut_k06756            6756 0.0550 0.4554              0.6667
+diffusion_ward cut_k09172            9172 0.0422 0.4018              0.6667
+diffusion_ward cut_k14214           14214 0.0232 0.2896              0.5714
+diffusion_ward cut_k18984           18984 0.0126 0.1882              0.5000
+diffusion_ward cut_k22788           22788 0.0066 0.1009              0.4444
+diffusion_ward cut_k25278           25278 0.0041 0.0573              0.4000
+diffusion_ward cut_k26640           26640 0.0023 0.0190              0.4000
+diffusion_ward cut_k27272           27272 0.0000 0.0006              0.3333
+   snn_average cut_k00314               1 0.0000 0.0000              0.0008
+   snn_average cut_k01326            1326 0.2202 0.6254              0.4000
+   snn_average cut_k02769            2769 0.1314 0.5935              0.5882
+   snn_average cut_k04629            4627 0.0906 0.5491              0.6667
+   snn_average cut_k06756            6756 0.0667 0.5026              0.6667
+   snn_average cut_k09172            9126 0.0542 0.4649              0.6667
+   snn_average cut_k14214           14214 0.0383 0.3869              0.6667
+   snn_average cut_k18984           18088 0.0268 0.3052              0.5882
+   snn_average cut_k22788           22613 0.0132 0.1767              0.5000
+   snn_average cut_k25278           25240 0.0059 0.0889              0.4180
+   snn_average cut_k26640           26616 0.0013 0.0241              0.4000
+   snn_average cut_k27272           27083 0.0001 0.0015              0.3333
+
+-- best per run --
+           run     column    ARI  median_per_clan_F1
+cosine_average cut_k02769 0.2067              0.5882
+   cosine_ward cut_k00314 0.1662              0.1176
+diffusion_ward cut_k01326 0.1583              0.4000
+   snn_average cut_k01326 0.2202              0.4000
+
+-- leaf-order contiguity & cophenetic (one row per run) --
+           run  median_norm_span  perm_median_norm_span  contiguity_ratio  frac_clans_norm_span_lt2
+cosine_average          350.8290              2820.2428            8.0388                    0.3202
+   cosine_ward          443.9048              2283.7433            5.1447                    0.3005
+diffusion_ward          235.9571              2359.5054            9.9997                    0.2697
+   snn_average          316.2131              2664.7397            8.4270                    0.2069
+
+wrote results/dendrogram_comparison/all_scores.csv

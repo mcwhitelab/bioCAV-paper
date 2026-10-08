@@ -89,8 +89,14 @@ def norm(v):
     return str(v).lower().replace("_", " ").strip()
 
 
+# Concept vectors are read from CAV_VEC_DIR (default: the library's stored CAVs). Since
+# 2026-10-07 the supplement uses convergence_check/cavs_conv1 (C=1, PCA-128, refit to lbfgs
+# convergence), matching Fig 6. Scaler/PCA always come from the library (shared, unchanged).
+CAV_VEC_DIR = CAVS
+
+
 def load_unit_cav(name):
-    v = np.load(CAVS / name / f"concept_v1.npy").astype(np.float64)
+    v = np.load(CAV_VEC_DIR / name / f"concept_v1.npy").astype(np.float64)
     return v / np.linalg.norm(v)
 
 
@@ -105,7 +111,14 @@ def orthogonalize(v, basis):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--figure-data-dir", default="../figures/figure_data")
+    ap.add_argument("--cav-dir", default=None,
+                    help="directory of <cav>/concept_v1.npy to use instead of the library's stored CAVs")
+    ap.add_argument("--coords", default=None,
+                    help="hierarchy coordinates for the L2 sanity check (default: library cell_coordinates.tsv)")
     args = ap.parse_args()
+    global CAV_VEC_DIR
+    if args.cav_dir:
+        CAV_VEC_DIR = Path(args.cav_dir)
     out_dir = Path(args.figure_data_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
 
@@ -125,7 +138,7 @@ def main():
     obs["disease"] = obs["disease"].astype(str)
     gene_name_map = dict(zip(adata.var_names, adata.var["feature_name"].astype(str)))
 
-    coords = pd.read_csv(COORDS_PATH, sep="\t", index_col=0)
+    coords = pd.read_csv(args.coords or COORDS_PATH, sep="\t", index_col=0)
     coords.index = coords.index.astype(str)
 
     rows = []

@@ -29,3 +29,24 @@ single_cell/static/
 # Machine-generated SLURM command lists — regenerate via shared_protein/02_make_cav_commands.sh
 ec_eval/COMMANDS_files/
 go_eval/COMMANDS_files/
+
+# Bulk/regeneratable data (added 2026-10-07)
+*.dmnd
+*.sto
+*.a3m
+*.tar.zst
+figures/Rplots.pdf
+figures/warn_capture.txt
+interface_search/archive/*/fastas/
+single_cell/convergence_check/coords_*.tsv
+figures/figure_data/vav_motif_repro/tcav_outputs_all_layers/embeddings/
+figures/figure_data/vav_motif_repro/tcav_outputs_all_layers/_prepared_jsonl/
+go_eval/blast_baseline/**/*.fa
+ec_eval/blast_baseline/**/*.fa
+go_eval/blast_baseline/**/val_vs_train.tsv
+go_eval/blast_baseline/**/term_members.tsv
+go_eval/blast_baseline/**/features_raw.tsv
+figures/figure_data_staging/**/term_members.tsv
+figures/figure_data_staging/
+figures/figure_data/_backup_*/
+figures/previews/
