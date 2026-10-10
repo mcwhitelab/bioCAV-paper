@@ -21,6 +21,8 @@
 # The EC 3.4.22.28 positives are searched at full length (truncation applies only to
 # embedding). Outputs: <blast_baseline>/C1e-4_extra/{hits, members}.
 # -----------------------------------------------------------------------------
+# SUPERSEDED 2026-10-09 for Fig 2B / 3A by run_diamond_ultra.sbatch (C1e-4_extra_ultra/,
+# --ultra-sensitive, e <= 1). Kept to rebuild the old --more-sensitive baseline (C1e-4_extra/).
 set -euo pipefail
 PAPER=/groups/clairemcwhite/cav_workspace/bioCAV-paper
 PY=/groups/clairemcwhite/envs/core_pkgs4/bin/python

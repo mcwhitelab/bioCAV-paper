@@ -141,10 +141,13 @@ if (nrow(ont_comp) > 0) {
   # non-obsolete GO CAVs of its ontology (MF 1,114 / BP 4,297 / CC 660), minus
   # the true term's ancestors, the protein's other GPAD terms and its proFAB-
   # positive terms, both ancestor-closed (strict _pf filter, go_eval/
-  # rank_all_terms/compute_ranks_all_terms.py). BLAST score = best bitscore to a
-  # term's CAV training positives, tie-averaged rank (go_eval/blast_baseline/
-  # blast_ranks.py). "No prediction": CAV LLR <= 0; DeepGo-SE did not emit the
-  # term (score < 0.1); BLAST no hit to the true term's training positives.
+  # rank_all_terms/compute_ranks_all_terms.py). BLAST score = best DIAMOND
+  # bitscore (2.0.9 --ultra-sensitive, e <= 1, self-hits removed; since
+  # 2026-10-09, go_eval/rank_C1e-4/run_diamond_ultra.sbatch) to a term's CAV
+  # training positives, tie-averaged rank (go_eval/blast_baseline/blast_ranks.py).
+  # The family-count DIAMOND run above is separate and unchanged. "No prediction":
+  # CAV LLR <= 0; DeepGo-SE did not emit the term (score < 0.1); BLAST no hit
+  # (e <= 1) to the true term's training positives.
   # Data: figure_data/go_rank_families_{ont}.csv
   # (go_eval/blast_baseline/export_fig2C_families.py).
   # ---------------------------------------------------------------------------
@@ -269,9 +272,9 @@ if (nrow(ont_comp) > 0) {
   # CAV and BLAST rank the true EC among the EC CAVs of the same level (L3 153,
   # L4 732; ancestors excluded by construction), minus the protein's other
   # EC-Bench ECs and its other proFAB-positive ECs at that level (strict filter).
-  # BLAST score = best DIAMOND bitscore (--more-sensitive, e <= 1e-3, self-hits
-  # removed) to each EC CAV's training positives, tie-averaged rank; "No
-  # prediction" = no hit to the true EC's training positives. CAV "No
+  # BLAST score = best DIAMOND bitscore (--ultra-sensitive, e <= 1, self-hits
+  # removed; since 2026-10-09, as Fig 2B) to each EC CAV's training positives,
+  # tie-averaged rank; "No prediction" = no hit to the true EC's training positives. CAV "No
   # prediction" = LLR <= 0 (gate carried from the shipped EC eval).
   # CLEAN-SupCon emits a single predicted EC per protein, so it has only
   # Correct / Incorrect, with their own colors rather than the rank ramp.
@@ -1063,6 +1066,11 @@ if (file.exists(fig4_umap_path) && file.exists(fig4_vav_path)) {
 # single_cell/scripts/export_fig5_case_studies.py (run via
 # single_cell/08_export_fig5_data.sh), which reuses cav_continuum_viz.py's
 # cell/gene selection, restricted to donors contributing both conditions.
+# Since 2026-10-08: official Geneformer V2 tokenization (cls_penult readout), CAV axis =
+# unit(cancer CAV) - unit(matched normal CAV) (no L0/L1 projection), third case
+# neutrophil/lung instead of fibroblast/colorectum (METHODS §6; the score column in the
+# CSVs keeps its historical name l2_score). Previous version:
+# figure_data/_backup_pre_fig6_official_diff_2026-10-08/.
 # The earlier exploratory matplotlib versions (export_fig5_data.py,
 # 07_paper_cases.sh) are in single_cell/archive/ -- see its README.
 # ===========================================================================
@@ -1098,14 +1106,14 @@ if (file.exists(sc_meta_path)) {
   SC_PAIR_ORDER <- c(
     "neutrophil__breast__normal_vs_breast_cancer",
     "epithelial_cell__lung10x__normal_vs_lung_cancer",
-    "fibroblast__colorectum__normal_vs_colorectal_cancer"
+    "neutrophil__lung__normal_vs_lung_cancer"
   )
   SC_PAIR_TITLES <- c(
     "neutrophil__breast__normal_vs_breast_cancer"               = "Neutrophil — breast",
     # The assay restriction (10x 3' v2 only) is stated in the Methods rather
     # than in the panel title.
     "epithelial_cell__lung10x__normal_vs_lung_cancer"           = "Epithelial cell — lung",
-    "fibroblast__colorectum__normal_vs_colorectal_cancer"       = "Fibroblast — colorectum"
+    "neutrophil__lung__normal_vs_lung_cancer"                   = "Neutrophil — lung"
   )
 
   SC_NORMAL_COLOR     <- "#3a6fad"
@@ -1113,17 +1121,18 @@ if (file.exists(sc_meta_path)) {
   SC_BACKGROUND_COLOR <- "#2277bb"
   SC_CONTINUUM_FILL   <- "#f0a500"
   SC_CONTINUUM_EDGE   <- "#7a5300"
+  SC_DIR_ARROW_PT     <- 5      # arrowhead length of the Non-tumor / Tumor direction cue
+  SC_DIR_ROW_H        <- 1.3    # its row height, in gene-row units
+  # Panel D only (2026-10-08): background genes filled by top1pct_share, the share of the gene's UMIs
+  # carried by the top 1 % of the pair's paired-donor cells (export_fig5_case_studies.py). The large
+  # pseudobulk fold changes with CAV r ~ 0 (surfactant, immunoglobulin) are the concentrated ones
+  # (METHODS §6.0 item 12). (This replaced a 3-gene open-circle highlight the same day.)
+  SC_UMI_CONC_PAIRS   <- c("neutrophil__lung__normal_vs_lung_cancer")
+  SC_UMI_CONC_LOW     <- "#dcdcdc"
+  SC_UMI_CONC_HIGH    <- "#3b0f70"
 
-  # ---------------------------------------------------------------------
-  # Overview row: the full top bar is left blank for panel A (a schematic
-  # dropped in externally). The three hierarchy-level t-SNEs that used to
-  # occupy B/C/D here were removed -- they showed near-complete overlap of
-  # normal/cancer at every level, so they carried no information the case
-  # columns don't carry better.
-  # ---------------------------------------------------------------------
-  sc_overview_row <- plot_grid(NULL, nrow = 1,
-                               labels = c("A"), label_size = 8,
-                               label_fontfamily = FIG_FONT)
+  # (Panel A, the blank cell for the externally drawn diagram, is part of the 2 x 2 grid below;
+  # the old full-width top bar, sc_overview_row, was removed 2026-10-08.)
 
   # ---------------------------------------------------------------------
   # DE-vs-CAV scatter, one per case. DE is pseudobulk DESeq2 (raw counts
@@ -1170,8 +1179,16 @@ if (file.exists(sc_meta_path)) {
     ggplot(df, aes(log2fc, cav_r)) +
       geom_hline(yintercept = 0, color = "grey80", linewidth = 0.3) +
       geom_vline(xintercept = 0, color = "grey80", linewidth = 0.3) +
-      geom_point_rast(data = filter(df, category == "below_threshold"),
-                 color = "grey60", size = 0.4, alpha = 0.25, raster.dpi = RASTER_DPI) +
+      {if (pair_id %in% SC_UMI_CONC_PAIRS) list(
+         geom_point_rast(data = filter(df, category == "below_threshold") |> arrange(top1pct_share),
+                         aes(fill = top1pct_share), shape = 21, stroke = 0, size = 0.75, alpha = 0.9,
+                         raster.dpi = RASTER_DPI),
+         scale_fill_gradient(low = SC_UMI_CONC_LOW, high = SC_UMI_CONC_HIGH, limits = c(0, 1),
+                             breaks = c(0, 0.5, 1), name = "top-1% UMI share",
+                             guide = guide_colourbar(direction = "horizontal", title.position = "top",
+                                                     barwidth = unit(30, "pt"), barheight = unit(3.5, "pt"))))
+       else geom_point_rast(data = filter(df, category == "below_threshold"),
+                            color = "grey60", size = 0.4, alpha = 0.25, raster.dpi = RASTER_DPI)} +
       geom_point(data = filter(df, category == "continuum"),
                  shape = 21, fill = SC_CONTINUUM_FILL, color = SC_CONTINUUM_EDGE,
                  size = 1.6, stroke = 0.3, alpha = 0.9) +
@@ -1188,7 +1205,12 @@ if (file.exists(sc_meta_path)) {
       base_theme() +
       labs(x = "log2FC (pseudobulk DESeq2)", y = "Pearson r (CAV)",
            title = SC_PAIR_TITLES[pair_id]) +
-      theme(plot.title    = element_text(size = 8, face = "bold"))
+      theme(plot.title    = element_text(size = 8, face = "bold")) +
+      # colourbar inside panel D's empty lower-middle (clear of the labels)
+      {if (pair_id %in% SC_UMI_CONC_PAIRS)
+         theme(legend.position = "inside", legend.position.inside = c(0.74, 0.03),
+               legend.justification = c(0.5, 0), legend.title = element_text(size = 5.5),
+               legend.text = element_text(size = 5), legend.background = element_blank())}
   }
 
   # ---------------------------------------------------------------------
@@ -1229,7 +1251,7 @@ if (file.exists(sc_meta_path)) {
   sc_band_ticks <- function(row_y, x_tick) {
     tibble(x   = x_tick,
            y   = c(row_y + 0.22, row_y - 0.22),
-           lab = rep(c("N", "C"), each = length(row_y)))
+           lab = rep(c("N", "T"), each = length(row_y)))   # N = non-tumor, T = tumor
   }
 
   sc_build_continuum <- function(pair_id, seed = 1, brackets = FALSE) {
@@ -1262,7 +1284,7 @@ if (file.exists(sc_meta_path)) {
       geom_point_rast(size = 0.4, alpha = 0.54, raster.dpi = RASTER_DPI) +
       # Same N/C ticks as the gene rows below, in the same gutter, so the
       # sub-band convention is stated once at the top of the column too.
-      geom_text(data = tibble(x = x_tick, y = c(0.5, -0.5), lab = c("N", "C")),
+      geom_text(data = tibble(x = x_tick, y = c(0.5, -0.5), lab = c("N", "T")),
                 aes(x, y, label = lab), inherit.aes = FALSE,
                 size = 1.7, color = "grey35", family = FIG_FONT) +
       scale_color_manual(values = c(`TRUE` = SC_NORMAL_COLOR, `FALSE` = SC_CANCER_COLOR)) +
@@ -1290,7 +1312,9 @@ if (file.exists(sc_meta_path)) {
     genes$hex <- sc_expr_to_hex(genes$expr_scaled, !genes$is_baseline)
 
     gene_labels <- genes %>% distinct(y_ctr, gene_name, r, r_up) %>%
-      mutate(lab = sprintf("%s (r=%.2f)", gene_name, r)) %>% arrange(y_ctr)
+      # compact "GENE 0.80" (was "GENE (r=0.80)"): the narrow one-row columns need the width for the
+      # strips; the bracket says these are correlations with the tumor direction
+      mutate(lab = sprintf("%s %.2f", gene_name, r)) %>% arrange(y_ctr)
 
     blocks <- gene_labels %>% group_by(r_up) %>%
       summarise(ymin = min(y_ctr) - 0.5, ymax = max(y_ctr) + 0.5, .groups = "drop") %>%
@@ -1304,7 +1328,7 @@ if (file.exists(sc_meta_path)) {
 
     outer_bracket <- tibble(ymin = min(blocks$ymin), ymax = max(blocks$ymax)) %>%
       mutate(ymid = (ymin + ymax) / 2,
-             lab  = "Correlation with cancer\ndirection on L2 axis")
+             lab  = "Correlation with tumor\ndirection on CAV axis")
 
     p_genes <- ggplot(genes, aes(l2_score, y_ctr + y_off + jit_cell)) +
       geom_hline(yintercept = sort(unique(c(gene_labels$y_ctr - 0.5, gene_labels$y_ctr + 0.5))),
@@ -1322,14 +1346,30 @@ if (file.exists(sc_meta_path)) {
                           limits = c(0.5, y_top), expand = c(0, 0)) +
       coord_cartesian(xlim = xlim) +
       base_theme() +
-      labs(x = "L2 score  (← normal    cancer →)", y = NULL) +
-      theme(axis.text.y  = element_text(size = 6),
+      scale_x_continuous(breaks = scales::breaks_pretty(n = 3)) +   # <= 3 ticks: 2.5 in columns crowded
+      labs(x = "CAV score", y = NULL) +
+      theme(axis.text.y  = element_text(size = 5.5, margin = margin(r = 1)),
             axis.ticks.y = element_blank(),
             axis.line.y  = element_blank(),
-            plot.margin  = margin(t = 0, b = 2, l = 2, r = 2))
+            plot.margin  = margin(t = 0, b = 2, l = 0, r = 2))
 
-    inner <- plot_grid(p_strip, p_genes, ncol = 1, align = "v", axis = "lr",
-                       rel_heights = c(0.9, n_genes + GAP))
+    # Direction cue under the CAV-score axis (2026-10-08): drawn arrows rather than "←"/"→" glyphs in the
+    # axis title, so their size can be set. The panel aligns with p_genes' panel (align = "v", "lr").
+    p_dir <- ggplot() +
+      # labels under the arrowheads, flush with the panel edges (the strips span the column width)
+      annotate("segment", x = 0.44, xend = 0.0, y = 0, yend = 0, linewidth = 0.55, color = "grey20",
+               arrow = arrow(length = unit(SC_DIR_ARROW_PT, "pt"), type = "closed", angle = 25)) +
+      annotate("segment", x = 0.56, xend = 1.0, y = 0, yend = 0, linewidth = 0.55, color = "grey20",
+               arrow = arrow(length = unit(SC_DIR_ARROW_PT, "pt"), type = "closed", angle = 25)) +
+      annotate("text", x = 0.0, y = -1, label = "Non-tumor", hjust = 0, vjust = 0.5,
+               size = 8 / .pt, family = FIG_FONT, color = "grey10") +
+      annotate("text", x = 1.0, y = -1, label = "Tumor", hjust = 1, vjust = 0.5,
+               size = 8 / .pt, family = FIG_FONT, color = "grey10") +
+      coord_cartesian(xlim = c(0, 1), ylim = c(-1.6, 0.6), expand = FALSE, clip = "off") +
+      theme_void() + theme(plot.margin = margin(t = 0, b = 2, l = 2, r = 2))
+
+    inner <- plot_grid(p_strip, p_genes, p_dir, ncol = 1, align = "v", axis = "lr",
+                       rel_heights = c(0.9, n_genes + GAP, SC_DIR_ROW_H))
 
     if (!brackets) return(inner)
 
@@ -1352,7 +1392,7 @@ if (file.exists(sc_meta_path)) {
       scale_x_continuous(limits = c(0, 1), expand = c(0, 0)) +
       scale_y_continuous(limits = c(0.5, y_top), expand = c(0, 0)) +
       base_theme() +
-      labs(x = "L2 score", y = NULL) +
+      labs(x = "CAV score", y = NULL) +
       theme(axis.title.x = element_text(color = "white"),
             axis.text.x  = element_text(color = "white"),
             axis.ticks.x = element_line(color = "white"),
@@ -1361,8 +1401,8 @@ if (file.exists(sc_meta_path)) {
             axis.ticks.y = element_blank(),
             plot.margin  = margin(t = 0, b = 2, l = 2, r = 0))
 
-    left_col <- plot_grid(NULL, p_ann, ncol = 1, rel_heights = c(0.9, n_genes + GAP))
-    plot_grid(left_col, inner, nrow = 1, rel_widths = c(0.20, 1))
+    left_col <- plot_grid(NULL, p_ann, NULL, ncol = 1, rel_heights = c(0.9, n_genes + GAP, SC_DIR_ROW_H))
+    plot_grid(left_col, inner, nrow = 1, rel_widths = c(0.26, 1))   # 0.20 clipped the rotated text at 2.25 in
   }
 
   # ---------------------------------------------------------------------
@@ -1416,13 +1456,19 @@ if (file.exists(sc_meta_path)) {
   sc_columns <- map2(SC_PAIR_ORDER, seq_along(SC_PAIR_ORDER), function(pid, i) {
     lower <- if (pid == SC_FIB_PAIR && !is.null(sc_fib_mod)) sc_build_fib_modules()
              else sc_build_continuum(pid, brackets = (i == 1))
+    # no left/right alignment with the scatter (2026-10-08): the strip block starts at the column's left
+    # edge instead of under the scatter's plot area, which gives the narrow one-row columns more strip width
     plot_grid(sc_build_scatter(pid), lower,
-              ncol = 1, align = "v", axis = "lr",
-              rel_heights = c(0.62, 1))
+              ncol = 1, rel_heights = c(0.62, 1))
   })
 
-  case_labels <- c("B", "C", "D")
-  fig6_body <- plot_grid(plotlist = sc_columns, nrow = 1,
+  # One row since 2026-10-08 (briefly 2 x 2 the same day): A blank for the transition-direction
+  # diagram dropped in externally, then B neutrophil/breast, C epithelial/lung, D neutrophil/lung.
+  case_labels <- c("A", "B", "C", "D")
+  SC_A_WIDTH    <- 1.5    # in, panel A (externally drawn diagram)
+  SC_CASE_WIDTH <- 2.25   # in, each case panel (2.5 in in the three-column figure, 10 % narrower)
+  fig6_body <- plot_grid(plotlist = c(list(NULL), sc_columns), nrow = 1, ncol = 4,
+                         rel_widths = c(SC_A_WIDTH, rep(SC_CASE_WIDTH, length(sc_columns))),
                          labels = case_labels, label_size = 8, label_fontfamily = FIG_FONT)
 
   sc_legend_strip_df <- tibble(x = 1, y = 1,
@@ -1431,6 +1477,7 @@ if (file.exists(sc_meta_path)) {
     ggplot(sc_legend_strip_df, aes(x, y, color = cond)) +
       geom_point(size = 2.5) +
       scale_color_manual(values = c(normal = SC_NORMAL_COLOR, cancer = SC_CANCER_COLOR),
+                         labels = c(normal = "Non-tumor (N)", cancer = "Tumor (T)"),
                          name = "Cell strip") +
       base_theme() + theme(legend.position = "right", legend.key.size = unit(9, "pt"))
   )
@@ -1476,17 +1523,19 @@ if (file.exists(sc_meta_path)) {
   sc_legend_row <- plot_grid(NULL, sc_legend_scatter, sc_legend_strip, sc_legend_expr, NULL,
                              nrow = 1, rel_widths = c(0.2, 1.4, 0.8, 1.2, 0.2))
 
-  fig6_cases <- plot_grid(fig6_body, sc_legend_row, ncol = 1, rel_heights = c(1, 0.13))
+  fig6_cases <- plot_grid(fig6_body, sc_legend_row, ncol = 1, rel_heights = c(1, 0.12))
 
   # 7.5in ~ 190mm, a standard full double-column journal figure width;
   # heights rescaled (x 7.5/12) to preserve the original aspect ratios.
   # Panel A's blank bar is 30% shorter than the old t-SNE row (0.6 -> 0.42),
   # with the overall height rescaled to match so the case columns keep their
   # original aspect ratio.
-  fig6 <- plot_grid(sc_overview_row, fig6_cases, ncol = 1, rel_heights = c(0.42, 1))
-  fig6_height <- 5.82
+  # Point sizes and panel height kept from the three-column figure (3.63 in panels + ~0.25 in
+  # direction-arrow row + 0.47 in legend row); widths: A 1.5 in + 3 cases x 2.25 in = 8.25 in.
+  fig6 <- ggdraw(fig6_cases) + theme(plot.margin = margin(t = 0, r = 6, b = 0, l = 0))   # small right gutter
+  fig6_height <- 4.35
 
-  fig6_width <- 7.5
+  fig6_width <- SC_A_WIDTH + 3 * SC_CASE_WIDTH
   ggsave(file.path(OUT, "cav_fig6.pdf"), fig6, width = fig6_width, height = fig6_height,
          bg = "white", device = cairo_pdf)
   ggsave(file.path(OUT, "cav_fig6.png"), fig6, width = fig6_width, height = fig6_height,
@@ -1507,15 +1556,21 @@ if (file.exists(sc_meta_path)) {
   # -------------------------------------------------------------------
   proj_path <- file.path(DATA, "proj_de_vs_cav.csv")
 
-  if (file.exists(proj_path)) {
+  # Rebuilt and re-promoted 2026-10-08 on the official-tokenizer embeddings with the Fig 6 cases
+  # and a fourth row, the cancer - normal difference (the Fig 6 axis; reproduces the Fig 6
+  # scatter exactly). Data: single_cell/10_export_projection_comparison_supp_data.sh
+  # (export_projection_comparison_supp_data.py --run-dir .../runs/cls_penult).
+  SUPP_PROJECTION <- TRUE
+  if (SUPP_PROJECTION && file.exists(proj_path)) {
 
     proj_df <- read_csv(proj_path, show_col_types = FALSE)
 
-    PROJ_LEVEL_ORDER <- c("raw", "L0_removed", "L2")
+    PROJ_LEVEL_ORDER <- c("raw", "L0_removed", "L2", "diff")
     PROJ_LEVEL_TITLES <- c(
       raw        = "Raw condition CAV\n(no orthogonalization)",
       L0_removed = "Minus cell-type baseline (L0)",
-      L2         = "Minus cell-type + tissue (L0+L1 = L2)"
+      L2         = "Minus cell-type + tissue (L0+L1 = L2)",
+      diff       = "Cancer CAV − normal CAV\n(Figure 6 axis)"
     )
 
     proj_build_scatter <- function(pair_id, level_id) {
@@ -1533,7 +1588,7 @@ if (file.exists(sc_meta_path)) {
         geom_point_rast(color = "grey65", size = 0.4, alpha = 0.2,
                         raster.dpi = RASTER_DPI) +
         base_theme() +
-        labs(x = "log2FC (DE)", y = "Pearson r (CAV)",
+        labs(x = "log2FC (pseudobulk DESeq2)", y = "Pearson r (CAV)",
              subtitle = sprintf("Spearman r = %.2f", rho)) +
         theme(axis.text     = element_text(size = 7),
               axis.title    = element_text(size = 8),
@@ -1557,7 +1612,7 @@ if (file.exists(sc_meta_path)) {
     })
 
     proj_body <- plot_grid(plotlist = proj_body_rows, ncol = 1,
-                           labels = LETTERS[1:3], label_size = 9, label_fontfamily = FIG_FONT)
+                           labels = LETTERS[seq_along(PROJ_LEVEL_ORDER)], label_size = 9, label_fontfamily = FIG_FONT)
 
     fig_supp_projection <- plot_grid(
       plot_grid(NULL, proj_col_headers, nrow = 1, rel_widths = c(0.07, 1)),
@@ -1566,7 +1621,7 @@ if (file.exists(sc_meta_path)) {
 
     # Full page width (7.5 in) at print size; text 7-8 pt (axis ticks 7, titles 8).
     proj_w <- 7.5
-    proj_h <- 7.4
+    proj_h <- 7.4 * length(PROJ_LEVEL_ORDER) / 3
     ggsave(file.path(OUT, "fig_supp_projection_comparison.pdf"), fig_supp_projection,
            width = proj_w, height = proj_h, bg = "white", device = cairo_pdf)
     ggsave(file.path(OUT, "fig_supp_projection_comparison.png"), fig_supp_projection,
@@ -1574,8 +1629,9 @@ if (file.exists(sc_meta_path)) {
     message("Saved fig_supp_projection_comparison.pdf / .png")
 
   } else {
-    message("Skipping projection-comparison supplemental: figure_data/proj_de_vs_cav.csv not found ",
-            "(run single_cell/10_export_projection_comparison_supp_data.sh first)")
+    message(if (!SUPP_PROJECTION) "Skipping projection-comparison supplemental: demoted (SUPP_PROJECTION = FALSE)"
+            else paste0("Skipping projection-comparison supplemental: figure_data/proj_de_vs_cav.csv not found ",
+                        "(run single_cell/10_export_projection_comparison_supp_data.sh first)"))
   }
 
 } else {
@@ -1736,7 +1792,10 @@ if (SUPP_FIB_SUBPOP && file.exists(subpop_scatter_path)) {
 
 fibhm_path <- file.path(DATA, "supp_fib_coexpr_conv1_genes.csv")
 
-if (file.exists(fibhm_path)) {
+# DEMOTED 2026-10-08: fibroblast/colorectum is no longer a Fig 6 case and these modules were
+# built on the original (custom-tokenizer) embeddings. Code kept; set TRUE to rebuild.
+SUPP_FIB_HEATMAPS <- FALSE
+if (SUPP_FIB_HEATMAPS && file.exists(fibhm_path)) {
 
   FIBHM_UP <- "#c0392b"; FIBHM_DOWN <- "#3a6fad"
   fibhm_fill <- scale_fill_gradient2(low = "#762a83", mid = "white", high = "#1b7837", midpoint = 0,
@@ -1802,8 +1861,9 @@ if (file.exists(fibhm_path)) {
   message("Saved fig_supp_fib_heatmaps.pdf / .png")
 
 } else {
-  message("Skipping fibroblast heatmap supplemental: figure_data/supp_fib_coexpr_conv1_genes.csv not found ",
-          "(run single_cell/convergence_check/08_fib_module_heatmap.py conv1 de_stat conv4 and copy from staging)")
+  message(if (!SUPP_FIB_HEATMAPS) "Skipping fibroblast heatmap supplemental: demoted (SUPP_FIB_HEATMAPS = FALSE)"
+          else paste0("Skipping fibroblast heatmap supplemental: figure_data/supp_fib_coexpr_conv1_genes.csv not found ",
+                      "(run single_cell/convergence_check/08_fib_module_heatmap.py conv1 de_stat conv4 and copy from staging)"))
 }
 
 # ===========================================================================

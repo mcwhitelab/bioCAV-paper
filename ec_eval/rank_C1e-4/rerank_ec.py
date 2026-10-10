@@ -26,7 +26,7 @@ PROFAB = Path("/xdisk/clairemcwhite/proFAB/EC_sets")
 LIBS = {"old": PROFAB,
         "new": Path("/xdisk/clairemcwhite/clairemcwhite/go_ec_cavs_C1e-4_overlay/EC_sets")}
 BLAST = {"old": PAPER / "ec_eval" / "blast_baseline",
-         "new": PAPER / "ec_eval" / "blast_baseline" / "C1e-4_extra"}
+         "new": PAPER / "ec_eval" / "blast_baseline" / "C1e-4_extra_ultra"}  # 2026-10-09: DIAMOND --ultra-sensitive, e <= 1 (go_eval/rank_C1e-4/run_diamond_ultra.sbatch)
 SUB = "random_positive_train_max1000_cav"
 
 ap = argparse.ArgumentParser()

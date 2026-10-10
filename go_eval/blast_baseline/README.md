@@ -1,5 +1,12 @@
 # GO homology-transfer baseline (2026-09-29, exploratory)
 
+> **2026-10-09: superseded for Fig 2B / 3A.** The live baseline is now DIAMOND 2.0.9
+> `--ultra-sensitive --max-target-seqs 0 --evalue 1` (`../rank_C1e-4/run_diamond_ultra.sbatch`,
+> hits in `C1e-4_extra_ultra/`). The `--more-sensitive`, e ≤ 1e-3 run described below is kept in
+> `val_vs_train.tsv` / `C1e-4_extra/`. The comparison with BLASTP and jackhmmer is in
+> `homology_compare/`. The callout tables (`callouts_C1e-4/`), `integrated_score_preview/` and
+> `localization_story/` were built on the old baseline and were not rerun.
+
 DIAMOND nearest-neighbour baseline for Fig 2C on the known-positive-excluded pairs
 (`figures/figure_data_staging/noknown`). Not in figures.R.
 

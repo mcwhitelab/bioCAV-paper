@@ -50,3 +50,8 @@ figures/figure_data_staging/**/term_members.tsv
 figures/figure_data_staging/
 figures/figure_data/_backup_*/
 figures/previews/
+
+# Archived / superseded material (added 2026-10-09). Kept on disk for provenance,
+# not part of the published repository. See archive/2026-10-09_cleanup/MANIFEST.md.
+archive/
+methods_archive/

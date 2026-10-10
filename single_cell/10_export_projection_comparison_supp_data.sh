@@ -8,8 +8,8 @@ PY=/groups/clairemcwhite/envs/core_pkgs4/bin/python
 # scripts/export_projection_comparison_supp_data.py for the three stages
 # computed (raw / L0_removed / L2) and why there are three, not four.
 
-$PY "$(dirname "$0")/scripts/export_projection_comparison_supp_data.py" \
+# Since 2026-10-08: official-tokenizer embeddings (cls_penult) and the Fig 6 cases, with the
+# cancer - normal row added (METHODS §7.1). Run from single_cell/ (relative paths).
+(cd "$(dirname "$0")" && $PY scripts/export_projection_comparison_supp_data.py \
     --figure-data-dir "$BIOCAV_PAPER_ROOT/figures/figure_data" \
-    --cav-dir "$(dirname "$0")/convergence_check/cavs_conv1" \
-    --coords "$(dirname "$0")/convergence_check/coords_conv1.tsv"
-# Converged C=1 PCA-128 CAVs (convergence_check arm conv1) since 2026-10-07, matching Fig 6.
+    --run-dir /xdisk/clairemcwhite/clairemcwhite/sc_geneformer_official/runs/cls_penult)

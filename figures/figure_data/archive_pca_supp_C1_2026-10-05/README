@@ -1,4 +1,0 @@
-Old fig_supp_pca_sweep (archived 2026-10-05): MYC/MAD1 PCA sweep with the C = 1 early-stopped
-estimator, judged by bHLH/bZIP/other counts in the top 20/100. Data from
-interface_search/fastas/pairs/myc_mad/pca_sweep_supp/export_pca_sweep_supp_data.py.
-Replaced by the C = 1e-4 converged CACGTG version (figure_data/pca_sweep_cacgtg.csv).

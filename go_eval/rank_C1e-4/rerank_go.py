@@ -31,7 +31,8 @@ GE = PAPER / "go_eval"
 PROFAB = Path("/xdisk/clairemcwhite/proFAB/GO_sets")
 LIBS = {"old": PROFAB,
         "new": Path("/xdisk/clairemcwhite/clairemcwhite/go_ec_cavs_C1e-4_overlay/GO_sets")}
-BLAST = {"old": GE / "blast_baseline", "new": GE / "blast_baseline" / "C1e-4_extra"}
+BLAST = {"old": GE / "blast_baseline",
+         "new": GE / "blast_baseline" / "C1e-4_extra_ultra"}  # 2026-10-09: DIAMOND --ultra-sensitive, e <= 1 (run_diamond_ultra.sbatch)
 PAIRS_SRC = PAPER / "figures" / "figure_data_staging" / "noknown"
 SUB = "random_positive_train_max1000_cav"
 ONTS = ["mf", "bp", "cc"]

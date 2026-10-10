@@ -34,11 +34,14 @@ GENE_CORR_DIR = LIB / "results" / "gene_correlation_paired_donors"
 # log2FC is DESeq2's unshrunk log2FoldChange (column log2fc_mle -- the TSV's
 # own `log2fc` column is the apeglm-shrunk value and is NOT what's plotted).
 # The min-10-cells rule removes AziziBRCA_1 (neutrophil/breast, 21 cells)
-# and QianCRC_CRC_6 (fibroblast/colorectum, 23 cells) from the DE only; the
+# and ZilionisLUAD_p2 (neutrophil/lung, 7 tumour cells) from the DE only; the
 # CAV correlations and continuum strips still use every paired donor.
-# (Previous version: per-cell mixed model, results/de_mixedlm_paired_donors/,
-# via scripts/paired_donor_de_mixedlm.py.)
-DE_DIR = LIB / "results" / "de_pseudobulk_paired_donors" / "min10"
+# Since 2026-10-08 the DE is read from convergence_check/de_pseudobulk_allpairs/min10,
+# the same recipe run for all ten paired-donor pairs (13a/13b); it is identical to
+# results/de_pseudobulk_paired_donors/min10 for the pairs both contain, and the latter
+# has no neutrophil/lung. (Previous version: per-cell mixed model,
+# results/de_mixedlm_paired_donors/, via scripts/paired_donor_de_mixedlm.py.)
+DE_DIR = Path("convergence_check/de_pseudobulk_allpairs/min10")
 _ap = argparse.ArgumentParser()
 _ap.add_argument("out_dir", nargs="?", default="../figures/figure_data")
 # Matched-donor variant: drop paired donors with < N cells in either condition
@@ -60,13 +63,12 @@ CASES = [
     # pair_label, cell_type, tissue_real, condition, assay_filter (None if not needed)
     ("neutrophil__breast__normal_vs_breast_cancer", "neutrophil", "breast", "breast cancer", None),
     ("epithelial_cell__lung10x__normal_vs_lung_cancer", "epithelial cell", "lung", "lung cancer", "10x 3' v2"),
-    # fibroblast/colorectum: 7/7 donors paired (no cells lost), and CAV
-    # recovers ADAMDEC1 (r=0.21, p=7e-21) as a top correlate despite near-
-    # zero pseudobulk DE (log2FC 0.09, padj = 1) -- ADAMDEC1 marks a specific mucosal
-    # fibroblast subpopulation in gut atlases (e.g. Kinchen et al.), so this
-    # likely reflects a subpopulation-abundance shift that a population-
-    # average DE test misses but the per-cell CAV score picks up.
-    ("fibroblast__colorectum__normal_vs_colorectal_cancer", "fibroblast", "colorectum", "colorectal cancer", None),
+    # neutrophil/lung replaced fibroblast/colorectum on 2026-10-08: with the official
+    # Geneformer tokenization the fibroblast/colorectum conditions are not separable across
+    # donors (leave-one-donor-out AUROC ~0.55) and its ECM/ADAMDEC1 programs did not
+    # survive; neutrophil/lung is separable (~0.9) and its cancer - normal axis agrees with
+    # DE (single_cell/official_tokenizer/, METHODS §6).
+    ("neutrophil__lung__normal_vs_lung_cancer", "neutrophil", "lung", "lung cancer", None),
 ]
 
 
@@ -84,6 +86,9 @@ def main():
     lib_size = X_expr.sum(axis=1, keepdims=True)
     lib_size[lib_size == 0] = 1.0
     X_expr = np.log1p(X_expr / lib_size * 1e4)
+    # row / column lookups for the per-gene UMI concentration (top1pct_share) in sc_de_vs_cav.csv
+    cell_row = {str(c): i for i, c in enumerate(expr_cell_ids)}
+    gene_col = {g: j for j, g in enumerate(gene_ids)}
 
     if hasattr(obs["tissue"], "cat"):
         obs["tissue"] = obs["tissue"].astype(str)
@@ -161,7 +166,16 @@ def main():
                   .merge(cav[["gene", "r"]].rename(columns={"r": "cav_r"}), on="gene", how="inner")
                   .dropna(subset=["log2fc", "cav_r"]))
         merged["pair"] = pair_label
-        de_rows.append(merged[["pair", "gene", "gene_name", "log2fc", "padj", "n_donors", "cav_r"]])
+        # top1pct_share (2026-10-08, Fig 6D colouring): share of the gene's UMIs, over this pair's
+        # paired-donor cells, carried by the top 1 % of those cells. Raw counts are recovered from the
+        # log1p(CP10K) matrix as expm1(x) * library size / 1e4.
+        cells = [c for c in obs.index[mask & obs["donor_id"].isin(paired_donors)].astype(str) if c in cell_row]
+        ri = np.array([cell_row[c] for c in cells])
+        raw = np.expm1(X_expr[np.ix_(ri, [gene_col[g] for g in merged["gene"]])]) * lib_size[ri] / 1e4
+        k = max(1, len(ri) // 100)
+        top = -np.sort(-raw, axis=0)[:k].sum(axis=0)
+        merged["top1pct_share"] = top / np.maximum(raw.sum(axis=0), 1e-12)
+        de_rows.append(merged[["pair", "gene", "gene_name", "log2fc", "padj", "n_donors", "cav_r", "top1pct_share"]])
 
     out_dir = FIGURE_DATA_DIR
     out_dir.mkdir(parents=True, exist_ok=True)
