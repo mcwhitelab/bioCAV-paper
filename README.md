@@ -4,6 +4,7 @@ Analysis code and figure data for:
 
 > **Representing biological concepts as directions in foundation model embeddings.**
 > Ahmad Shamail and Claire D. McWhite, The University of Arizona.
+> bioRxiv 2026. [doi:10.64898/2026.10.10.758204](https://www.biorxiv.org/content/10.64898/2026.10.10.758204v1.full)
 
 A concept activation vector (CAV) is the unit weight vector of a linear classifier that
 separates examples of a concept from a common background in a pretrained embedding space.
